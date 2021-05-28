@@ -58,7 +58,7 @@ const data = [
 			]
 		},
 		{
-			name:"Safeties_Hardware",
+			name:"Safeties and Hardware",
 			products: [
 				"./assets/images/categories/Safeties and Hardware/Cantilever Type.jpg",
 				"./assets/images/categories/Safeties and Hardware/Car Shoe.jpg",
@@ -131,5 +131,5 @@ buy_now = (id,product=-1) => {
 		}
 		var buy_text = "Hey there, assist me please! \nI want to purchase " + name
 	}
-	window.open('https://wa.me/+918389844787?text='+buy_text)
+	window.open('https://wa.me/+918209292067?text='+buy_text)
 }

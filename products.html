@@ -43,7 +43,7 @@
                         <li><a href="javascript:load('Doors');">Doors</a></li>
                         <li><a href="javascript:load('Electricals');">Electricals</a></li>
                         <li><a href="javascript:load('Headers');">Headers</a></li>
-                        <li><a href="javascript:load('Safeties_Hardware');">Safeties & Hardware</a></li>
+                        <li><a href="javascript:load('Safeties and Hardware');">Safeties & Hardware</a></li>
                         <li><a href="javascript:load('Motor');">Motor</a></li>
                         <li><a href="javascript:load('Cabin');">Cabin</a></li>
                         <!--<li><a href="articles.html">Articles</a></li>-->
@@ -57,7 +57,7 @@
 
         <div class="full">
             <div class="cover">
-                <h1>Our Products</h1>
+                <h1 id = "heading">Our Products</h1>
             </div>
         </div>
 
@@ -190,7 +190,13 @@
 				var category = window.location.href
 				category = category.split("#")
 				category = category.pop()
-				console.log(category)
+				if(category.indexOf("%20")>-1){
+					category = category.split("%20")
+					category = category.join(" ")
+				}
+
+				document.getElementById("heading").innerHTML = category
+
 				const data = await get_data(category)
 
 				var temp_product_name = ""
@@ -212,14 +218,12 @@
 
 					temp_products += `
 						<div class="item">
-							<a href="product-detail.html?id=${i+1}">
 							<div style="color:#000">
 								<img id="main" src="${data.products[i]}" alt="" />
 								<div class="about">
 									<p>${temp_product_name}</p>
 								</div>
 							</div>
-							</a>
 							<div class="BUY NOW" style="width: 90%;margin: 0 auto; background: #21c050; color: white; border-radius: 10px; text-align: center; padding: 18px; font-size: 25px; cursor: pointer;" onclick="buy_now(${category},${i})">
 								<i class="fa fa-whatsapp" aria-hidden="true"></i>&nbsp;&nbsp;<span>BUY NOW</span>
 							</div>
