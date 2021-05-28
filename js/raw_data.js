@@ -122,12 +122,21 @@ buy_now = (id,product=-1) => {
 		if(product == -1){
 			name = data[id].name
 		} else {
-			var temp = data[id]["products"][product]
-			temp = temp.split("/")
-			temp = temp.pop
-			temp = temp.split(".")
-			temp.pop()
-			name = temp.join('')
+			var idx = -1
+			for (var i=0;i<data.length;i++) {
+				if(data[i].name == id) {
+					idx = i
+					break
+				}
+			}
+			if (idx >-1) {
+				var temp = data[idx]["products"][product]
+				temp = temp.split("/")
+				temp = temp.pop()
+				temp = temp.split(".")
+				temp.pop()
+				name = temp.join('')
+			}
 		}
 		var buy_text = "Hey there, assist me please! \nI want to purchase " + name
 	}
