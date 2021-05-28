@@ -1,0 +1,338 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+body {
+    margin: 0;
+}
+
+.header-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    font-family: "Inter", sans-serif;
+    background: white;
+    -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
+    z-index: 101;
+    height: 100%;
+    -webkit-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+    height: 75px;
+    overflow: hidden;
+}
+
+.header-container .container {
+    margin: 0 auto;
+    width: 90%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.header-container .logo {
+    padding: 10px;
+}
+
+.header-container nav {
+}
+
+.header-container ul {
+}
+
+.header-container li {
+    display: inline-block;
+    padding: 0 20px;
+    list-style: none;
+}
+.sidebar {
+    z-index: 100;
+    -webkit-transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+    -o-transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+    transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+    background:  rgba(33, 192, 80, 0.98);
+    background:  rgba(33, 192, 80, 0.98)
+    -webkit-transform: translateY(-120vh);
+    -ms-transform: translateY(-120vh);
+    transform: translateY(-120vh);
+    opacity: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+}
+
+@media only screen and (min-width: 930px) {
+    .header-container .hamburger {
+        display: none;
+    }
+
+    .header-container a {
+        all: unset;
+        font-weight: 400;
+        cursor: pointer;
+        color: black;
+    }
+
+    .header-container a:hover {
+        color: #21c050;
+        -webkit-transition: all 0.2s ease-in;
+        -o-transition: all 0.2s ease-in;
+        transition: all 0.2s ease-in;
+    }
+
+    .header-container .active a {
+        color: #21c050 !important;
+    }
+
+    .header-container .nav a::after {
+        content: "";
+        width: inherit;
+        height: 5px;
+        border-radius: 20px;
+        -webkit-transform: translateY(7px) scale(0, 1);
+        -ms-transform: translateY(7px) scale(0, 1);
+        transform: translateY(7px) scale(0, 1);
+        display: block;
+        background: #21c050;
+    }
+
+    .header-container .nav a:hover::after {
+        /* -webkit-transform: translateY(7px) scale(1, 1);
+            -ms-transform: translateY(7px) scale(1, 1);
+                transform: translateY(7px) scale(1, 1); */
+        -webkit-transition: all 0.2s ease-in;
+        -o-transition: all 0.2s ease-in;
+        transition: all 0.2s ease-in;
+    }
+
+    .header-container .active a::after {
+        content: "";
+        width: inherit;
+        height: 5px;
+        border-radius: 20px;
+        /* -webkit-transform: translateY(7px) scale(1, 1);
+            -ms-transform: translateY(7px) scale(1, 1);
+                transform: translateY(7px) scale(1, 1); */
+        display: block;
+        background: #21c050;
+        -webkit-transition: all 0.2s ease-out;
+        -o-transition: all 0.2s ease-out;
+        transition: all 0.2s ease-out;
+    }
+}
+
+@media only screen and (max-width: 929px) {
+    .header-container .nav {
+        /* display: none; */
+        opacity: 0;
+        -webkit-transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+        -o-transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+        transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+    }
+    .header-container .container {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        z-index: 200;
+    }
+
+    .header-container .hamburger {
+        position: absolute;
+        top: 30px;
+        left: 25px;
+        width: 25px;
+        height: 20px;
+        cursor: pointer;
+        -webkit-transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+        -o-transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+        transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+    }
+
+    .bar {
+        z-index: 101;
+        width: 24px;
+        height: 3px;
+        background-color: black;
+        border-radius: 30px;
+        -webkit-transform-origin: left;
+        -ms-transform-origin: left;
+        transform-origin: left;
+        -webkit-transform: translate(0px, 0px) rotate(0deg);
+        -ms-transform: translate(0px, 0px) rotate(0deg);
+        transform: translate(0px, 0px) rotate(0deg);
+        -webkit-transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+        -o-transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+        transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+    }
+    .activeBurger .bar {
+        -webkit-transform: translate(0px, -3px) rotate(45deg);
+        -ms-transform: translate(0px, -3px) rotate(45deg);
+        transform: translate(0px, -3px) rotate(45deg);
+        -webkit-transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+        -o-transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+        transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+        /* background: white; */
+    }
+    .bar::before {
+        content: "";
+        width: 100%;
+        height: 3px;
+        background-color: black;
+        border-radius: 30px;
+        -webkit-transform: translateY(7px) scale(1, 1);
+        -ms-transform: translateY(7px) scale(1, 1);
+        transform: translateY(7px) scale(1, 1);
+        -webkit-transform-origin: left;
+        -ms-transform-origin: left;
+        transform-origin: left;
+        background: black;
+        display: block;
+        -webkit-transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+        -o-transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+        transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+    }
+    .activeBurger .bar::before {
+        -webkit-transform: translateY(7px) scale(0, 1);
+        -ms-transform: translateY(7px) scale(0, 1);
+        transform: translateY(7px) scale(0, 1);
+        -webkit-transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+        -o-transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+        transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+        /* background: white; */
+    }
+    .bar::after {
+        content: "";
+        width: 100%;
+        height: 3px;
+        -webkit-transform-origin: center;
+        -ms-transform-origin: center;
+        transform-origin: center;
+        background-color: black;
+        border-radius: 30px;
+        -webkit-transform: translateY(11px);
+        -ms-transform: translateY(11px);
+        transform: translateY(11px);
+        background: black;
+        display: block;
+        -webkit-transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+        -o-transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+        transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+    }
+
+    .activeBurger .bar::after {
+        -webkit-transform: translate(0px, -3px) rotate(90deg);
+        -ms-transform: translate(0px, -3px) rotate(90deg);
+        transform: translate(0px, -3px) rotate(90deg);
+        /* background: white; */
+        -webkit-transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+        -o-transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+        transition: all 0.5s cubic-bezier(0.77, 0.37, 0.57, 0.63);
+    }
+
+    .header-container .activeBurger {
+        /* transform: rotate(180deg); */
+        -webkit-transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+        -o-transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+        transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+    }
+
+    .headerActive {
+        -webkit-transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+        -o-transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+        transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
+        -webkit-transform: translateY(0vh);
+        -ms-transform: translateY(0vh);
+        transform: translateY(0vh);
+    }
+    .hamburger,
+    .header-container .logo {
+        z-index: 200;
+    }
+
+    .header-container .nav {
+        flex: 1 1 100%;
+    }
+
+    .header-container .container {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    .header-container .navActive {
+        padding-top: 20px;
+        /* display: block; */
+        z-index: 200;
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+        flex: 1 1 100%;
+        position: fixed;
+
+        top: 87px;
+        left: -37px;
+        font-weight: 400;
+        opacity: 1;
+        -webkit-animation: mymove 0.7s ease-in-out;
+        animation: mymove 0.7s ease-in-out;
+        /* display: none; */
+    }
+    @-webkit-keyframes mymove {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes mymove {
+        0% {
+            opacity: 0;
+        }
+        25% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .header-container .navActive li {
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
+
+    .header-container .navActive a {
+        all: unset;
+        color: white;
+        cursor: pointer;
+        opacity: 0.8;
+        -webkit-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+    }
+    .header-container .navActive a:hover {
+        opacity: 1;
+        font-weight: 500;
+        -webkit-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .header-container .navActive .active a {
+        opacity: 1;
+        font-weight: 500;
+    }
+
+    .header-container li {
+        display: block;
+    }
+}

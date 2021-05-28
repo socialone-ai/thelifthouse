@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: #F7FEF9;
+}
+
+.main-container {
+    padding: 40px 25vw;
+    text-align: center;
+}
+
+.image-conatiner img {
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.about p {
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: justify;
+    padding: 15px 0;
+}
+
+.share p {
+    padding-top: 20px;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.about-share {
+    padding: 20px 0 50px 0;
+}
+
+.platform {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.platform i {
+    padding-right: 15px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.more {
+    text-align: left;
+}
+
+.cover {
+    display: inline-block;
+}
+
+.cover h1::after {
+    content: "";
+    width: inherit;
+    -webkit-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    transform: translateY(10px);
+    height: 7px;
+    width: 70%;
+    border-radius: 20px;
+    display: block;
+    background: #00b836;
+}
+
+.stories ul {
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.stories ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.stories li {
+    padding: 15px;
+}
+.main-container .items {
+    border-radius: 20px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.stories li:nth-child(1) {
+    padding-left: 0;
+}
+.stories li:last-child {
+    padding-right: 0;
+}
+
+.main-container .items img {
+    border-radius: 20px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: inherit;
+    -webkit-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.main-container .items .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: rgb(255, 255, 255);
+    background: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(rgba(255, 255, 255, 0)),
+        color-stop(95%, rgba(12, 10, 45, 0.4962359943977591)),
+        to(rgba(2, 0, 36, 1))
+    );
+    background: -o-linear-gradient(
+        top,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(12, 10, 45, 0.4962359943977591) 95%,
+        rgba(2, 0, 36, 1) 100%
+    );
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(12, 10, 45, 0.4962359943977591) 95%,
+        rgba(2, 0, 36, 1) 100%
+    );
+}
+
+.main-container .items .details {
+    padding: 10px 20px 10px 20px;
+    width: 90%;
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+}
+
+.main-container .items .details h1 {
+    color: white;
+    font-size: 15px;
+    margin-bottom: 1px;
+}
+
+.main-container .items .details p {
+    margin-top: 10px;
+    font-size: 10px;
+    color: white;
+}
+
+.main-container .items:hover img {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+@media only screen and (min-width: 1029px) and (max-width: 1440px) {
+    .main-container {
+        padding: 40px 15vw;
+    }
+}
+
+@media only screen and (min-width: 200px) and (max-width: 1029px) {
+    .main-container {
+        padding: 40px 10vw;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+    .stories ul li:last-child {
+        padding-left: 0 !important;
+        padding-right: 15px;
+    }
+}
+
+@media only screen and (min-width: 100px) and (max-width: 599px) {
+    .stories ul li {
+        padding-top: 30px;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .stories h1 {
+        font-size: 20px !important;
+    }
+    .stories p {
+        font-size: 15px !important;
+    }
+    .main-container .heading h1 {
+        font-size: 30px !important;
+    }
+}
+
+@media only screen and (min-width: 100px) and (max-width: 350px) {
+    .platform {
+        -ms-flex-pack: distribute;
+        justify-content: space-around;
+    }
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1000px) {
+    .image-conatiner img {
+        height: 400px !important;
+        object-position: left;
+    }
+}

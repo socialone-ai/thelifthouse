@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <head>
+        <!-- meta -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Ajeevan</title>
+        <link rel="stylesheet" href="./css/header.css" />
+        <link rel="stylesheet" href="./css/index.css" />
+        <link rel="stylesheet" href="./css/product-items.css" />
+        <link rel="stylesheet" href="./css/footer.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.0/jquery.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+		<style>
+			a:link { text-decoration: none; }
+			a:visited { text-decoration: none; }
+			a:hover { text-decoration: none; }
+			a:active { text-decoration: none; }
+		</style>
+		<script src="./js/raw_data.js"></script>
+        <link rel="shortcut icon" type="image/png" href="./assets/images/index/logo.png"/>
+    </head>
+    <body>
+        <div class="whatsapp">
+            <img
+                draggable="false"
+                src="./assets/images/index/whatsapp.svg"
+                alt=""
+                id="whatsapp"
+				onclick="buy_now(-1)"
+            />
+            <div class="header-container">
+                <div class="hamburger"><div class="bar"></div></div>
+                <div class="container">
+                    <div class="logo">
+                        <a href="about-us.html"
+                            ><img
+                                id="logoMain"
+                                src="./assets/images/index/logo.png"
+                                alt=""
+                        /></a>
+                    </div>
+                    <div class="nav">
+                        <ul>
+                            <li>
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li><a href="javascript:load('Accessories');">Accessories</a></li>
+							<li><a href="javascript:load('Doors');">Doors</a></li>
+							<li><a href="javascript:load('Electricals');">Electricals</a></li>
+							<li><a href="javascript:load('Headers');">Headers</a></li>
+							<li><a href="javascript:load('Safeties_Hardware');">Safeties & Hardware</a></li>
+							<li><a href="javascript:load('Motor');">Motor</a></li>
+							<li><a href="javascript:load('Cabin');">Cabin</a></li>
+							<!--<li><a href="articles.html">Articles</a></li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar"></div>
+            <script src="./js/header.js"></script>
+            <div style="height: 125px"></div>
+
+            <div class="hero">
+                <img src="./assets/images/index/part1.svg" alt="" class="l1" />
+                <img src="./assets/images/index/part2.svg" alt="" class="l2" />
+                <img id="step" src="./assets/images/index/step.svg" alt="" />
+                <div class="text">
+                    <p id="main">
+                        We appreciate you for taking first step towards
+                        <span style="color: #21c050">healthy life</span>
+                    </p>
+                    <p id="sub">
+                        You did it. Congratulations for embarking onto the journey of leading a healthy lifestyle. AJEEVAN stands by you everyday for your daily needs.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg">
+            <img id="bg" src="./assets/images/index/bg.png" alt="" />
+            <div class="text">
+                <p id="main">
+                    <span style="color: #21c050">Ajeevan</span> is commited
+                    towards reinforcing ancient cooking methods
+                </p>
+                <p id="sub">
+                    Food loses its value unless cooked the right way using the right ingredients. The utensils used impacts the nutrient retention of the food and its bio-availability. AJEEVAN helps you to cook right and eat right.
+                </p>
+            </div>
+
+            <img src="./assets/images/index/bg1.svg" alt="" id="pot" />
+            <img src="./assets/images/index/leaves.svg" alt="" id="leaves" />
+            <div class="extra"></div>
+        </div>
+        <div class="full">
+            <div class="cover">
+                <h1>Our Products</h1>
+            </div>
+        </div>
+        <div class="ccontainer">
+            <div class="items" id="products">
+                
+            </div>
+        </div>
+
+        <!--<div class="about-ajeevan">
+            <div class="text">
+                Food is a medicine,<br />
+                <span style="color: #21c050">Ajeevan</span> is the chemist shop
+            </div>
+            <img src="./assets/images/index/lines.svg" alt="" />
+        </div>
+
+        <div class="bottles">
+            <img src="./assets/images/index/glass.svg" alt="" />
+        </div>-->
+
+        <div class="dev">
+            <div class="aim">Our aim is for</div>
+            <div class="sus">Sustainable Development</div>
+            <div class="abot">
+                For farmers&nbsp;&nbsp;|&nbsp;&nbsp;For
+                you&nbsp;&nbsp;|&nbsp;&nbsp;For Environment
+            </div>
+        </div>
+
+        <div class="env">
+            <img src="./assets/images/index/earth.svg" alt="" />
+        </div>
+
+        <div class="truck">
+            <div class="about-truck">
+                <p class="first">
+                    <span style="color: #21c050">Ajeevan</span> is transparent
+                </p>
+                <p class="second">
+                    We deliver what we promise. and we promise you to deliver clean, chemical-free, unprocessed essentials you feed in yourself.
+                </p>
+                <div class="status">
+                    <img src="./assets/images/index/truck1.svg" alt="" />
+                    <img src="./assets/images/index/truck2.svg" alt="" />
+                    <img src="./assets/images/index/truck3.svg" alt="" />
+                </div>
+            </div>
+            <img
+                class="main"
+                src="./assets/images/index/truck.svg"
+                alt=""
+                onload="placeImg();"
+            />
+        </div>
+
+        <div class="footer">
+            <div class="items">
+                <div class="item">
+                    <div class="logo">
+                        <img src="./assets/images/index/logo.png" alt="" />
+                        <p>
+                            Ajeevan Store<br> Behind Bhagwati NX, Agrasen Road, Khalpara, Siliguri-734005
+                        </p>
+						<p>
+							<a href="tel:+919800765675" style="color:#ffe">
+							<i
+								class="fa fa-phone"
+								style="font-size: 18px"
+								aria-hidden="true"
+							></i
+							>&nbsp;&nbsp;+91 98007 65675
+							</a>
+						</p>
+						<p>
+							<a href="mailto:care@ajeevan.in" style="color:#ffe">
+							<i
+								class="fa fa-envelope"
+								style="font-size: 18px"
+								aria-hidden="true"
+							></i
+							>&nbsp;&nbsp;care@ajeevan.in
+							</a>
+						</p>
+                    </div>
+                    <hr style="display: none" class="firstLine" />
+                </div>
+                <div class="item">
+                    <ul class="list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="javascript:load('Accessories');">Accessories</a></li>
+                        <li><a href="javascript:load('Doors');">Doors</a></li>
+                        <li><a href="javascript:load('Electricals');">Electricals</a></li>
+                        <li><a href="javascript:load('Headers');">Headers</a></li>
+                        <li><a href="javascript:load('Safeties_Hardware');">Safeties & Hardware</a></li>
+                        <li><a href="javascript:load('Motor');">Motor</a></li>
+                        <li><a href="javascript:load('Cabin');">Cabin</a></li>
+                        <!--<li><a href="articles.html">Articles</a></li>-->
+                    </ul>
+                </div>
+                <div class="item back1">
+                    <ul>
+                        <li>
+                            <i
+                                class="fa fa-arrow-circle-up"
+                                aria-hidden="true"
+                            ></i>
+                        </li>
+                        <li
+                            style="
+                                opacity: 0.7;
+                                padding-top: 5px;
+                                cursor: pointer;
+                            "
+                            onclick="onScrollTop();"
+                        >
+                            Back to top
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="secondLine" />
+            <div class="items items2">
+				<div class="item" style="opacity: 0.7">
+                    <ul class="back" style="display: none">
+                        <li>
+                            <i
+                                class="fa fa-arrow-circle-up"
+                                aria-hidden="true"
+                            ></i>
+                        </li>
+                        <li
+                            style="
+                                opacity: 0.7;
+                                padding-top: 5px;
+                                cursor: pointer;
+                            "
+                            onclick="onScrollTop();"
+                        >
+                            Back to top
+                        </li>
+                    </ul>
+                </div>
+				<div class="item" style="opacity: 0.7">
+                    <ul class="list">
+                        <li style="display: inline">
+							<a href="https://www.instagram.com/ajeevan.in?r=nametag">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+							</a>
+                        </li>
+                        <li style="display: inline">
+							<a href="https://www.facebook.com/Ajeevan-100668998729940/">
+                            <i
+                                class="fa fa-facebook-square"
+                                aria-hidden="true"
+                            ></i>
+							</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item" style="opacity: 0.7">
+                    <ul>
+                        <li>
+                            <a href="https://www.byteamp.com" style="color:#ffe">
+                            Handicrafted with <i class="fa fa-heart" style="font-size: 18px" aria-hidden="true"></i> by Byteamp.&nbsp;&nbsp;
+							</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script>
+            function onScrollTop() {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                return false;
+            }
+
+            $(window).on("resize", function () {
+                placeImg();
+            });
+
+            function placeImg() {
+                var img = document.querySelector(".main");
+                var footer = document.querySelector(".footer");
+                var imgEnd =
+                    img.getBoundingClientRect().y +
+                    img.getBoundingClientRect().height;
+                var footerStart = footer.getBoundingClientRect().y;
+
+                img.style.transform = `translateY(${
+                    footerStart - imgEnd + 6
+                }px)`;
+            }
+
+			update_data = () => {
+				//data = await get_data()
+				var temp_explore = ""
+				var product_ids = [0,1,3]
+				for(var j=0;j<product_ids.length;j++){
+					i=product_ids[j]
+					temp_explore += `
+						<div class="item">
+							<a href="product-detail.html?id=${i+1}">
+							<div style="color:#000">
+								<img id="main" src="${data[i].img[0]}" alt="" />
+								<div class="about">
+									<p>${data[i].name}</p>
+									<p>₹${data[i].discounted} <span style="font-weight: 200; font-size: 12px; padding-left: 10px; text-decoration: line-through; opacity: 0.7;">₹${data[i].mrp}</span></p>
+								</div>
+							</div>
+							</a>
+							<div class="BUY NOW" style="width: 90%;margin: 0 auto; background: #21c050; color: white; border-radius: 10px; text-align: center; padding: 18px; font-size: 25px; cursor: pointer;" onclick="buy_now(${i})">
+								<i class="fa fa-whatsapp" aria-hidden="true"></i>&nbsp;&nbsp;<span>BUY NOW</span>
+							</div>
+						</div>
+					`
+				}
+				document.getElementById("products").innerHTML = temp_explore
+			}
+			
+			update_data()
+
+			function load(page_name) {
+				window.location.replace("products.html#"+page_name);
+				//window.location.reload();
+			}
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <head>
+        <!-- meta -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Ajeevan</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/header.css" />
+        <link rel="stylesheet" href="./css/products.css" />
+        <link rel="stylesheet" href="./css/items-product.css" />
+        <link rel="stylesheet" href="./css/footer.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.0/jquery.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+		<style>
+			a:link { text-decoration: none; }
+			a:visited { text-decoration: none; }
+			a:hover { text-decoration: none; }
+			a:active { text-decoration: none; }
+
+
+#myTable {
+  border-collapse: collapse; /* Collapse borders */
+  width: 100%; /* Full-width */
+  border: 1px solid #ddd; /* Add a grey border */
+  font-size: 18px; /* Increase font-size */
+}
+
+#myTable th, #myTable td {
+  text-align: left; /* Left-align text */
+  padding: 12px; /* Add padding */
+}
+
+#myTable tr {
+  /* Add a bottom border to all table rows */
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  /* Add a grey background color to the table header and on hover */
+  background-color: #f1f1f1;
+}
+		</style>
+        <link rel="shortcut icon" type="image/png" href="./assets/images/index/logo.png"/>
+    </head>
+    <body>
+        <div class="header-container">
+            <div class="hamburger"><div class="bar"></div></div>
+            <div class="container">
+                <div class="logo">
+                    <a href="about-us.html"
+                        ><img
+                            id="logoMain"
+                            src="./assets/images/index/logo.png"
+                            alt=""
+                    /></a>
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li class="active">
+                            <a href="products.html">Products</a>
+                        </li>
+                        <li><a href="researches.html">Researches</a></li>
+                        <!--<li><a href="articles.html">Articles</a></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar"></div>
+        <script src="./js/header.js"></script>
+        <div style="height: 125px"></div>
+        <div class="product-container">
+            <div class="samples">
+                <div class="sample-images">
+                    <img
+                        class="selectable"
+                        src=""
+                        alt=""
+						id="img1"
+                    />
+                    <img
+                        class="selectable"
+                        src=""
+                        alt=""
+						id="img2"
+                    />
+                    <img
+                        class="selectable"
+                        src=""
+                        alt=""
+						id="img3"
+						
+                    />
+                    <img
+                        class="selectable"
+                        src=""
+                        alt=""
+						id="img4"
+						
+                    />
+                </div>
+            </div>
+            <div class="preview">
+                <img
+                    id="selected-image"
+                    src=""
+                    alt=""
+                />
+            </div>
+            <div class="product">
+                <div class="product-price">
+                    <div class="product-head" id="name">Beechnut Organics</div>
+					<div id="price"> 
+                    	<div class="product-head-price">₹459.00 <span style="font-weight: 200; font-size: 12px; padding-left: 10px; text-decoration: line-through; opacity: 0.7;">₹599.00</span></div>
+						<div class="product-discount" id="saved">You save : ₹140</div>
+					</div>
+                    <div class="stock">
+                        Stock Availibility:
+                        <span class="product-discount">Yes</span>
+                    </div>
+                    <div style="padding-top: 10px">
+                        <hr style="border: 1px solid #000000; opacity: 10%" />
+                    </div>
+                    <div>
+                        <div class="numbers">
+                            <div class="package">
+                                <div class="details-type">Package Type</div>
+                                <div class="box" id="pacakging" >
+                                    
+                                </div>
+                            </div>
+                            <div class="quantity">
+                                <div class="details-type">Quantity</div>
+                                <select>
+                                    <option value="1 Bottle">1</option>
+                                    <option value="2 Bottles">2</option>
+                                    <option value="3 Bottles">3</option>
+                                    <option value="4 Bottles">4</option>
+                                    <option value="5 Bottles">5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mainBuy">
+                        <div class="BUY NOW" style="width: 100%; background: #21c050; color: white; border-radius: 10px; text-align: center; padding: 10px; font-size: 22px; cursor: pointer;" onclick="buy_now(getUrlVars()['id']-1)">
+                            <i class="fa fa-whatsapp" aria-hidden="true"></i>&nbsp;&nbsp;<span>BUY NOW</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="description-wrapper">
+            <div class="spare"></div>
+            <div class="detail-wrapper">
+                <div class="detail">
+                    <div class="highlights">
+                        <div class="product-head-price">
+                            Product Highlitghts
+                        </div>
+                        <div id="highlight">
+                        </div>
+                    </div>
+                    <div class="description">
+                        <div class="product-head-price">
+                            Product Description
+                        </div>
+                        <div id="desc">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		<br><br>
+		<div class = "ccontainer" id="faqs">
+			
+		</div>
+
+        <div class="full">
+            <div class="cover">
+                <h1>Explore More</h1>
+            </div>
+        </div>
+        <div class="ccontainer">
+            <div class="items" id="explore_products">
+            </div>
+        </div>
+        <div style="height: 100px"></div>
+        <div class="footer">
+            <div class="items">
+                <div class="item">
+                    <div class="logo">
+                        <img src="./assets/images/index/logo.png" alt="" />
+                        <p>
+                            Ajeevan Store<br> Behind Bhagwati NX, Agrasen Road, Khalpara, Siliguri-734005
+                        </p>
+						<p>
+							<a href="tel:+919800765675" style="color:#ffe">
+							<i
+								class="fa fa-phone"
+								style="font-size: 18px"
+								aria-hidden="true"
+							></i
+							>&nbsp;&nbsp;+91 98007 65675
+							</a>
+						</p>
+						<p>
+							<a href="mailto:care@ajeevan.in" style="color:#ffe">
+							<i
+								class="fa fa-envelope"
+								style="font-size: 18px"
+								aria-hidden="true"
+							></i
+							>&nbsp;&nbsp;care@ajeevan.in
+							</a>
+						</p>
+                    </div>
+                    <hr style="display: none" class="firstLine" />
+                </div>
+                <div class="item">
+                    <ul class="list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="researches.html">Researches</a></li>
+                        <!--<li><a href="articles.html">Articles</a></li>-->
+                    </ul>
+                </div>
+                <div class="item back1">
+                    <ul>
+                        <li>
+                            <i
+                                class="fa fa-arrow-circle-up"
+                                aria-hidden="true"
+                            ></i>
+                        </li>
+                        <li
+                            style="
+                                opacity: 0.7;
+                                padding-top: 5px;
+                                cursor: pointer;
+                            "
+                            onclick="onScrollTop();"
+                        >
+                            Back to top
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="secondLine" />
+            <div class="items items2">
+				<div class="item" style="opacity: 0.7">
+                    <ul class="back" style="display: none">
+                        <li>
+                            <i
+                                class="fa fa-arrow-circle-up"
+                                aria-hidden="true"
+                            ></i>
+                        </li>
+                        <li
+                            style="
+                                opacity: 0.7;
+                                padding-top: 5px;
+                                cursor: pointer;
+                            "
+                            onclick="onScrollTop();"
+                        >
+                            Back to top
+                        </li>
+                    </ul>
+                </div>
+				<div class="item" style="opacity: 0.7">
+                    <ul class="list">
+                        <li style="display: inline">
+							<a href="https://www.instagram.com/ajeevan.in?r=nametag">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+							</a>
+                        </li>
+                        <li style="display: inline">
+							<a href="https://www.facebook.com/Ajeevan-100668998729940/">
+                            <i
+                                class="fa fa-facebook-square"
+                                aria-hidden="true"
+                            ></i>
+							</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item" style="opacity: 0.7">
+                    <ul>
+                        <li>
+                            <a href="https://www.byteamp.com" style="color:#ffe">
+                            Handicrafted with <i class="fa fa-heart" style="font-size: 18px" aria-hidden="true"></i> by Byteamp.&nbsp;&nbsp;
+							</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="./js/raw_data.js"></script>
+        <script>
+            function onScrollTop() {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                return false;
+            }
+
+			select_package = (package_id,global_id) => {
+				selectPackage(this.event)
+				document.getElementById("price").innerHTML = `
+                    <div class="product-head-price">₹${data[global_id-1]["discounted"+(package_id==2?"2":'')]} <span style="font-weight: 200; font-size: 12px; padding-left: 10px; text-decoration: line-through; opacity: 0.7;">₹${data[global_id-1]["mrp"+(package_id==2?"2":'')]}</span></div>
+					<div class="product-discount">You save : ₹${data[global_id-1]["mrp"+(package_id==2?"2":'')] - data[global_id-1]["discounted"+(package_id==2?"2":'')]}</div>
+				`
+
+			}
+
+			update_data = async (id) => {
+				//data = await get_data()
+				for(var i=1;i<5;i++){
+					document.getElementById("img"+i).src = data[id-1].img[i-1]
+				}
+
+				
+				document.getElementById("pacakging").innerHTML =  `
+					<div
+							class="package-select"
+							onclick="select_package('1',${id});"
+							style="height:63px;width:63px"
+						>
+							<span class="size-primary">${data[id-1].name.search("Ghee")>-1?"400 gms":"1L"} </span
+							><br />
+							<span class="size-secondary"
+								>@${data[id-1].mrp}</span
+							>
+						</div>
+					<div
+							class="package-select"
+							onclick="select_package('2',${id});"
+							style="height:63px;width:63px"
+						>
+							<span class="size-primary">${data[id-1].name.search("Ghee")>-1?"1 KG":"5L"}</span
+							><br />
+							<span class="size-secondary"
+								>@${data[id-1].mrp2}</span
+							>
+						</div>
+				`
+					
+				
+				var temp_explore = ""
+				for(var i=0;i<4;i++){
+					if(id != i+1){
+						temp_explore += `
+							<div class="item">
+								<a href="product-detail.html?id=${i+1}">
+								<div style="color:#000">
+									<img id="main" src="${data[i].img[0]}" alt="" />
+									<div class="about">
+										<p>${data[i].name}</p>
+										<p>₹${data[i].discounted} <span style="font-weight: 200; font-size: 12px; padding-left: 10px; text-decoration: line-through; opacity: 0.7;">₹${data[i].mrp}</span></p>
+									</div>
+								</div>
+								</a>
+								<div class="BUY NOW" style="width: 90%;margin: 0 auto; background: #21c050; color: white; border-radius: 10px; text-align: center; padding: 18px; font-size: 25px; cursor: pointer;" onclick="buy_now(${i})">
+									<i class="fa fa-whatsapp" aria-hidden="true"></i>&nbsp;&nbsp;<span>BUY NOW</span>
+								</div>
+							</div>
+						`
+					}
+				}
+
+				var temp_faqs=""
+				for (var i=0; i<data[id-1].faqs.length;i++) {
+					temp_faqs += `
+						<div class="card">
+							<h5 class="card-header">
+								<a class="collapsed d-block" data-toggle="collapse" href="javascript:onclick=show_desc('${i}')" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed" style="color:green">
+									<i class="fa fa-chevron-down pull-right"></i>
+									${data[id-1].faqs[i].title}
+								</a>
+							</h5>
+							<div id="faq_desc_${i}" class="collapse" aria-labelledby="heading-collapsed">
+								<div class="card-body">
+									<p>${data[id-1].faqs[i].desc}</p>
+									
+								</div>
+							</div>
+						</div>
+						<br>
+					`
+				}
+
+				document.getElementById("selected-image").src = data[id-1].img[0]
+				document.getElementById("price").innerHTML = `
+                    <div class="product-head-price">₹${data[id-1].discounted} <span style="font-weight: 200; font-size: 12px; padding-left: 10px; text-decoration: line-through; opacity: 0.7;">₹${data[id-1].mrp}</span></div>
+					<div class="product-discount">You save : ₹${data[id-1].mrp - data[id-1].discounted}</div>
+				`
+				document.getElementById("desc").innerText = data[id-1].desc
+				document.getElementById("name").innerText = data[id-1].name
+				document.getElementById("highlight").innerHTML = data[id-1].highlight.join("<br />")
+				document.getElementById("explore_products").innerHTML = temp_explore
+				document.getElementById("faqs").innerHTML = temp_faqs
+			}
+
+			show_desc = (idx) => {
+				for (var i=0; i<data[getUrlVars()["id"]-1].faqs.length;i++) {
+					var temp = document.getElementById("faq_desc_"+i)
+					if(i==idx){
+						if(temp.className.indexOf("show")>-1){
+							temp.className = "collapse"
+						} else {
+							temp.className = "collapse show"
+						}
+					} else {
+						temp.className = "collapse"
+					}
+				}
+			}
+
+			function getUrlVars() {
+				var vars = {};
+				var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+					vars[key] = value;
+				});
+				return vars;
+			}
+
+			update_data(getUrlVars()["id"])
+
+        </script>
+        <script src="./js/main.js" defer></script>
+    </body>
+</html>

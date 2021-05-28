@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: #F7FEF9;
+}
+
+.cover {
+    color: #ffffff;
+    display: inline-block;
+}
+
+.cover h1::after {
+    content: "";
+    width: inherit;
+    -webkit-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    transform: translateY(10px);
+    height: 7px;
+    width: 32%;
+    border-radius: 20px;
+    display: block;
+    background: #ffffff;
+}
+
+.hero-container{
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr
+}
+
+.hero {
+    color: WHITE;
+    background: #00b836;
+}
+
+.hero .img img{
+    mix-blend-mode: luminosity;
+    transform: translateY(4px);
+}
+
+.hero .img{
+    text-align: end;
+    position: relative;
+}
+
+.details{
+    padding: 30px 0px 0px 100px;
+}
+
+.about{
+    padding-top: 20px;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1000px) {
+    .hero .img img{
+        width: 100%;
+        padding-top: 50px;
+    }
+
+    .hero-container{
+        grid-template-columns: 1fr 1.5fr;
+        /* padding-top: 80px; */
+    }
+
+    .details{
+        padding-top: 0px !important;
+        padding-left: 60px !important;
+        margin-top: 20px;
+    }
+}
+
+
+.main-container{
+    padding: 0 50px;
+}
+
+.mission{
+    display: flex;
+    align-items: center;
+}
+
+.mission .img{
+    flex: 1 1 20%;
+}
+.mission img{
+    width: 100%;
+    min-width: 300px;
+    height: 100%;
+}
+
+.mission-about{
+    padding-left: 50px;
+    flex: 1 1 80%;
+}
+
+.mission-about p{
+    text-align: justify;
+}
+
+.mission-about-2{
+    padding-left: 0px !important;
+    padding-right: 50px !important;
+}
+
+.second-mission{
+    padding-top: 80px;
+}
+
+
+@media only screen and (min-width: 100px) and (max-width: 850px) {
+    .mission{
+        flex-wrap: wrap !important;
+        text-align: center;
+    }
+    .mission .img{
+        flex: 0 0 100% !important;
+    }
+
+    .mission-about{
+        flex: 0 0 100% !important;
+        padding-left: 0px;
+    }
+
+    .mission-about-2{
+        order: 2;
+    }
+}
+
+@media only screen and (min-width: 100px) and (max-width: 850px) {
+    .hero-container{
+        display: flex;
+        flex-wrap: wrap;
+        padding-top: 0px;
+    }
+    .hero-container .img{
+        flex: 1 1 100%;
+        order: 1;
+        padding-bottom: 10px;
+    }
+    .hero-container h1{
+        font-size: 25px;
+    }
+    .hero-container img{
+        width: 90% !important;
+    }
+    .hero-container .details{
+        flex: 1 1 100%;
+        order: 2;
+        padding: 0px 50px 50px 50px !important;
+        margin-top: unset !important;
+    }
+    .mission img{
+        width: 23vw;
+        transform: translateX(20px);
+    }
+
+    .details-img{
+        transform: translateX(0px) !important;
+    }
+
+    .second-mission{
+        padding-top: 50px;
+    }
+}
+
+@media only screen and (min-width: 50px) and (max-width: 450px) {
+    .mission img{
+        width: 60vw;
+        min-width: 50px;
+        transform: translateX(20px);
+    }
+
+    .mission-about-2{
+    }
+    .details-img{
+        transform: translateX(0px) !important;
+    }
+
+    .hero-container img{
+        width: 80% !important;
+    }
+
+    .hero-container .details{
+        padding:  0px 25px 50px 25px !important;
+    }
+
+    .main-container{
+        padding: 0 25px;
+    }
+
+    .mission-about{
+        padding-top: 50px;
+        
+        padding-right: 0 !important;
+    }
+
+    .second-mission{
+        padding-top: 50px;
+    }
+}
