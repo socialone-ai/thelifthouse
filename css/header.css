@@ -55,8 +55,8 @@ body {
     -webkit-transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
     -o-transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
     transition: all 0.5s cubic-bezier(0.88, 0.1, 0.57, 0.63);
-    background:  rgba(33, 192, 80, 0.98);
-    background:  rgba(33, 192, 80, 0.98)
+    background:  #394972;
+    background:  #394972;
     -webkit-transform: translateY(-120vh);
     -ms-transform: translateY(-120vh);
     transform: translateY(-120vh);
@@ -81,14 +81,14 @@ body {
     }
 
     .header-container a:hover {
-        color: #21c050;
+        color: #394972;
         -webkit-transition: all 0.2s ease-in;
         -o-transition: all 0.2s ease-in;
         transition: all 0.2s ease-in;
     }
 
     .header-container .active a {
-        color: #21c050 !important;
+        color: #394972!important;
     }
 
     .header-container .nav a::after {
@@ -100,7 +100,7 @@ body {
         -ms-transform: translateY(7px) scale(0, 1);
         transform: translateY(7px) scale(0, 1);
         display: block;
-        background: #21c050;
+        background: #394972;
     }
 
     .header-container .nav a:hover::after {
@@ -121,7 +121,7 @@ body {
             -ms-transform: translateY(7px) scale(1, 1);
                 transform: translateY(7px) scale(1, 1); */
         display: block;
-        background: #21c050;
+        background: #394972;
         -webkit-transition: all 0.2s ease-out;
         -o-transition: all 0.2s ease-out;
         transition: all 0.2s ease-out;
