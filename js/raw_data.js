@@ -140,5 +140,5 @@ buy_now = (id,product=-1) => {
 		}
 		var buy_text = "Hey there, assist me please! \nI want to purchase " + name
 	}
-	window.open('https://wa.me/+918209292067?text='+buy_text)
+	window.open('https://wa.me/+919829408299?text='+buy_text)
 }
