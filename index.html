@@ -1,332 +1,1454 @@
 <!DOCTYPE html>
-<html>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <head>
-        <!-- meta -->
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>The Lift House</title>
-        <link rel="stylesheet" href="./css/header.css" />
-        <link rel="stylesheet" href="./css/index.css" />
-        <link rel="stylesheet" href="./css/product-items.css" />
-        <link rel="stylesheet" href="./css/footer.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.0/jquery.js"></script>
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        />
-		<style>
-			a:link { text-decoration: none; }
-			a:visited { text-decoration: none; }
-			a:hover { text-decoration: none; }
-			a:active { text-decoration: none; }
-		</style>
-		<script src="./js/raw_data.js"></script>
-        <link rel="shortcut icon" type="image/png" href="./assets/favicon.png"/>
-    </head>
-    <body>
-        <div class="whatsapp">
-            <img
-                draggable="false"
-                src="./assets/images/index/whatsapp.svg"
-                alt=""
-                id="whatsapp"
-				onclick="buy_now(-1)"
-            />
-            <div class="header-container">
-                <div class="hamburger"><div class="bar"></div></div>
-                <div class="container">
-                    <div class="logo">
-                        <a href="about-us.html"
-                            ><img
-                                id="logoMain"
-                                src="./assets/images/index/logo.png"
-                                alt=""
-                        /></a>
-                    </div>
-                    <div class="nav">
-                        <ul>
-                            <li>
-                                <a href="index.html">Home</a>
-                            </li>
-                            <li><a href="javascript:load('Accessories');">Accessories</a></li>
-							<li><a href="javascript:load('Doors');">Doors</a></li>
-							<li><a href="javascript:load('Electricals');">Electricals</a></li>
-							<li><a href="javascript:load('Headers');">Headers</a></li>
-							<li><a href="javascript:load('Safeties_Hardware');">Safeties & Hardware</a></li>
-							<li><a href="javascript:load('Motor');">Motor</a></li>
-							<li><a href="javascript:load('Cabin');">Cabin</a></li>
-							<!--<li><a href="articles.html">Articles</a></li>-->
-                        </ul>
-                    </div>
-                </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lift House - Premium Elevator Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/png" href="./assets/favicon.png"/>
+    <script src="./js/raw_data.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #674194;
+            --secondary: #8191C9;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gradient: linear-gradient(135deg, #674194 0%, #8191C9 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: var(--light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(103, 65, 148, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(103, 65, 148, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Dropdown Styles */
+        .nav-links li {
+            position: relative;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown > a {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            padding: 1rem 0;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(103, 65, 148, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.7rem 1.5rem;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu a::after {
+            display: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: linear-gradient(90deg, rgba(103, 65, 148, 0.1) 0%, rgba(129, 145, 201, 0.1) 100%);
+            padding-left: 2rem;
+            color: var(--primary);
+        }
+
+        .dropdown-icon {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger div {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 90px;
+            min-height: 90vh;
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape1 { width: 300px; height: 300px; top: 10%; left: 10%; animation-delay: 0s; }
+        .shape2 { width: 200px; height: 200px; top: 60%; right: 15%; animation-delay: 2s; }
+        .shape3 { width: 150px; height: 150px; bottom: 20%; left: 50%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 700;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(90deg, #fff, rgba(255,255,255,0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            animation: slideInLeft 1s ease-out 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: slideInLeft 1s ease-out 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+            animation: floatImage 3s ease-in-out infinite;
+        }
+
+        @keyframes floatImage {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 4rem 2rem;
+            margin: -3rem auto 0;
+            max-width: 1200px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(103, 65, 148, 0.15);
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-item i {
+            font-size: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .about-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(103, 65, 148, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(103, 65, 148, 0.2);
+        }
+
+        .about-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .about-card i {
+            font-size: 3.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-card h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .about-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Categories Section - 3D Flip Cards */
+        .categories {
+            background: linear-gradient(135deg, rgba(103, 65, 148, 0.05) 0%, rgba(129, 145, 201, 0.05) 100%);
+            padding: 8rem 2rem;
+        }
+
+        .categories-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .flip-card-container {
+            perspective: 1000px;
+            height: 320px;
+        }
+
+        .flip-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flip-card-container:hover .flip-card {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 40px rgba(103, 65, 148, 0.15);
+        }
+
+        .flip-card-front {
+            background: white;
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #674194, #8191C9);
+            transform: rotateY(180deg);
+            color: white;
+        }
+
+        .flip-card-front i {
+            font-size: 4rem;
+            background: linear-gradient(135deg, #674194, #8191C9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .flip-card-front h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .flip-card-front p {
+            color: #666;
+            font-size: 0.95rem;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .flip-card-back h3 {
+            font-size: 1.7rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .flip-card-back p {
+            text-align: center;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.95);
+            font-size: 1rem;
+        }
+
+        .flip-card-back .explore-btn {
+            padding: 1rem 2.5rem;
+            background: white;
+            color: var(--primary);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .flip-card-back .explore-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(103, 65, 148, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(103, 65, 148, 0.25);
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            height: 280px;
+            background: linear-gradient(135deg, rgba(103, 65, 148, 0.05) 0%, rgba(129, 145, 201, 0.05) 100%);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(103, 65, 148, 0.3);
+        }
+
+        .product-info {
+            padding: 2rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .current-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .old-price {
+            font-size: 1.2rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .buy-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .buy-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(103, 65, 148, 0.4);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-about {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-contact a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-contact a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--gradient);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .back-to-top {
+            background: var(--gradient);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(103, 65, 148, 0.4);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+            z-index: 999;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 90px;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                transition: left 0.3s ease;
+                align-items: flex-start;
+                .flip-card-container {
+                    height: 280px;
+                    }
+
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+                box-shadow: none;
+                padding: 0.5rem 0 0.5rem 1rem;
+                margin-top: 0.5rem;
+                display: none;
+            }
+
+            .dropdown.active .dropdown-menu {
+                display: block;
+            }
+
+            .dropdown > a {
+                width: 100%;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./assets/images/index/logo.png" alt="The Lift House">
+                </a>
             </div>
-            <div class="sidebar"></div>
-            <script src="./js/header.js"></script>
-            <div style="height: 125px"></div>
-
-            <div class="hero">
-                <img src="./assets/images/index/part1.svg" alt="" class="l1" />
-                <img src="./assets/images/index/part2.svg" alt="" class="l2" />
-                <img id="step" src="./assets/images/index/step.svg" alt="" />
-                <div class="text">
-                    <p id="main">
-						The Lift House helps you make the 
-                        <span style="color: #394972">SMART choice!</span>
-                    </p>
-                    <p id="sub">
-						We are a group of motivated engineers, managers who are super enthusiast in delivering the every type of elevator spares and parts across the nation.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg" >
-            	<img id="bg" src="./assets/images/index/bg.png" alt="" />
-            <div class="text">
-                <p id="main">
-                    <span style="color: #394972">The Lift House</span> is commited
-                    towards providing excellent quality products
-                </p>
-                <p id="sub">
-					We are giving our customers excellent value through personal support, continuous supply, helping in implementing in a rightfully manner, keep pace with technical improvements.
-                </p>
-            </div>
-
-            <!--<img src="./assets/images/index/bg1.svg" alt="" id="pot" />-->
-            <img src="./assets/images/index/leaves.svg" alt="" id="leaves" />
-            <div class="extra"></div>
-        </div>
-        <div class="full">
-            <div class="cover">
-                <h1>Our Products</h1>
-            </div>
-        </div>
-        <div class="ccontainer">
-            <div class="items" id="products">
-                
-            </div>
-        </div>
-
-        <!--<div class="about-ajeevan">
-            <div class="text">
-                Food is a medicine,<br />
-                <span style="color: #21c050">Ajeevan</span> is the chemist shop
-            </div>
-            <img src="./assets/images/index/lines.svg" alt="" />
-        </div>
-
-        <div class="bottles">
-            <img src="./assets/images/index/glass.svg" alt="" />
-        </div>-->
-
-        <div class="dev">
-            <div class="aim">Our aim is for</div>
-            <div class="sus">Sustainable Development</div>
-            <div class="abot">
-                For High-rise appartments&nbsp;&nbsp;|&nbsp;&nbsp;For
-                Villas&nbsp;&nbsp;|&nbsp;&nbsp;For Hospital lifts
-            </div>
-        </div>
-
-        <div class="env">
-            <img src="./assets/images/index/earth.svg" alt="" />
-        </div>
-
-        <div class="truck">
-            <div class="about-truck">
-                <p class="first">
-                    <span style="color: #394972">The Lift House</span> is transparent
-                </p>
-                <p class="second">
-					Over the years, our success has been built on technological innovation and our ability to identify with customers and respond to their needs. 
-                </p>
-                <div class="status">
-                    <!--<img src="./assets/images/index/truck1.svg" alt="" />-->
-                    <img src="./assets/images/index/truck2.svg" alt="" />
-                    <img src="./assets/images/index/truck3.svg" alt="" />
-                </div>
-            </div>
-            <img
-                class="main"
-                src="./assets/images/index/truck.svg"
-                alt=""
-                onload="placeImg();"
-            />
-        </div>
-
-        <div class="footer">
-            <div class="items">
-                <div class="item">
-                    <div class="logo">
-                        <img src="./assets/images/index/logo.png" alt="" />
-                        <p>
-				Plot No 79-80, 91-92, Gopalpura Bypass Rd, near Utsav Garden, Narayan Vihar, Jaipur, Rajasthan 302029
-                        </p>
-						<p>
-							<a href="tel:+919829408299" style="color:#ffe">
-							<i
-								class="fa fa-phone"
-								style="font-size: 18px"
-								aria-hidden="true"
-							></i
-							>&nbsp;&nbsp;+91 98294 08299
-							</a>
-						</p>
-						<p>
-							<a href="mailto:siddhamelevators@gmail.com" style="color:#ffe">
-							<i
-								class="fa fa-envelope"
-								style="font-size: 18px"
-								aria-hidden="true"
-							></i
-							>&nbsp;&nbsp;siddhamelevators@gmail.com
-							</a>
-						</p>
-                    </div>
-                    <hr style="display: none" class="firstLine" />
-                </div>
-                <div class="item">
-                    <ul class="list">
-                        <li><a href="index.html">Home</a></li>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0);">
+                        Products <i class="fa fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <ul class="dropdown-menu">
                         <li><a href="javascript:load('Accessories');">Accessories</a></li>
                         <li><a href="javascript:load('Doors');">Doors</a></li>
                         <li><a href="javascript:load('Electricals');">Electricals</a></li>
                         <li><a href="javascript:load('Headers');">Headers</a></li>
                         <li><a href="javascript:load('Safeties_Hardware');">Safeties & Hardware</a></li>
-                        <li><a href="javascript:load('Motor');">Motor</a></li>
-                        <li><a href="javascript:load('Cabin');">Cabin</a></li>
-                        <!--<li><a href="articles.html">Articles</a></li>-->
+                        <li><a href="javascript:load('Motor');">Motors</a></li>
+                        <li><a href="javascript:load('Cabin');">Cabins</a></li>
                     </ul>
-                </div>
-                <div class="item back1">
-                    <ul>
-                        <li>
-                            <i
-                                class="fa fa-arrow-circle-up"
-                                aria-hidden="true"
-                            ></i>
-                        </li>
-                        <li
-                            style="
-                                opacity: 0.7;
-                                padding-top: 5px;
-                                cursor: pointer;
-                            "
-                            onclick="onScrollTop();"
-                        >
-                            Back to top
-                        </li>
-                    </ul>
+                </li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-shapes">
+            <div class="shape shape1"></div>
+            <div class="shape shape2"></div>
+            <div class="shape shape3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Elevate Your <span>Vertical Journey</span></h1>
+                <p>Premium elevator spares and parts delivered nationwide by passionate engineers committed to excellence and innovation.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="scrollToProducts()">
+                        Explore Products <i class="fa fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-secondary" onclick="buy_now(-1)">
+                        <i class="fa fa-whatsapp"></i> Contact Us
+                    </button>
                 </div>
             </div>
-            <hr class="secondLine" />
-            <div class="items items2">
-				<div class="item" style="opacity: 0.7">
-                    <ul class="back" style="display: none">
-                        <li>
-                            <i
-                                class="fa fa-arrow-circle-up"
-                                aria-hidden="true"
-                            ></i>
-                        </li>
-                        <li
-                            style="
-                                opacity: 0.7;
-                                padding-top: 5px;
-                                cursor: pointer;
-                            "
-                            onclick="onScrollTop();"
-                        >
-                            Back to top
-                        </li>
-                    </ul>
-                </div>
-				<div class="item" style="opacity: 0.7">
-                    <ul class="list">
-                        <li style="display: inline">
-							<a href="https://www.instagram.com/ajeevan.in?r=nametag">
-                            <i class="fa fa-instagram" aria-hidden="true"></i>
-							</a>
-                        </li>
-                        <li style="display: inline">
-							<a href="https://www.facebook.com/Ajeevan-100668998729940/">
-                            <i
-                                class="fa fa-facebook-square"
-                                aria-hidden="true"
-                            ></i>
-							</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="item" style="opacity: 0.7">
-                    <ul>
-                        <li>
-                            <a href="https://www.byteamp.com" style="color:#ffe">
-                            Handicrafted with <i class="fa fa-heart" style="font-size: 18px" aria-hidden="true"></i> by Byteamp.&nbsp;&nbsp;
-							</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="hero-image">
+                <img src="./assets/images/index/step.svg" alt="Elevator">
             </div>
         </div>
-        <script>
-            function onScrollTop() {
-                $("html, body").animate({ scrollTop: 0 }, "slow");
-                return false;
-            }
+    </section>
 
-            $(window).on("resize", function () {
-                placeImg();
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <i class="fa fa-trophy"></i>
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+                <i class="fa fa-box"></i>
+                <div class="stat-number">5000+</div>
+                <div class="stat-label">Products Delivered</div>
+            </div>
+            <div class="stat-item">
+                <i class="fa fa-users"></i>
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-item">
+                <i class="fa fa-map-marker-alt"></i>
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Cities Covered</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="section-title">
+            <h2>Why Businesses Trust The Lift House?</h2>
+            <p>We combine technical expertise with unwavering commitment to quality, ensuring your elevator systems operate flawlessly.</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <i class="fa fa-shield-alt"></i>
+                <h3>Premium Quality</h3>
+                <p>Every product undergoes rigorous quality checks to ensure durability, safety, and optimal performance for your elevator systems.</p>
+            </div>
+            <div class="about-card">
+                <i class="fa fa-headset"></i>
+                <h3>Expert Support</h3>
+                <p>Our team of experienced engineers provides personalized guidance and technical support throughout your journey with us.</p>
+            </div>
+            <div class="about-card">
+                <i class="fa fa-shipping-fast"></i>
+                <h3>Fast Delivery</h3>
+                <p>Swift nationwide delivery ensuring your projects stay on schedule with minimal downtime and maximum efficiency.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="categories-container">
+            <div class="section-title">
+                <h2>Product Categories</h2>
+                <p>Comprehensive range of elevator components for all your vertical transportation needs.</p>
+            </div>
+            <div class="categories-grid">
+    <div class="flip-card-container" onclick="load('Accessories')">
+        <div class="flip-card">
+            <div class="flip-card-front">
+                <i class="fa fa-cog"></i>
+                <h3>Accessories</h3>
+                <p>Complete range of elevator accessories and fittings</p>
+            </div>
+            <div class="flip-card-back">
+                <h3>Accessories</h3>
+                <p>Explore our comprehensive collection of elevator accessories and premium fittings</p>
+                <button class="explore-btn">View Products</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="flip-card-container" onclick="load('Doors')">
+        <div class="flip-card">
+            <div class="flip-card-front">
+                <i class="fa fa-door-open"></i>
+                <h3>Doors</h3>
+                <p>High-quality doors for safety and aesthetics</p>
+            </div>
+            <div class="flip-card-back">
+                <h3>Doors</h3>
+                <p>Premium quality elevator doors combining safety with elegant aesthetics</p>
+                <button class="explore-btn">View Products</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="flip-card-container" onclick="load('Electricals')">
+        <div class="flip-card">
+            <div class="flip-card-front">
+                <i class="fa fa-bolt"></i>
+                <h3>Electricals</h3>
+                <p>Advanced electrical components and systems</p>
+            </div>
+            <div class="flip-card-back">
+                <h3>Electricals</h3>
+                <p>State-of-the-art electrical components for reliable elevator systems</p>
+                <button class="explore-btn">View Products</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="flip-card-container" onclick="load('Headers')">
+        <div class="flip-card">
+            <div class="flip-card-front">
+                <i class="fa fa-building"></i>
+                <h3>Headers</h3>
+                <p>Premium header solutions for modern elevators</p>
+            </div>
+            <div class="flip-card-back">
+                <h3>Headers</h3>
+                <p>Contemporary header designs for modern elevator installations</p>
+                <button class="explore-btn">View Products</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="flip-card-container" onclick="load('Safeties_Hardware')">
+        <div class="flip-card">
+            <div class="flip-card-front">
+                <i class="fa fa-shield-alt"></i>
+                <h3>Safeties & Hardware</h3>
+                <p>Safety mechanisms and hardware components</p>
+            </div>
+            <div class="flip-card-back">
+                <h3>Safeties & Hardware</h3>
+                <p>Advanced safety systems and precision hardware for secure operations</p>
+                <button class="explore-btn">View Products</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="flip-card-container" onclick="load('Motor')">
+        <div class="flip-card">
+            <div class="flip-card-front">
+                <i class="fa fa-cogs"></i>
+                <h3>Motors</h3>
+                <p>Reliable motors for smooth operations</p>
+            </div>
+            <div class="flip-card-back">
+                <h3>Motors</h3>
+                <p>High-performance motors ensuring smooth and efficient elevator operation</p>
+                <button class="explore-btn">View Products</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="flip-card-container" onclick="load('Cabin')">
+        <div class="flip-card">
+            <div class="flip-card-front">
+                <i class="fa fa-cube"></i>
+                <h3>Cabins</h3>
+                <p>Elegant cabin designs and interiors</p>
+            </div>
+            <div class="flip-card-back">
+                <h3>Cabins</h3>
+                <p>Luxurious and elegant cabin designs with premium interior finishes</p>
+                <button class="explore-btn">View Products</button>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products-section">
+        <div class="section-title">
+            <h2>Featured Products</h2>
+            <p>Discover our handpicked selection of premium elevator components.</p>
+        </div>
+        <div class="products-grid" id="products">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Elevate Your Project?</h2>
+            <p>Get in touch with our expert team for personalized solutions and competitive pricing.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="buy_now(-1)">
+                    <i class="fa fa-whatsapp"></i> Contact Us Now
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToProducts()">
+                    View All Products
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="./assets/images/index/logo.png" alt="The Lift House">
+                    </div>
+                    <p class="footer-about">
+                        Plot No 79-80, 91-92, Gopalpura Bypass Rd, near Utsav Garden, Narayan Vihar, Jaipur, Rajasthan 302029
+                    </p>
+                    <div class="footer-contact">
+                        <a href="tel:+919829408299">
+                            <i class="fa fa-phone"></i> +91 98294 08299
+                        </a>
+                        <a href="mailto:siddhamelevators@gmail.com">
+                            <i class="fa fa-envelope"></i> siddhamelevators@gmail.com
+                        </a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/ajeevan.in?r=nametag" target="_blank">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/Ajeevan-100668998729940/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="javascript:load('Accessories');">Accessories</a></li>
+                        <li><a href="javascript:load('Doors');">Doors</a></li>
+                        <li><a href="javascript:load('Electricals');">Electricals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="javascript:load('Headers');">Headers</a></li>
+                        <li><a href="javascript:load('Safeties_Hardware');">Safeties & Hardware</a></li>
+                        <li><a href="javascript:load('Motor');">Motors</a></li>
+                        <li><a href="javascript:load('Cabin');">Cabins</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Commitment</h3>
+                    <ul class="footer-links">
+                        <li>Quality Assurance</li>
+                        <li>Expert Support</li>
+                        <li>Fast Delivery</li>
+                        <li>Sustainable Solutions</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Lift House. All rights reserved.</p>
+                <p>Crafted with <i class="fa fa-heart" style="color: #8191C9;"></i> by <a href="https://www.byteamp.com" style="color: var(--secondary);">Byteamp</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <div class="whatsapp-float" onclick="buy_now(-1)">
+        <i class="fa fa-whatsapp"></i>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" onclick="scrollToTop()">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+                backToTop.classList.add('visible');
+            } else {
+                header.classList.remove('scrolled');
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Mobile dropdown toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.dropdown');
+            if (dropdown && window.innerWidth <= 768) {
+                dropdown.addEventListener('click', function(e) {
+                    if (e.target.tagName === 'A' && e.target.closest('.dropdown') && !e.target.closest('.dropdown-menu')) {
+                        e.preventDefault();
+                        this.classList.toggle('active');
+                    }
+                });
+            }
+        });
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
+        }
 
-            function placeImg() {
-                var img = document.querySelector(".main");
-                var footer = document.querySelector(".footer");
-                var imgEnd =
-                    img.getBoundingClientRect().y +
-                    img.getBoundingClientRect().height;
-                var footerStart = footer.getBoundingClientRect().y;
+        // Scroll to products
+        function scrollToProducts() {
+            const productsSection = document.getElementById('products-section');
+            productsSection.scrollIntoView({ behavior: 'smooth' });
+        }
 
-                img.style.transform = `translateY(${
-                    footerStart - imgEnd + 6
-                }px)`;
+        // Load category page
+        function load(page_name) {
+            window.location.replace("products.html#" + page_name);
+        }
+
+        // Buy now function (WhatsApp)
+        function buy_now(productId) {
+            const phoneNumber = "+919829408299";
+            let message = "Hello! I'm interested in your elevator products.";
+            
+            if (productId >= 0 && typeof data !== 'undefined' && data[productId]) {
+                message = `Hello! I'm interested in ${data[productId].name}`;
+            }
+            
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Update products dynamically
+        function update_data() {
+            if (typeof data === 'undefined') {
+                console.error('Product data not loaded');
+                return;
             }
 
-			update_data = () => {
-				//data = await get_data()
-				var temp_explore = ""
-				var product_ids = [0,1,3]
-				for(var j=0;j<product_ids.length;j++){
-					i=product_ids[j]
-					temp_explore += `
-						<div class="item">
-							<a href="product-detail.html?id=${i+1}">
-							<div style="color:#000">
-								<img id="main" src="${data[i].img[0]}" alt="" />
-								<div class="about">
-									<p>${data[i].name}</p>
-									<p>₹${data[i].discounted} <span style="font-weight: 200; font-size: 12px; padding-left: 10px; text-decoration: line-through; opacity: 0.7;">₹${data[i].mrp}</span></p>
-								</div>
-							</div>
-							</a>
-							<div class="BUY NOW" style="width: 90%;margin: 0 auto; background: #21c050; color: white; border-radius: 10px; text-align: center; padding: 18px; font-size: 25px; cursor: pointer;" onclick="buy_now(${i})">
-								<i class="fa fa-whatsapp" aria-hidden="true"></i>&nbsp;&nbsp;<span>BUY NOW</span>
-							</div>
-						</div>
-					`
-				}
-				document.getElementById("products").innerHTML = temp_explore
-			}
-			
-			update_data()
+            let temp_explore = "";
+            const product_ids = [0, 1, 3];
+            
+            for (let j = 0; j < product_ids.length; j++) {
+                const i = product_ids[j];
+                if (!data[i]) continue;
+                
+                const discount = Math.round(((data[i].mrp - data[i].discounted) / data[i].mrp) * 100);
+                
+                temp_explore += `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <a href="product-detail.html?id=${i+1}">
+                                <img src="${data[i].img[0]}" alt="${data[i].name}" />
+                            </a>
+                            ${discount > 0 ? `<div class="product-badge">${discount}% OFF</div>` : ''}
+                        </div>
+                        <div class="product-info">
+                            <h3>${data[i].name}</h3>
+                            <div class="product-price">
+                                <span class="current-price">₹${data[i].discounted}</span>
+                                ${data[i].mrp !== data[i].discounted ? `<span class="old-price">₹${data[i].mrp}</span>` : ''}
+                            </div>
+                            <button class="buy-btn" onclick="buy_now(${i})">
+                                <i class="fa fa-whatsapp"></i> Buy Now
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            document.getElementById("products").innerHTML = temp_explore;
+        }
 
-			function load(page_name) {
-				window.location.replace("products.html#"+page_name);
-				//window.location.reload();
-			}
-
-        </script>
-    </body>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            update_data();
+        });
+    </script>
+</body>
 </html>
