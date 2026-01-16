@@ -29,7 +29,7 @@ const data = [
 				"./assets/images/categories/Doors/SS Glass Door.jpg",
 				"./assets/images/categories/Doors/SS Golden Etching-door.jpg",
 				"./assets/images/categories/Doors/SS Rose Gold Etching-door.jpg",
-			],
+			]
 		},
 		{
 			name:"Electricals",
@@ -47,6 +47,18 @@ const data = [
 				"./assets/images/categories/Electricals/Standard Wallmount Type.jpg",
 				"./assets/images/categories/Electricals/TG Drive.jpg",
 				"./assets/images/categories/Electricals/Yaskawa Drive.jpg",
+			]
+		},
+		{
+			name:"Filler Counter Weights",
+			products: [
+				"./assets/images/categories/Filler Counter Weights/Counter-Weights (All Size 500 DBG - 1350 DBG).jpg",
+			]
+		},
+		{
+			name:"Guide Rail",
+			products: [
+				"./assets/images/categories/Guide Rail/Marazzi-Guide-Rail.jpg",
 			]
 		},
 		{
@@ -92,27 +104,154 @@ const data = [
 			]
 		},
 		{
-			name:"Cabin",
+			name:"Over Speed Governor (OSG)",
 			products: [
-				"./assets/images/categories/Cabin/M.S. CABIN.jpg",
-				"./assets/images/categories/Cabin/MS CABIN.jpg",
-				"./assets/images/categories/Cabin/MS  CABIN.jpg",
-				"./assets/images/categories/Cabin/S.S. CABIN.jpg",
-				"./assets/images/categories/Cabin/S.S.  CABIN.jpg",
-				"./assets/images/categories/Cabin/SS CABIN.jpg",
-				"./assets/images/categories/Cabin/SS  CABIN.jpg",
+				"./assets/images/categories/Over Speed Governor (OSG)/(OSG)-Casting-300mm.jpg",
+				"./assets/images/categories/Over Speed Governor (OSG)/(OSG)-Sheet-Metal.jpg",
 			]
 		},
+		{
+			name:"DIVERTER PULLEYES",
+			products: [
+				"./assets/images/categories/DIVERTER PULLEYES/DIVERTER-PULLEY.jpg",
+				"./assets/images/categories/DIVERTER PULLEYES/DIVERTER-PULLEY.jpg",
+			]
+		},
+		{
+			name: "Control Pannels",
+			categories: [
+				{
+				name: "HP Mont",
+				products: [
+					"./assets/images/categories/Control Pannels/HP Mont/GEARLESS-PANNEL-MT-71.jpg",
+					"./assets/images/categories/Control Pannels/HP Mont/SIDDHAM-ULTIMATE-GEARLESS-PANNEL.jpg",
+				]
+				},
+				{
+				name: "Thita",
+				products: [
+					"./assets/images/categories/Control Pannels/Thita/HYDRAULIC-PANEL.jpg",
+					"./assets/images/categories/Control Pannels/Thita/TG-900-INTEGRATED-GEARD-CONTROL-PANEL.jpg",
+					"./assets/images/categories/Control Pannels/Thita/TGM-1000-CLOSELOOP-GEARLESS-INTERGRATED.jpg",
+					"./assets/images/categories/Control Pannels/Thita/THX-07-CONTROLLER.jpg",
+				]
+				},
+			]
+		},
+
+		{
+			name: "Control Panel Spare Parts",
+			categories: [
+				{
+				name: "Controllers Cards",
+				products: [
+					"./assets/images/categories/Control Pannel Spare Parts/CONTROLLERS CARDS/Fuse-Card.jpg",
+					"./assets/images/categories/Control Pannel Spare Parts/CONTROLLERS CARDS/Mother-Card.jpg",
+					"./assets/images/categories/Control Pannel Spare Parts/CONTROLLERS CARDS/Mother-Card-Second.jpg",
+					"./assets/images/categories/Control Pannel Spare Parts/CONTROLLERS CARDS/Mother-Card-TG-900-Geard.jpg",
+					"./assets/images/categories/Control Pannel Spare Parts/CONTROLLERS CARDS/Relay-Card.jpg",
+					"./assets/images/categories/Control Pannel Spare Parts/CONTROLLERS CARDS/Safety-card.jpg",
+					"./assets/images/categories/Control Pannel Spare Parts/CONTROLLERS CARDS/SMPS.jpg",
+					"./assets/images/categories/Control Pannel Spare Parts/CONTROLLERS CARDS/Voice-Crad-(12V,24V.jpg",
+				]
+				},
+				{
+				name: "Drives",
+				subcategories: [
+					{
+					name: "Hpmont",
+					products: [
+						"./assets/images/categories/Control Pannel Spare Parts/Drives/Hpmont/Door-Drive.jpg",
+						"./assets/images/categories/Control Pannel Spare Parts/Drives/Hpmont/HD3L.jpg",
+						"./assets/images/categories/Control Pannel Spare Parts/Drives/Hpmont/HD5L.jpg",
+						"./assets/images/categories/Control Pannel Spare Parts/Drives/Hpmont/MT71.jpg",
+						"./assets/images/categories/Control Pannel Spare Parts/Drives/Hpmont/MT73.jpg",
+					]
+					},
+					{
+					name: "Thita",
+					products: [
+						"./assets/images/categories/Control Pannel Spare Parts/Drives/Thita/Thita-Drive.jpg",
+					]
+					}
+				]
+				},
+				{
+				name: "Thita Ard & Ups",
+				products: [
+					"./assets/images/categories/Control Pannel Spare Parts/Thita Ard & Ups/Automatic-Rescue-Device-(ARD).jpg",
+					"./assets/images/categories/Control Pannel Spare Parts/Thita Ard & Ups/Uninterruptible-Power-Supply-(-UPS).jpg",
+				]
+				}
+			]
+		},
+		{
+				name: "Hardware Parts",
+
+				// Direct products
+				products: [
+					"./assets/images/categories/Hardware Parts/Big-Pedestal.jpg",
+					"./assets/images/categories/Hardware Parts/Brick-Fastener.jpg",
+					"./assets/images/categories/Hardware Parts/E-Packing.jpg",
+					"./assets/images/categories/Hardware Parts/Guide-Clip.jpg",
+					"./assets/images/categories/Hardware Parts/Guide-Clip-Biscuit-Type.jpg",
+					"./assets/images/categories/Hardware Parts/Lenght-Bolt.jpg",
+					"./assets/images/categories/Hardware Parts/NBW.jpg",
+					"./assets/images/categories/Hardware Parts/Rack-Bolt.jpg",
+					"./assets/images/categories/Hardware Parts/RCC-Fastener.jpg",
+					"./assets/images/categories/Hardware Parts/Rope-Clamp.jpg",
+					"./assets/images/categories/Hardware Parts/Rope-Holder.jpg",
+					"./assets/images/categories/Hardware Parts/Safety-Clutch-Pin-Roller.jpg",
+					"./assets/images/categories/Hardware Parts/Shaft-MS-Bar.jpg",
+					"./assets/images/categories/Hardware Parts/Small-Pedestal.jpg",
+					"./assets/images/categories/Hardware Parts/U-Packing.jpg",
+				],
+
+				// Subcategories
+				categories: [
+					{
+					name: "DBG Accessories",
+					products: [
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Cantilever-Guide-(9mm).jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Cantilever-Guide-(16mm).jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Car-Shoe-(9mm).jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Car-Shoe(16mm).jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Car-Shoe--Imported-(9MM).jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Car-Shoe--Imported-(16MM).jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Counter-Shoe (5 mm).jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Counter-Shoe-(9mm).jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Guide-Shoe-Liner.jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Gun-Type-Thimble.jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Imported-Safety-Block-Shoe.jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Platform-Ribber.jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Progressive-Clutch.jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Rope-I--Thimble.jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Rubber-Plate.jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Safety-Block-Shoe.jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Safety-Clutch.jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Spring-Buffer.jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Thimble-Eye-Bolt.jpg",
+					]
+					}
+				]
+		},
+		
+
+
 	]
 
-get_data = async (category) => {
-	for(var i=0; i<data.length;i++){
-		if(data[i].name == category) {
-			return data[i]
-		}
-	}
-	return null
-}
+get_data = async (categoryName) => {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].name === categoryName) {
+            return {
+                name: data[i].name,
+                products: flattenProducts(data[i])
+            };
+        }
+    }
+    return null;
+};
+
 
 buy_now = (id,product=-1) => {
 	if(id == -1)
@@ -141,4 +280,33 @@ buy_now = (id,product=-1) => {
 		var buy_text = "Hey there, assist me please! \nI want to purchase " + name
 	}
 	window.open('https://wa.me/+919829408299?text='+buy_text)
+}
+
+
+function flattenProducts(category) {
+    let products = [];
+
+    // Old structure
+    if (category.products) {
+        products.push(...category.products);
+    }
+
+    // New hierarchical structure
+    if (category.categories) {
+        category.categories.forEach(cat => {
+            if (cat.products) {
+                products.push(...cat.products);
+            }
+
+            if (cat.subcategories) {
+                cat.subcategories.forEach(sub => {
+                    if (sub.products) {
+                        products.push(...sub.products);
+                    }
+                });
+            }
+        });
+    }
+
+    return products;
 }
