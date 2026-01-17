@@ -104,6 +104,19 @@ const data = [
 			]
 		},
 		{
+			name:"Cabin",
+			products: [
+				"./assets/images/categories/Cabin/M.S. CABIN.jpg",
+				"./assets/images/categories/Cabin/MS  CABIN.jpg",
+				"./assets/images/categories/Cabin/MS. CABIN.jpg",
+				"./assets/images/categories/Cabin/S.S.  CABIN.jpg",
+				"./assets/images/categories/Cabin/S.S. CABIN-2.jpg",
+				"./assets/images/categories/Cabin/SS  CABIN.jpg",
+				"./assets/images/categories/Cabin/SS CABIN-2.jpg",
+				
+			]
+		},
+		{
 			name:"Over Speed Governor (OSG)",
 			products: [
 				"./assets/images/categories/Over Speed Governor (OSG)/(OSG)-Casting-300mm.jpg",

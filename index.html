@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Lift House - Premium Elevator Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="shortcut icon" type="image/png" href="./assets/favicon.png"/>
     <script src="./js/raw_data.js"></script>
     <style>
@@ -34,158 +35,265 @@
             color: inherit;
         }
 
-        /* Header & Navigation */
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(103, 65, 148, 0.1);
-            z-index: 1000;
-            transition: all 0.3s ease;
+        .btn .fa-brands {
+            margin-right: 8px;
+            font-size: 1.1em;
+            vertical-align: middle;
         }
 
-        .header.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 30px rgba(103, 65, 148, 0.15);
-        }
 
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+       /* Header & Navigation */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(103, 65, 148, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
 
-        .logo img {
-            height: 60px;
-            transition: transform 0.3s ease;
-        }
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 30px rgba(103, 65, 148, 0.15);
+}
 
-        .logo:hover img {
-            transform: scale(1.05);
-        }
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            align-items: center;
-        }
+.logo img {
+    height: 60px;
+    transition: transform 0.3s ease;
+}
 
-        .nav-links a {
-            color: var(--dark);
-            font-weight: 500;
-            font-size: 1rem;
-            position: relative;
-            transition: color 0.3s ease;
-        }
+.logo:hover img {
+    transform: scale(1.05);
+}
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
+.nav-links a {
+    color: var(--dark);
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    transition: width 0.3s ease;
+}
 
-        /* Dropdown Styles */
-        .nav-links li {
-            position: relative;
-        }
+.nav-links a:hover {
+    color: var(--primary);
+}
 
-        .dropdown {
-            position: relative;
-        }
+.nav-links a:hover::after {
+    width: 100%;
+}
 
-        .dropdown > a {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
+/* Mega Menu Dropdown Styles */
+.nav-links li {
+    position: relative;
+}
 
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            min-width: 220px;
-            padding: 1rem 0;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(103, 65, 148, 0.15);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
+.mega-menu-item {
+    position: relative;
+}
 
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+.mega-menu-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+}
 
-        .dropdown-menu li {
-            list-style: none;
-        }
+.mega-dropdown-icon {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+    margin-left: 0.2rem;
+}
 
-        .dropdown-menu a {
-            display: block;
-            padding: 0.7rem 1.5rem;
-            color: var(--dark);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
+.mega-menu-item:hover .mega-dropdown-icon {
+    transform: rotate(180deg);
+}
 
-        .dropdown-menu a::after {
-            display: none;
-        }
+.mega-menu-content {
+    position: fixed;          /* KEY FIX */
+    top: 80px;                /* below header */
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
 
-        .dropdown-menu a:hover {
-            background: linear-gradient(90deg, rgba(103, 65, 148, 0.1) 0%, rgba(129, 145, 201, 0.1) 100%);
-            padding-left: 2rem;
-            color: var(--primary);
-        }
+    width: 90vw;              /* responsive width */
+    max-width: 1400px;
 
-        .dropdown-icon {
-            font-size: 0.7rem;
-            transition: transform 0.3s ease;
-        }
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
 
-        .dropdown:hover .dropdown-icon {
-            transform: rotate(180deg);
-        }
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    padding: 2.5rem;
+}
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-        }
 
-        .hamburger div {
-            width: 28px;
-            height: 3px;
-            background: var(--primary);
-            transition: all 0.3s ease;
-            border-radius: 3px;
-        }
+
+.mega-menu-item:hover .mega-menu-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+
+
+.mega-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    padding: 1rem;
+}
+
+.mega-category {
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 15px;
+    margin: 0.3rem;
+}
+
+.mega-category:hover {
+    background: linear-gradient(135deg, rgba(103, 65, 148, 0.08) 0%, rgba(129, 145, 201, 0.08) 100%);
+    transform: translateY(-8px);
+}
+
+.mega-category i {
+    font-size: 2.8rem;
+    background: linear-gradient(135deg, #674194 0%, #8191C9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.mega-category:hover i {
+    transform: scale(1.15);
+}
+
+.mega-category h4 {
+    color: #333;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.mega-category p {
+    color: #999;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger div {
+    width: 28px;
+    height: 3px;
+    background: var(--primary);
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 90px;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: left 0.3s ease;
+        align-items: flex-start;
+        transform: none;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .mega-menu-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        min-width: auto;
+        display: none;
+        margin-top: 1rem;
+        border-radius: 10px;
+        background: #f8f9fa;
+    }
+
+    .mega-menu-item.active .mega-menu-content {
+        display: block;
+    }
+
+    .mega-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .mega-category {
+        padding: 1.2rem 1rem;
+    }
+
+    .mega-category i {
+        font-size: 2rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .mega-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
         /* Hero Section */
         .hero {
@@ -270,6 +378,7 @@
 
         .cta-buttons {
             display: flex;
+            justify-content: center;
             gap: 1.5rem;
             animation: slideInLeft 1s ease-out 0.4s both;
         }
@@ -881,7 +990,8 @@
             transition: all 0.3s ease;
             position: fixed;
             bottom: 30px;
-            right: 30px;
+            left: 30px; /* changed from right to left */
+            right: auto; /* ensure right doesn’t interfere */
             z-index: 999;
             opacity: 0;
             pointer-events: none;
@@ -900,7 +1010,8 @@
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
-            left: 30px;
+            right: 30px; /* changed from left to right */
+            left: auto; /* ensure left doesn’t interfere */
             background: #25D366;
             color: white;
             width: 60px;
@@ -1012,44 +1123,103 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="./assets/images/index/logo.png" alt="The Lift House">
+<header class="header">
+    <nav class="nav-container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="./assets/images/index/the-lift-logo-removebg-preview.png" alt="The Lift House">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="mega-menu-item">
+                <a href="javascript:void(0);" class="mega-menu-trigger">
+                    Products <i class="fa fa-chevron-down mega-dropdown-icon"></i>
                 </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="javascript:void(0);">
-                        Products <i class="fa fa-chevron-down dropdown-icon"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:load('Accessories');">Accessories</a></li>
-                        <li><a href="javascript:load('Doors');">Doors</a></li>
-                        <li><a href="javascript:load('Electricals');">Electricals</a></li>
-                        <li><a href="javascript:load('Headers');">Headers</a></li>
-                        <li><a href="javascript:load('Safeties_Hardware');">Safeties & Hardware</a></li>
-                        <li><a href="javascript:load('Motor');">Motors</a></li>
-                        <li><a href="javascript:load('Cabin');">Cabins</a></li>
-                        <li><a href="javascript:load('Control Pannels');">Control Pannels</a></li>
-                        <li><a href="javascript:load('Control Panel Spare Parts');">Control Panel Spare Parts</a></li>
-                        <li><a href="javascript:load('DIVERTER PULLEYES');">DIVERTER PULLEYES</a></li>
-                        <li><a href="javascript:load('Filler Counter Weights');">Filler Counter Weights</a></li>
-                        <li><a href="javascript:load('Guide Rail');">Guide Rail</a></li>
-                        <li><a href="javascript:load('Hardware Parts');">Hardware Parts</a></li>
-                        <li><a href="javascript:load('Over Speed Governor(OSG)');">Over Speed Governor(OSG)</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="hamburger" onclick="toggleMenu()">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </nav>
-    </header>
+                <div class="mega-menu-content">
+                    <div class="mega-grid">
+                        <div class="mega-category" onclick="load('Accessories')">
+                            <i class="fa fa-cog"></i>
+                            <h4>Accessories</h4>
+                            <p>Premium fittings</p>
+                        </div>
+                        <div class="mega-category" onclick="load('Doors')">
+                            <i class="fa fa-door-open"></i>
+                            <h4>Doors</h4>
+                            <p>Safety & style</p>
+                        </div>
+                        <div class="mega-category" onclick="load('Electricals')">
+                            <i class="fa fa-bolt"></i>
+                            <h4>Electricals</h4>
+                            <p>Advanced systems</p>
+                        </div>
+                        <div class="mega-category" onclick="load('Headers')">
+                            <i class="fa fa-building"></i>
+                            <h4>Headers</h4>
+                            <p>Modern designs</p>
+                        </div>
+                        <div class="mega-category" onclick="load('Safeties and Hardware')">
+                            <i class="fa fa-shield-alt"></i>
+                            <h4>Safeties and Hardware</h4>
+                            <p>Premium safety</p>
+                        </div>
+                        <div class="mega-category" onclick="load('Motor')">
+                            <i class="fa fa-cogs"></i>
+                            <h4>Motors</h4>
+                            <p>Smooth operation</p>
+                        </div>
+                        <div class="mega-category" onclick="load('Cabin')">
+                            <i class="fa fa-cube"></i>
+                            <h4>Cabins</h4>
+                            <p>Elegant interiors</p>
+                        </div>
+                        <div class="mega-category" onclick="load('Control Pannels')">
+                            <i class="fa fa-microchip"></i>
+                            <h4>Control Pannels</h4>
+                            <p>Smart controls</p>
+                        </div>
+                        <div class="mega-category" onclick="load('Control Panel Spare Parts')">
+                            <i class="fa fa-tools"></i>
+                            <h4>Control Panel Spare Parts</h4>
+                            <p>Spare components</p>
+                        </div>
+                        <div class="mega-category" onclick="load('DIVERTER PULLEYES')">
+                            <i class="fa fa-circle-notch"></i>
+                            <h4>DIVERTER PULLEYES</h4>
+                            <p>Precision parts</p>
+                        </div>
+                        <div class="mega-category" onclick="load('Filler Counter Weights')">
+                            <i class="fa fa-weight-hanging"></i>
+                            <h4>Filler Counter Weights</h4>
+                            <p>Balance weights</p>
+                        </div>
+                        <div class="mega-category" onclick="load('Guide Rail')">
+                            <i class="fa fa-road"></i>
+                            <h4>Guide Rail</h4>
+                            <p>Track systems</p>
+                        </div>
+                        <div class="mega-category" onclick="load('Hardware Parts')">
+                            <i class="fa fa-wrench"></i>
+                            <h4>Hardware Parts</h4>
+                            <p>Essential parts</p>
+                        </div>
+                        <div class="mega-category" onclick="load('Over Speed Governor (OSG)')">
+                            <i class="fa fa-tachometer-alt"></i>
+                            <h4>Over Speed Governor (OSG)</h4>
+                            <p>Speed governors</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li><a href="about-us.html">About Us</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+</header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1063,12 +1233,14 @@
                 <h1>Elevate Your <span>Vertical Journey</span></h1>
                 <p>Premium elevator spares and parts delivered nationwide by passionate engineers committed to excellence and innovation.</p>
                 <div class="cta-buttons">
-                    <button class="btn btn-primary" onclick="scrollToProducts()">
+                    <button class="btn btn-primary" onclick="load('Accessories')">
                         Explore Products <i class="fa fa-arrow-right"></i>
                     </button>
+
                     <button class="btn btn-secondary" onclick="buy_now(-1)">
-                        <i class="fa fa-whatsapp"></i> Contact Us
+                        <i class="fa-brands fa-whatsapp"></i> Contact Us
                     </button>
+
                 </div>
             </div>
             <div class="hero-image">
@@ -1087,12 +1259,12 @@
             </div>
             <div class="stat-item">
                 <i class="fa fa-box"></i>
-                <div class="stat-number">5000+</div>
+                <div class="stat-number">50,000+</div>
                 <div class="stat-label">Products Delivered</div>
             </div>
             <div class="stat-item">
                 <i class="fa fa-users"></i>
-                <div class="stat-number">1000+</div>
+                <div class="stat-number">10,000+</div>
                 <div class="stat-label">Happy Clients</div>
             </div>
             <div class="stat-item">
@@ -1244,17 +1416,6 @@
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="products" id="products-section">
-        <div class="section-title">
-            <h2>Featured Products</h2>
-            <p>Discover our handpicked selection of premium elevator components.</p>
-        </div>
-        <div class="products-grid" id="products">
-            <!-- Products will be dynamically loaded here -->
-        </div>
-    </section>
-
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-content">
@@ -1262,82 +1423,87 @@
             <p>Get in touch with our expert team for personalized solutions and competitive pricing.</p>
             <div class="cta-buttons">
                 <button class="btn btn-primary" onclick="buy_now(-1)">
-                    <i class="fa fa-whatsapp"></i> Contact Us Now
+                        <i class="fa-brands fa-whatsapp"></i> Contact Us Now
                 </button>
-                <button class="btn btn-secondary" onclick="scrollToProducts()">
-                    View All Products
+
+                <button class="btn btn-secondary" onclick="load('Accessories')">
+                        View Products
                 </button>
+
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="./assets/images/index/logo.png" alt="The Lift House">
-                    </div>
-                    <p class="footer-about">
-                        Plot No 79-80, 91-92, Gopalpura Bypass Rd, near Utsav Garden, Narayan Vihar, Jaipur, Rajasthan 302029
-                    </p>
-                    <div class="footer-contact">
-                        <a href="tel:+919829408299">
-                            <i class="fa fa-phone"></i> +91 98294 08299
-                        </a>
-                        <a href="mailto:siddhamelevators@gmail.com">
-                            <i class="fa fa-envelope"></i> siddhamelevators@gmail.com
-                        </a>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/ajeevan.in?r=nametag" target="_blank">
-                            <i class="fa fa-instagram"></i>
-                        </a>
-                        <a href="https://www.facebook.com/Ajeevan-100668998729940/" target="_blank">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                    </div>
+    <!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <!-- About / Logo -->
+            <div>
+                <div class="footer-logo">
+                    <a href="index.html"><img src="./assets/images/index/the-lift-logo-removebg-preview.png" alt="The Lift House"></a>
                 </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="javascript:load('Accessories');">Accessories</a></li>
-                        <li><a href="javascript:load('Doors');">Doors</a></li>
-                        <li><a href="javascript:load('Electricals');">Electricals</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Categories</h3>
-                    <ul class="footer-links">
-                        <li><a href="javascript:load('Headers');">Headers</a></li>
-                        <li><a href="javascript:load('Safeties_Hardware');">Safeties & Hardware</a></li>
-                        <li><a href="javascript:load('Motor');">Motors</a></li>
-                        <li><a href="javascript:load('Cabin');">Cabins</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Our Commitment</h3>
-                    <ul class="footer-links">
-                        <li>Quality Assurance</li>
-                        <li>Expert Support</li>
-                        <li>Fast Delivery</li>
-                        <li>Sustainable Solutions</li>
-                    </ul>
+                <p class="footer-about">
+                    Premium elevator spares and parts delivered nationwide. Excellence and innovation in every product.
+                </p>
+                <div class="social-links">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 The Lift House. All rights reserved.</p>
-                <p>Crafted with <i class="fa fa-heart" style="color: #8191C9;"></i> by <a href="https://www.byteamp.com" style="color: var(--secondary);">Byteamp</a></p>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="services.html">Services</a></li>
+                </ul>
+            </div>
+
+            <!-- Products / Categories -->
+            <div class="footer-section">
+                <h3>Products</h3>
+                <ul class="footer-links">
+                    <li><a href="javascript:void(0);" onclick="load('Accessories')">Accessories</a></li>
+                    <li><a href="javascript:void(0);" onclick="load('Doors')">Doors</a></li>
+                    <li><a href="javascript:void(0);" onclick="load('Electricals')">Electricals</a></li>
+                    <li><a href="javascript:void(0);" onclick="load('Motors')">Motors</a></li>
+                    <li><a href="javascript:void(0);" onclick="load('Cabin')">Cabins</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="footer-contact">
+                    <a href="tel:+911234567890"><i class="fa fa-phone"></i> +91 98294 08299</a>
+                    <a href="mailto:info@thelifthouse.in"><i class="fa fa-envelope"></i> siddhamelevators@gmail.com</a>
+                    <a href="#"><i class="fa fa-map-marker-alt"></i> Address:- 79-80 Pancholi Vihar Vistar, Narayan Vihar Jaipur 302020</a>
+                </div>
             </div>
         </div>
-    </footer>
+
+        <!-- Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Lift House. All Rights Reserved.</p>
+            <p>Designed by <a href="#" target="_blank" style="color: var(--secondary)">Socialone.ai</a></p>
+        </div>
+    </div>
+</footer>
+
 
     <!-- WhatsApp Float Button -->
     <div class="whatsapp-float" onclick="buy_now(-1)">
-        <i class="fa fa-whatsapp"></i>
+        <i class="fa-brands fa-whatsapp"></i>
     </div>
+
 
     <!-- Back to Top Button -->
     <div class="back-to-top" onclick="scrollToTop()">
@@ -1361,23 +1527,31 @@
         });
 
         // Mobile menu toggle
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
 
-        // Mobile dropdown toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdown = document.querySelector('.dropdown');
-            if (dropdown && window.innerWidth <= 768) {
-                dropdown.addEventListener('click', function(e) {
-                    if (e.target.tagName === 'A' && e.target.closest('.dropdown') && !e.target.closest('.dropdown-menu')) {
-                        e.preventDefault();
-                        this.classList.toggle('active');
-                    }
-                });
+// Mobile mega menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const megaMenuItem = document.querySelector('.mega-menu-item');
+    
+    if (window.innerWidth <= 1024) {
+        megaMenuItem.addEventListener('click', function(e) {
+            if (e.target.closest('.mega-menu-trigger')) {
+                e.preventDefault();
+                this.classList.toggle('active');
             }
         });
+    }
+    
+    // Re-check on window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 1024) {
+            megaMenuItem.classList.remove('active');
+        }
+    });
+});
 
         // Scroll to top
         function scrollToTop() {
@@ -1385,12 +1559,6 @@
                 top: 0,
                 behavior: 'smooth'
             });
-        }
-
-        // Scroll to products
-        function scrollToProducts() {
-            const productsSection = document.getElementById('products-section');
-            productsSection.scrollIntoView({ behavior: 'smooth' });
         }
 
         // Load category page
