@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | The Lift House</title>
+    <title>Contact Us - The Lift House</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="shortcut icon" type="image/png" href="./assets/favicon.png"/>
     <script src="./js/raw_data.js"></script>
@@ -24,8 +25,6 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
             overflow-x: hidden;
             background: var(--light);
         }
@@ -33,6 +32,12 @@
         a {
             text-decoration: none;
             color: inherit;
+        }
+
+        .btn .fa-brands {
+            margin-right: 8px;
+            font-size: 1.1em;
+            vertical-align: middle;
         }
 
         /* Header & Navigation */
@@ -115,7 +120,6 @@
             width: 100%;
         }
 
-        /* Mega Menu Dropdown Styles */
         .nav-links li {
             position: relative;
         }
@@ -156,6 +160,7 @@
             transition: all 0.3s ease;
             z-index: 999;
             padding: 2.5rem;
+            overflow: visible;
         }
 
         .mega-menu-item:hover .mega-menu-content {
@@ -169,6 +174,7 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 0;
             padding: 1rem;
+            margin-bottom: 2rem;
         }
 
         .mega-category {
@@ -228,18 +234,20 @@
             border-radius: 3px;
         }
 
-        /* Hero Section */
-        .hero {
+        /* Contact Page Specific Styles */
+        .contact-hero {
             margin-top: 90px;
-            background: linear-gradient(135deg, #674194 0%, #8191C9 100%);
-            padding: 120px 2rem 80px;
-            color: #fff;
-            text-align: center;
+            min-height: 40vh;
+            background: var(--gradient);
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
         }
 
-        .hero::before {
+        .contact-hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -250,269 +258,174 @@
             opacity: 0.3;
         }
 
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .contact-hero-content {
+            text-align: center;
             position: relative;
             z-index: 1;
         }
 
-        .hero h1 {
-            font-size: 3rem;
+        .contact-hero h1 {
+            font-size: 3.5rem;
+            color: white;
             margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
+            font-weight: 700;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease 0.2s backwards;
+        .contact-hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1200px;
+        /* Contact Section */
+        .contact-section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
         }
 
-        .section {
-            padding: 80px 0;
-        }
-
-        .intro-section {
-            text-align: center;
-            padding: 80px 2rem;
-        }
-
-        .intro-section h2 {
-            font-size: 2.5rem;
-            color: #674194;
-            margin-bottom: 2rem;
-        }
-
-        .intro-section p {
-            font-size: 1.1rem;
-            max-width: 900px;
-            margin: 0 auto 1.5rem;
-            color: #555;
-            line-height: 1.8;
-        }
-
-        /* Two Column Section */
-        .two-column {
+        .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin: 80px 0;
+            gap: 3rem;
+            align-items: start;
         }
 
-        .two-column.reverse {
-            direction: rtl;
+        .contact-info-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(103, 65, 148, 0.1);
+            transition: all 0.4s ease;
         }
 
-        .two-column.reverse > * {
-            direction: ltr;
+        .contact-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(103, 65, 148, 0.2);
         }
 
-        .column-content h2 {
-            color: #674194;
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .column-content p {
-            color: #555;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .column-image {
+        .contact-info-card h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
             position: relative;
+            padding-bottom: 1rem;
         }
 
-        .column-image::before {
+        .contact-info-card h2::after {
             content: '';
             position: absolute;
-            top: -20px;
-            left: -20px;
-            right: 20px;
-            bottom: 20px;
-            background: linear-gradient(135deg, #674194 0%, #8191C9 100%);
-            border-radius: 15px;
-            opacity: 0.1;
-            z-index: -1;
-        }
-
-        .column-image img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        /* Values Section */
-        .values-section {
-            background: linear-gradient(135deg, rgba(103, 65, 148, 0.05) 0%, rgba(129, 145, 201, 0.05) 100%);
-            padding: 80px 2rem;
-            margin: 80px 0;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .value-item {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .value-icon {
+            bottom: 0;
+            left: 0;
             width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #674194 0%, #8191C9 100%);
-            border-radius: 50%;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(103, 65, 148, 0.1);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-            color: #fff;
-            font-size: 2rem;
+            flex-shrink: 0;
         }
 
-        .value-item h4 {
-            color: #674194;
-            margin-bottom: 0.8rem;
-            font-size: 1.3rem;
+        .contact-icon i {
+            font-size: 1.5rem;
+            color: white;
         }
 
-        .value-item p {
+        .contact-details h3 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-details p {
             color: #666;
-            line-height: 1.6;
+            line-height: 1.8;
+            font-size: 1rem;
         }
 
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #674194 0%, #8191C9 100%);
-            color: #fff;
-            text-align: center;
-            padding: 80px 2rem;
-            margin: 80px 0;
+        .contact-details a {
+            color: var(--primary);
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--secondary);
+        }
+
+        .map-container {
+            background: white;
+            padding: 1.5rem;
             border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(103, 65, 148, 0.1);
+            height: 100%;
+            min-height: 500px;
         }
 
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 450px;
+            border: none;
+            border-radius: 12px;
         }
 
         .btn {
-            display: inline-block;
             padding: 1rem 2.5rem;
-            background: #fff;
-            color: #674194;
-            text-decoration: none;
             border-radius: 50px;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        /* Director Section */
-        .director-section {
-            padding: 80px 0;
-            background: #fff;
-        }
-
-        .director-container {
-            display: grid;
-            grid-template-columns: 400px 1fr;
-            gap: 4rem;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .director-image {
-            position: relative;
-        }
-
-        .director-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            right: 20px;
-            bottom: 20px;
-            background: linear-gradient(135deg, #674194 0%, #8191C9 100%);
-            border-radius: 15px;
-            opacity: 0.1;
-            z-index: -1;
-        }
-
-        .director-image img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .director-content h2 {
-            color: #674194;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .director-content h3 {
-            color: #8191C9;
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            font-weight: 500;
-        }
-
-        .director-message {
-            color: #555;
-            line-height: 1.8;
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .director-signature {
-            margin-top: 2rem;
-            font-style: italic;
-            color: #674194;
             font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
         /* Footer */
         .footer {
-            background: #2c2c2c;
-            color: #fff;
-            padding: 60px 2rem 30px;
+            background: #1a1a2e;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .footer-grid {
@@ -656,8 +569,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            0%, 100% { 
+                transform: scale(1); 
+            }
+            50% { 
+                transform: scale(1.1); 
+            }
         }
 
         /* Responsive */
@@ -674,22 +591,10 @@
                 transition: left 0.3s ease;
                 align-items: flex-start;
                 transform: none;
-                height: calc(100vh - 90px);
-                overflow-y: auto;
             }
 
             .nav-links.active {
                 left: 0;
-            }
-
-            .nav-links li {
-                width: 100%;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 0.8rem 0;
-                width: 100%;
             }
 
             .mega-menu-content {
@@ -698,13 +603,11 @@
                 visibility: visible;
                 transform: none;
                 box-shadow: none;
-                width: 100%;
-                max-width: 100%;
+                min-width: auto;
                 display: none;
                 margin-top: 1rem;
                 border-radius: 10px;
                 background: #f8f9fa;
-                padding: 1rem;
             }
 
             .mega-menu-item.active .mega-menu-content {
@@ -714,7 +617,6 @@
             .mega-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.5rem;
-                padding: 0.5rem;
             }
 
             .mega-category {
@@ -729,14 +631,8 @@
                 display: flex;
             }
 
-            .two-column {
+            .contact-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .director-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
             }
 
             .footer-grid {
@@ -745,24 +641,23 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
+            .mega-grid {
+                grid-template-columns: 1fr;
             }
 
-            .two-column {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .contact-hero h1 {
+                font-size: 2.5rem;
             }
 
-            .director-container {
-                grid-template-columns: 1fr;
+            .contact-hero p {
+                font-size: 1.1rem;
+            }
+
+            .contact-info-card {
+                padding: 2rem;
             }
 
             .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .mega-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -862,10 +757,15 @@
                                 <p>Speed governors</p>
                             </div>
                         </div>
+                        <div style="text-align:center; margin-top:2rem;">
+                            <a href="products.html" class="btn btn-primary">
+                                Show All Products <i class="fa fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </li>
-                <li><a href="about-us.html" class="active">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="contact.html" class="active">Contact Us</a></li>
                 <li><a href="./assets/catalogue.pdf" target="_blank" download><i class="fa fa-download"></i> Catalogue</a></li>
             </ul>
             <div class="hamburger" onclick="toggleMenu()">
@@ -876,142 +776,73 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>About The Lift House</h1>
-            <p>Your trusted partner in delivering high-quality elevator spares, parts, and solutions across India</p>
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="contact-hero-content">
+            <h1>Get In Touch</h1>
+            <p>We're here to help with all your elevator needs</p>
         </div>
     </section>
 
-    <!-- Intro Section -->
-    <section class="intro-section">
-        <div class="container">
-            <h2>Welcome to The Lift House</h2>
-            <p>At The Lift House, we are driven by a passion for engineering excellence and a commitment to helping our customers make the smart choice when it comes to vertical mobility solutions. Our team consists of motivated professionals — engineers, managers, and technical experts — who bring deep industry knowledge and enthusiasm to every project we undertake.</p>
-        </div>
-    </section>
-
-    <!-- Who We Are Section -->
-    <div class="container">
-        <div class="two-column">
-            <div class="column-content">
-                <h2>Who We Are</h2>
-                <p>Founded with the vision of setting new standards in elevator components and customer service, The Lift House has grown into a respected name in the elevator parts industry.</p>
-                <p>Our foundation is built on transparency, reliability, and a customer-centric approach that ensures long-term value for clients across residential, commercial, and institutional sectors.</p>
-            </div>
-            <div class="column-image">
-                <svg viewBox="0 0 500 400" style="width: 100%;">
-                    <rect width="500" height="400" fill="#f8f9fa"/>
-                    <rect x="150" y="80" width="200" height="240" fill="#674194" opacity="0.1"/>
-                    <rect x="170" y="60" width="160" height="280" fill="#8191C9" opacity="0.2"/>
-                    <circle cx="250" cy="200" r="60" fill="#674194" opacity="0.3"/>
-                    <path d="M200 200 L300 200 M250 150 L250 250" stroke="#674194" stroke-width="3"/>
-                </svg>
-            </div>
-        </div>
-
-        <!-- What We Do Section -->
-        <div class="two-column reverse">
-            <div class="column-content">
-                <h2>What We Do</h2>
-                <p>We specialize in providing a broad range of elevator spares and parts, backed by technical support and continuous supply to keep your vertical transport systems performing optimally.</p>
-                <p>Whether you manage high-rise apartments, villas, hospitals, or commercial buildings, we offer products that meet stringent quality standards while adapting to evolving industry innovations.</p>
-            </div>
-            <div class="column-image">
-                <svg viewBox="0 0 500 400" style="width: 100%;">
-                    <rect width="500" height="400" fill="#f8f9fa"/>
-                    <rect x="100" y="100" width="80" height="200" fill="#674194" opacity="0.2"/>
-                    <rect x="200" y="80" width="80" height="220" fill="#8191C9" opacity="0.3"/>
-                    <rect x="300" y="120" width="80" height="180" fill="#674194" opacity="0.2"/>
-                    <circle cx="250" cy="50" r="20" fill="#674194"/>
-                </svg>
-            </div>
-        </div>
-    </div>
-
-    <!-- Values Section -->
-    <section class="values-section">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 2rem;">
-                <h2 style="color: #674194; font-size: 2.5rem;">Our Values</h2>
-            </div>
-            <div class="values-grid">
-                <div class="value-item">
-                    <div class="value-icon">
-                        <i class="fas fa-medal"></i>
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-grid">
+            <!-- Contact Information Card -->
+            <div class="contact-info-card">
+                <h2>Contact Information</h2>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fa fa-map-marker-alt"></i>
                     </div>
-                    <h4>Quality First</h4>
-                    <p>We only deliver products that reflect our high standards for durability and performance.</p>
+                    <div class="contact-details">
+                        <h3>Our Address</h3>
+                        <p>79-80 Pancholi Vihar Vistar,<br>Narayan Vihar,<br>Jaipur 302020,<br>Rajasthan, India</p>
+                    </div>
                 </div>
-                <div class="value-item">
-                    <div class="value-icon">
-                        <i class="fas fa-users"></i>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fa fa-phone"></i>
                     </div>
-                    <h4>Customer Focus</h4>
-                    <p>Your needs guide our solutions — from consultation to after-sales support.</p>
+                    <div class="contact-details">
+                        <h3>Phone Number</h3>
+                        <p><a href="tel:+919829408299">+91 98294 08299</a></p>
+                    </div>
                 </div>
-                <div class="value-item">
-                    <div class="value-icon">
-                        <i class="fas fa-rocket"></i>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fa fa-envelope"></i>
                     </div>
-                    <h4>Innovation</h4>
-                    <p>We embrace continuous improvement and keep pace with technical advancements.</p>
+                    <div class="contact-details">
+                        <h3>Email Address</h3>
+                        <p><a href="mailto:siddhamelevators@gmail.com">siddhamelevators@gmail.com</a></p>
+                    </div>
                 </div>
-                <div class="value-item">
-                    <div class="value-icon">
-                        <i class="fas fa-handshake"></i>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fa fa-clock"></i>
                     </div>
-                    <h4>Integrity & Transparency</h4>
-                    <p>Honest communication and dependable service define how we work with customers.</p>
+                    <div class="contact-details">
+                        <h3>Business Hours</h3>
+                        <p>Monday - Saturday: 9:00 AM - 6:00 PM<br>Sunday: Closed</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Mission Section -->
-    <div class="container">
-        <div class="cta-section">
-            <h2>Our Mission</h2>
-            <p>To be the preferred partner for elevator products and solutions by consistently delivering quality, reliability, and unmatched customer experience.</p>
-        </div>
-    </div>
-
-    <!-- Why Choose Us -->
-    <section class="section">
-        <div class="container">
-            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-                <h2 style="color: #674194; font-size: 2.5rem; margin-bottom: 2rem;">Why Choose Us?</h2>
-                <p style="font-size: 1.1rem; color: #555; line-height: 1.8;">Choosing The Lift House means partnering with a team that listens, understands, and delivers — ensuring your elevator operations run smoothly and safely, backed by technical expertise and an unwavering commitment to excellence.</p>
-                <a href="contact.html" class="btn" style="margin-top: 2rem;">Get In Touch</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- From the Director's Desk -->
-    <section class="director-section">
-        <div class="director-container">
-            <div class="director-image">
-                <img src="./assets/images/director-photo.jpg" alt="Director - The Lift House">
-            </div>
-            <div class="director-content">
-                <h2>From the Director's Desk</h2>
-                <h3>Message from our Leadership</h3>
-                <p class="director-message">
-                    Welcome to The Lift House. It gives me immense pleasure to share our journey and vision with you. Since our inception, we have been committed to transforming the elevator parts industry through innovation, quality, and customer-centric solutions.
-                </p>
-                <p class="director-message">
-                    Our success is built on the trust our clients place in us and the dedication of our talented team. We understand that elevators are critical to modern infrastructure, and our mission is to ensure that every component we supply meets the highest standards of safety, reliability, and performance.
-                </p>
-                <p class="director-message">
-                    As we continue to grow and evolve, we remain focused on our core values of integrity, excellence, and innovation. We are constantly investing in new technologies and expanding our product range to meet the changing needs of our customers.
-                </p>
-                <p class="director-message">
-                    Thank you for choosing The Lift House as your partner. Together, we will continue to reach new heights.
-                </p>
-                <p class="director-signature">
-                    — Director, The Lift House
-                </p>
+            <!-- Google Maps -->
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3383.1886087102603!2d75.72288267522251!3d26.86221457667732!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db4e365281c0d%3A0xf705696b3e01f338!2sSiddham%20Techno%20Private%20Limited!5e1!3m2!1sen!2sin!4v1768879074609!5m2!1sen!2sin"
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </section>
@@ -1089,6 +920,7 @@
         <i class="fa fa-arrow-up"></i>
     </div>
 
+    <!-- JavaScript -->
     <script>
         // Header scroll effect
         window.addEventListener('scroll', function() {
@@ -1123,7 +955,6 @@
                 });
             }
             
-            // Re-check on window resize
             window.addEventListener('resize', function() {
                 if (window.innerWidth > 1024) {
                     megaMenuItem.classList.remove('active');
@@ -1156,30 +987,6 @@
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.value-item, .two-column, .director-container').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
-            });
-        });
     </script>
 </body>
 </html>

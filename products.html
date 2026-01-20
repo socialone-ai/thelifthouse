@@ -1,267 +1,1050 @@
 <!DOCTYPE html>
-<html>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <head>
-        <!-- meta -->
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>The Lift House</title>
-        <link rel="stylesheet" href="./css/header.css" />
-        <link rel="stylesheet" href="./css/products.css" />
-        <link rel="stylesheet" href="./css/items-product.css" />
-        <link rel="stylesheet" href="./css/footer.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.0/jquery.js"></script>
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        />
-		<style>
-			a:link { text-decoration: none; }
-			a:visited { text-decoration: none; }
-			a:hover { text-decoration: none; }
-			a:active { text-decoration: none; }
-		</style>
-        <link rel="shortcut icon" type="image/png" href="./assets/favicon.png"/>
-    </head>
-    <body>
-        <div class="header-container">
-            <div class="hamburger"><div class="bar"></div></div>
-            <div class="container">
-                <div class="logo">
-                    <a href="about-us.html"
-                        ><img
-                            id="logoMain"
-                            src="./assets/images/index/logo.png"
-                            alt=""
-                    /></a>
-                </div>
-                <div class="nav">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="javascript:load('Accessories');">Accessories</a></li>
-                        <li><a href="javascript:load('Doors');">Doors</a></li>
-                        <li><a href="javascript:load('Electricals');">Electricals</a></li>
-                        <li><a href="javascript:load('Headers');">Headers</a></li>
-                        <li><a href="javascript:load('Safeties and Hardware');">Safeties & Hardware</a></li>
-                        <li><a href="javascript:load('Motor');">Motor</a></li>
-                        <li><a href="javascript:load('Cabin');">Cabin</a></li>
-                        <!--<li><a href="articles.html">Articles</a></li>-->
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="sidebar"></div>
-        <script src="./js/header.js"></script>
-        <div style="height: 125px"></div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - The Lift House</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" type="image/png" href="./assets/favicon.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.0/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        <div class="full">
-            <div class="cover">
-                <h1 id = "heading">Our Products</h1>
-            </div>
-        </div>
+        :root {
+            --primary: #674194;
+            --secondary: #8191C9;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gradient: linear-gradient(135deg, #674194 0%, #8191C9 100%);
+        }
 
-       <div id="products"> 
-        </div>
-        <div style="height: 100px"></div>
-        <div class="footer">
-            <div class="items">
-                <div class="item">
-                    <div class="logo">
-                        <img src="./assets/images/index/logo.png" alt="" />
-                        <p>
-							35-36, Parvati Enclave, Manyawas, Engineers Colony, Near Metro Station Mansarovar, Jaipur Rajasthan 302020
-                        </p>
-						<p>
-							<a href="tel:+919829408299" style="color:#ffe">
-							<i
-								class="fa fa-phone"
-								style="font-size: 18px"
-								aria-hidden="true"
-							></i
-							>&nbsp;&nbsp;+91 98294 08299
-							</a>
-						</p>
-						<p>
-							<a href="mailto:siddhamelevators@gmail.com" style="color:#ffe">
-							<i
-								class="fa fa-envelope"
-								style="font-size: 18px"
-								aria-hidden="true"
-							></i
-							>&nbsp;&nbsp;siddhamelevators@gmail.com
-							</a>
-						</p>
-                    </div>
-                    <hr style="display: none" class="firstLine" />
-                </div>
-                <div class="item">
-                    <ul class="list">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="javascript:load('Accessories');">Accessories</a></li>
-						<li><a href="javascript:load('Doors');">Doors</a></li>
-						<li><a href="javascript:load('Electricals');">Electricals</a></li>
-						<li><a href="javascript:load('Headers');">Headers</a></li>
-						<li><a href="javascript:load('Safeties_and_Hardware');">Safeties and Hardware</a></li>
-						<li><a href="javascript:load('Motor');">Motor</a></li>
-						<li><a href="javascript:load('Cabin');">Cabin</a></li>
-                        <li><a href="javascript:load('Control_Pannels');">Control Pannels</a></li>
-                        <li><a href="javascript:load('Control_Panel_Spare_Parts');">Control Panel Spare Parts</a></li>
-                        <li><a href="javascript:load('DIVERTER_PULLEYES');">DIVERTER PULLEYES</a></li>
-                        <li><a href="javascript:load('Filler_Counter_Weights');">Filler Counter Weights</a></li>
-                        <li><a href="javascript:load('Guide_Rail');">Guide Rail</a></li>
-                        <li><a href="javascript:load('Hardware_Parts');">Hardware Parts</a></li>
-                        <li><a href="javascript:load('Over_Speed_Governor (OSG)');">Over Speed Governor (OSG)</a></li>
-						<!--<li><a href="articles.html">Articles</a></li>-->
-                    </ul>
-                </div>
-                <div class="item back1">
-                    <ul>
-                        <li>
-                            <i
-                                class="fa fa-arrow-circle-up"
-                                aria-hidden="true"
-                            ></i>
-                        </li>
-                        <li
-                            style="
-                                opacity: 0.7;
-                                padding-top: 5px;
-                                cursor: pointer;
-                            "
-                            onclick="onScrollTop();"
-                        >
-                            Back to top
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="secondLine" />
-            <div class="items items2">
-				<div class="item" style="opacity: 0.7">
-                    <ul class="back" style="display: none">
-                        <li>
-                            <i
-                                class="fa fa-arrow-circle-up"
-                                aria-hidden="true"
-                            ></i>
-                        </li>
-                        <li
-                            style="
-                                opacity: 0.7;
-                                padding-top: 5px;
-                                cursor: pointer;
-                            "
-                            onclick="onScrollTop();"
-                        >
-                            Back to top
-                        </li>
-                    </ul>
-                </div>
-				<div class="item" style="opacity: 0.7">
-                    <ul class="list">
-                        <li style="display: inline">
-							<a href="https://www.instagram.com/ajeevan.in?r=nametag">
-                            <i class="fa fa-instagram" aria-hidden="true"></i>
-							</a>
-                        </li>
-                        <li style="display: inline">
-							<a href="https://www.facebook.com/Ajeevan-100668998729940/">
-                            <i
-                                class="fa fa-facebook-square"
-                                aria-hidden="true"
-                            ></i>
-							</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="item" style="opacity: 0.7">
-                    <ul>
-                        <li>
-                            <a href="https://www.byteamp.com" style="color:#ffe">
-                            Handicrafted with <i class="fa fa-heart" style="font-size: 18px" aria-hidden="true"></i> by Byteamp.&nbsp;&nbsp;
-							</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <script src="./js/raw_data.js"></script>
-        <script>
-            function onScrollTop() {
-                $("html, body").animate({ scrollTop: 0 }, "slow");
-                return false;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: var(--light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(103, 65, 148, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(103, 65, 148, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .mega-menu-item {
+            position: relative;
+        }
+
+        .mega-menu-trigger {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            cursor: pointer;
+        }
+
+        .mega-dropdown-icon {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+            margin-left: 0.2rem;
+        }
+
+        .mega-menu-item:hover .mega-dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        .mega-menu-content {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            width: 90vw;
+            max-width: 1400px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            padding: 2.5rem;
+        }
+
+        .mega-menu-item:hover .mega-menu-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .mega-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            padding: 1rem;
+        }
+
+        .mega-category {
+            padding: 1.8rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-radius: 15px;
+            margin: 0.3rem;
+        }
+
+        .mega-category:hover {
+            background: linear-gradient(135deg, rgba(103, 65, 148, 0.08) 0%, rgba(129, 145, 201, 0.08) 100%);
+            transform: translateY(-8px);
+        }
+
+        .mega-category i {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #674194 0%, #8191C9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .mega-category:hover i {
+            transform: scale(1.15);
+        }
+
+        .mega-category h4 {
+            color: #333;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .mega-category p {
+            color: #999;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger div {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .page-header {
+            margin-top: 90px;
+            padding: 4rem 2rem;
+            background: var(--gradient);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .category-filter {
+            padding: 3rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 2rem;
+            background: white;
+            color: var(--dark);
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(103, 65, 148, 0.3);
+        }
+
+        .products-section {
+            padding: 2rem 2rem 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-section {
+            margin-bottom: 5rem;
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .category-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 80%;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(103, 65, 148, 0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(103, 65, 148, 0.2);
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+            background: linear-gradient(135deg, rgba(103, 65, 148, 0.05) 0%, rgba(129, 145, 201, 0.05) 100%);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            min-height: 60px;
+        }
+
+        .buy-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .buy-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4)
+        }
+
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-about {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-contact a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-contact a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--gradient);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .back-to-top {
+            background: var(--gradient);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(103, 65, 148, 0.4);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+            z-index: 999;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .no-products {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #666;
+        }
+
+        .no-products i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 90px;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                transition: left 0.3s ease;
+                align-items: flex-start;
+                transform: none;
             }
-			
-			update_data = async () => {
-				var category = window.location.href
-				category = category.split("#")
-				category = category.pop()
-				if(category.indexOf("%20")>-1){
-					category = category.split("%20")
-					category = category.join(" ")
-				}
 
-				document.getElementById("heading").innerHTML = category
+            .nav-links.active {
+                left: 0;
+            }
 
-				const data = await get_data(category)
+            .mega-menu-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                display: none;
+                margin-top: 1rem;
+                border-radius: 10px;
+                background: #f8f9fa;
+            }
 
-				var temp_product_name = ""
-				var temp_products = ""
-				for(var i=0;i<data.products.length;i++){
-					var temp = data["products"][i]
-					temp = temp.split("/")
-					temp = temp.pop()
-					temp = temp.split(".")
-					temp.pop()
-					temp_product_name = temp.join('')
+            .mega-menu-item.active .mega-menu-content {
+                display: block;
+            }
 
-					if(i%3==0){
-						temp_products += `
-							<div class="ccontainer">
-								<div class="items"> 
-						`
-					}
+            .mega-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
 
-					temp_products += `
-						<div class="item">
-							<div style="color:#000">
-								<img id="main" src="${data.products[i]}" alt="" />
-								<div class="about">
-									<p>${temp_product_name}</p>
-								</div>
-							</div>
-							<div class="BUY NOW" style="width: 90%;margin: 0 auto; background: #21c050; color: white; border-radius: 10px; text-align: center; padding: 18px; font-size: 25px; cursor: pointer;" onclick="buy_now('${category}',${i})">
-								<i class="fa fa-whatsapp" aria-hidden="true"></i>&nbsp;&nbsp;<span>BUY NOW</span>
-							</div>
-						</div>
-					`
+            .mega-category {
+                padding: 1.2rem 1rem;
+            }
 
-					if(i%3==2){
-						temp_products += `
-								</div>
-							</div>
-						`
-					}
-				}
-				if(i%3!==0){
-					temp_products += `
-							</div>
-						</div>
-					`
-				}
-				document.getElementById("products").innerHTML = temp_products
-			}
+            .mega-category i {
+                font-size: 2rem;
+            }
 
-			update_data()
+            .hamburger {
+                display: flex;
+            }
 
-			function load(page_name) {
-				window.location.replace("products.html#"+page_name);
-				window.location.reload();
-			}
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
 
+        @media (max-width: 768px) {
+            .mega-grid {
+                grid-template-columns: 1fr;
+            }
 
-        </script>
-        <script src="./js/main.js" defer></script>
-    </body>
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./assets/images/index/logoooooooooo-removebg-preview.png" alt="The Lift House">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="mega-menu-item">
+                    <a href="javascript:void(0);" class="mega-menu-trigger">
+                        Products <i class="fa fa-chevron-down mega-dropdown-icon"></i>
+                    </a>
+                    <div class="mega-menu-content" id="megaMenuCategories">
+                    </div>
+                </li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="./assets/catalogue.pdf" target="_blank" download><i class="fa fa-download"></i> Catalogue</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1 id="categoryTitle">Our Products</h1>
+            <p>Explore our comprehensive range of premium elevator components</p>
+        </div>
+    </section>
+
+    <section class="category-filter">
+        <div class="filter-buttons" id="filterButtons">
+        </div>
+    </section>
+
+    <section class="products-section" id="productsContainer">
+        <div class="loading">
+            <i class="fa fa-spinner fa-spin"></i> Loading products...
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <a href="index.html"><img src="./assets/images/index/logoooooooooo-removebg-preview.png" alt="The Lift House"></a>
+                    </div>
+                    <p class="footer-about">
+                        Premium elevator spares and parts delivered nationwide. Excellence and innovation in every product.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="services.html">Services</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <ul class="footer-links" id="footerProductLinks">
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <div class="footer-contact">
+                        <a href="tel:+919829408299"><i class="fa fa-phone"></i> +91 98294 08299</a>
+                        <a href="mailto:siddhamelevators@gmail.com"><i class="fa fa-envelope"></i> siddhamelevators@gmail.com</a>
+                        <a href="#"><i class="fa fa-map-marker-alt"></i> 79-80 Pancholi Vihar Vistar, Narayan Vihar Jaipur 302020</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Lift House. All Rights Reserved.</p>
+                <p>Designed by <a href="#" target="_blank" style="color: var(--secondary)">Socialone.ai</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="whatsapp-float" onclick="buy_now(-1)">
+        <i class="fa-brands fa-whatsapp"></i>
+    </div>
+
+    <div class="back-to-top" onclick="scrollToTop()">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+
+    <script src="./js/raw_data.js"></script>
+    <script>
+        const categoryIcons = {
+            'Accessories': 'fa-cog',
+            'Doors': 'fa-door-open',
+            'Electricals': 'fa-bolt',
+            'Headers': 'fa-building',
+            'Safeties and Hardware': 'fa-shield-alt',
+            'Motor': 'fa-cogs',
+            'Cabin': 'fa-cube',
+            'Control Pannels': 'fa-microchip',
+            'Control Panel Spare Parts': 'fa-tools',
+            'DIVERTER PULLEYES': 'fa-circle-notch',
+            'Filler Counter Weights': 'fa-weight-hanging',
+            'Guide Rail': 'fa-road',
+            'Hardware Parts': 'fa-wrench',
+            'Over Speed Governor (OSG)': 'fa-tachometer-alt'
+        };
+
+        const categoryDescriptions = {
+            'Accessories': 'Premium fittings',
+            'Doors': 'Safety & style',
+            'Electricals': 'Advanced systems',
+            'Headers': 'Modern designs',
+            'Safeties and Hardware': 'Premium safety',
+            'Motor': 'Smooth operation',
+            'Cabin': 'Elegant interiors',
+            'Control Pannels': 'Smart controls',
+            'Control Panel Spare Parts': 'Spare components',
+            'DIVERTER PULLEYES': 'Precision parts',
+            'Filler Counter Weights': 'Balance weights',
+            'Guide Rail': 'Track systems',
+            'Hardware Parts': 'Essential parts',
+            'Over Speed Governor (OSG)': 'Speed governors'
+        };
+
+        let currentFilter = 'all';
+        let allCategories = [];
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+                backToTop.classList.add('visible');
+            } else {
+                header.classList.remove('scrolled');
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function initializePage() {
+            allCategories = data.map(cat => cat.name);
+            createMegaMenu();
+            createFilterButtons();
+            createFooterLinks();
+            loadProducts();
+        }
+
+        function createMegaMenu() {
+            const megaMenuContainer = document.getElementById('megaMenuCategories');
+            let megaMenuHTML = '<div class="mega-grid">';
+            
+            allCategories.forEach(categoryName => {
+                const icon = categoryIcons[categoryName] || 'fa-box';
+                const desc = categoryDescriptions[categoryName] || 'Quality products';
+                
+                megaMenuHTML += `
+                    <div class="mega-category" onclick="loadCategory('${categoryName}')">
+                        <i class="fa ${icon}"></i>
+                        <h4>${categoryName}</h4>
+                        <p>${desc}</p>
+                    </div>
+                `;
+            });
+            
+            megaMenuHTML += '</div>';
+            megaMenuContainer.innerHTML = megaMenuHTML;
+        }
+
+        function createFilterButtons() {
+            const filterContainer = document.getElementById('filterButtons');
+            let buttonsHTML = '<button class="filter-btn active" onclick="filterCategory(\'all\')">All Products</button>';
+            
+            allCategories.slice(0, 7).forEach(categoryName => {
+                const displayName = categoryName === 'Safeties and Hardware' ? 'Safeties & Hardware' : categoryName;
+                buttonsHTML += `<button class="filter-btn" onclick="filterCategory('${categoryName}')">${displayName}</button>`;
+            });
+            
+            filterContainer.innerHTML = buttonsHTML;
+        }
+
+        function createFooterLinks() {
+            const footerLinksContainer = document.getElementById('footerProductLinks');
+            let linksHTML = '';
+            
+            allCategories.slice(0, 5).forEach(categoryName => {
+                linksHTML += `<li><a href="javascript:void(0);" onclick="loadCategory('${categoryName}')">${categoryName}</a></li>`;
+            });
+            
+            footerLinksContainer.innerHTML = linksHTML;
+        }
+
+        function loadProducts() {
+            let category = window.location.hash.substring(1);
+            if (category) {
+                category = decodeURIComponent(category.replace(/%20/g, ' '));
+                currentFilter = category;
+                document.getElementById('categoryTitle').textContent = category;
+                
+                const buttons = document.querySelectorAll('.filter-btn');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                
+                filterCategory(category);
+            } else {
+                filterCategory('all');
+            }
+        }
+
+        function filterCategory(category) {
+            currentFilter = category;
+            
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if ((category === 'all' && btn.textContent === 'All Products') ||
+                    btn.textContent === category ||
+                    (category === 'Safeties and Hardware' && btn.textContent === 'Safeties & Hardware')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            if (category === 'all') {
+                document.getElementById('categoryTitle').textContent = 'Our Products';
+            } else {
+                document.getElementById('categoryTitle').textContent = category;
+            }
+
+            renderProducts(category);
+        }
+
+        function loadCategory(categoryName) {
+            window.location.href = 'products.html#' + encodeURIComponent(categoryName);
+            window.location.reload();
+        }
+
+        async function renderProducts(category) {
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = '<div class="loading"><i class="fa fa-spinner fa-spin"></i> Loading products...</div>';
+
+            try {
+                let productsHTML = '';
+                
+                if (category === 'all') {
+                    for (let cat of allCategories) {
+                        const categoryData = await get_data(cat);
+                        if (categoryData && categoryData.products && categoryData.products.length > 0) {
+                            productsHTML += createCategorySection(cat, categoryData.products);
+                        }
+                    }
+                } else {
+                    const categoryData = await get_data(category);
+                    if (categoryData && categoryData.products && categoryData.products.length > 0) {
+                        productsHTML += createCategorySection(category, categoryData.products);
+                    }
+                }
+
+                if (productsHTML === '') {
+                    container.innerHTML = `
+                        <div class="no-products">
+                            <i class="fa fa-box-open"></i>
+                            <h2>No Products Found</h2>
+                            <p>Products for this category will be available soon.</p>
+                        </div>
+                    `;
+                } else {
+                    container.innerHTML = productsHTML;
+                }
+            } catch (error) {
+                console.error('Error loading products:', error);
+                container.innerHTML = `
+                    <div class="no-products">
+                        <i class="fa fa-exclamation-circle"></i>
+                        <h2>Error Loading Products</h2>
+                        <p>Please try again later.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function createCategorySection(categoryName, products) {
+            let productsGrid = '';
+            
+            products.forEach((productPath, index) => {
+                const productName = extractProductName(productPath);
+                productsGrid += `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="${productPath}" alt="${productName}" onerror="this.src='./assets/images/placeholder.jpg'">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">${productName}</div>
+                            <button class="buy-btn" onclick="buy_now('${categoryName}', ${index})">
+                                <i class="fa-brands fa-whatsapp"></i> Buy Now
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            return `
+                <div class="category-section">
+                    <h2 class="category-title">${categoryName}</h2>
+                    <div class="products-grid">
+                        ${productsGrid}
+                    </div>
+                </div>
+            `;
+        }
+
+        function extractProductName(filePath) {
+            let name = filePath.split('/').pop();
+            name = name.split('.')[0];
+            name = name.replace(/_/g, ' ');
+            name = name.replace(/-/g, ' ');
+            return name.charAt(0).toUpperCase() + name.slice(1);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const megaMenuItem = document.querySelector('.mega-menu-item');
+            
+            if (window.innerWidth <= 1024) {
+                megaMenuItem.addEventListener('click', function(e) {
+                    if (e.target.closest('.mega-menu-trigger')) {
+                        e.preventDefault();
+                        this.classList.toggle('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 1024) {
+                    megaMenuItem.classList.remove('active');
+                }
+            });
+
+            initializePage();
+        });
+
+        window.addEventListener('hashchange', function() {
+            loadProducts();
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
 </html>

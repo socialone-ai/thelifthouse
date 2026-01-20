@@ -158,6 +158,7 @@
     transition: all 0.3s ease;
     z-index: 999;
     padding: 2.5rem;
+    overflow: visible;
 }
 
 
@@ -175,6 +176,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 0;
     padding: 1rem;
+    margin-bottom: 2rem;
 }
 
 .mega-category {
@@ -605,7 +607,155 @@
             font-size: 1.05rem;
         }
 
-        /* Categories Section - 3D Flip Cards */
+        /* Our Products Section */
+.offerings {
+    padding: 8rem 2rem;
+    background: white;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.offerings-container {
+    width: 100%;
+}
+
+.offerings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.offering-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(103, 65, 148, 0.1);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.offering-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(103, 65, 148, 0.2);
+}
+
+.offering-image {
+    position: relative;
+    overflow: hidden;
+    height: 240px;
+    background: linear-gradient(135deg, rgba(103, 65, 148, 0.05) 0%, rgba(129, 145, 201, 0.05) 100%);
+}
+
+.offering-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.offering-card:hover .offering-image img {
+    transform: scale(1.1);
+}
+
+.offering-category-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--gradient);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(103, 65, 148, 0.3);
+}
+
+.offering-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.offering-content h4 {
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    min-height: 2.8rem;
+}
+
+.offering-buttons {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: auto;
+}
+
+.offering-btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    text-decoration: none;
+}
+
+.offering-btn-primary {
+    background: var(--gradient);
+    color: white;
+    box-shadow: 0 4px 15px rgba(103, 65, 148, 0.2);
+}
+
+.offering-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(103, 65, 148, 0.35);
+}
+
+.offering-btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.offering-btn-secondary:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .offerings-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .offering-image {
+        height: 200px;
+    }
+    
+    .offering-buttons {
+        flex-direction: column;
+    }
+    
+    .offering-btn {
+        width: 100%;
+    }
+}
+
+        /* Our Offerings Section - 3D Flip Cards */
         .categories {
             background: linear-gradient(135deg, rgba(103, 65, 148, 0.05) 0%, rgba(129, 145, 201, 0.05) 100%);
             padding: 8rem 2rem;
@@ -1127,7 +1277,7 @@
     <nav class="nav-container">
         <div class="logo">
             <a href="index.html">
-                <img src="./assets/images/index/the-lift-logo-removebg-preview.png" alt="The Lift House">
+                <img src="./assets/images/index/logoooooooooo-removebg-preview.png" alt="The Lift House">
             </a>
         </div>
         <ul class="nav-links">
@@ -1209,9 +1359,17 @@
                             <p>Speed governors</p>
                         </div>
                     </div>
+                    <div style="text-align:center; margin-top:2rem;">
+                        <a href="products.html" class="btn btn-primary">
+                         Show All Products <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+
                 </div>
             </li>
             <li><a href="about-us.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="./assets/catalogue.pdf" target="_blank" download><i class="fa fa-download"></i> Catalogue</a></li>
         </ul>
         <div class="hamburger" onclick="toggleMenu()">
             <div></div>
@@ -1275,36 +1433,11 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about">
-        <div class="section-title">
-            <h2>Why Businesses Trust The Lift House?</h2>
-            <p>We combine technical expertise with unwavering commitment to quality, ensuring your elevator systems operate flawlessly.</p>
-        </div>
-        <div class="about-grid">
-            <div class="about-card">
-                <i class="fa fa-shield-alt"></i>
-                <h3>Premium Quality</h3>
-                <p>Every product undergoes rigorous quality checks to ensure durability, safety, and optimal performance for your elevator systems.</p>
-            </div>
-            <div class="about-card">
-                <i class="fa fa-headset"></i>
-                <h3>Expert Support</h3>
-                <p>Our team of experienced engineers provides personalized guidance and technical support throughout your journey with us.</p>
-            </div>
-            <div class="about-card">
-                <i class="fa fa-shipping-fast"></i>
-                <h3>Fast Delivery</h3>
-                <p>Swift nationwide delivery ensuring your projects stay on schedule with minimal downtime and maximum efficiency.</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Categories Section -->
     <section class="categories">
         <div class="categories-container">
             <div class="section-title">
-                <h2>Product Categories</h2>
+                <h2>Our Offerings</h2>
                 <p>Comprehensive range of elevator components for all your vertical transportation needs.</p>
             </div>
             <div class="categories-grid">
@@ -1416,6 +1549,46 @@
         </div>
     </section>
 
+    <!-- About Section -->
+    <section class="about">
+        <div class="section-title">
+            <h2>Why Businesses Trust The Lift House?</h2>
+            <p>We combine technical expertise with unwavering commitment to quality, ensuring your elevator systems operate flawlessly.</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <i class="fa fa-shield-alt"></i>
+                <h3>Premium Quality</h3>
+                <p>Every product undergoes rigorous quality checks to ensure durability, safety, and optimal performance for your elevator systems.</p>
+            </div>
+            <div class="about-card">
+                <i class="fa fa-headset"></i>
+                <h3>Expert Support</h3>
+                <p>Our team of experienced engineers provides personalized guidance and technical support throughout your journey with us.</p>
+            </div>
+            <div class="about-card">
+                <i class="fa fa-shipping-fast"></i>
+                <h3>Fast Delivery</h3>
+                <p>Swift nationwide delivery ensuring your projects stay on schedule with minimal downtime and maximum efficiency.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Products Section -->
+<section class="offerings">
+    <div class="offerings-container">
+        <div class="section-title">
+            <h2>Our Products</h2>
+            <p>Discover our handpicked selection of premium elevator components across all categories.</p>
+        </div>
+        <div id="offerings-grid" class="offerings-grid">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+    </div>
+</section>
+
+    
+
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-content">
@@ -1442,7 +1615,7 @@
             <!-- About / Logo -->
             <div>
                 <div class="footer-logo">
-                    <a href="index.html"><img src="./assets/images/index/the-lift-logo-removebg-preview.png" alt="The Lift House"></a>
+                    <a href="index.html"><img src="./assets/images/index/logoooooooooo-removebg-preview.png" alt="The Lift House"></a>
                 </div>
                 <p class="footer-about">
                     Premium elevator spares and parts delivered nationwide. Excellence and innovation in every product.
@@ -1512,118 +1685,174 @@
 
     <!-- JavaScript -->
     <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            const backToTop = document.querySelector('.back-to-top');
-            
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-                backToTop.classList.add('visible');
-            } else {
-                header.classList.remove('scrolled');
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        // Mobile menu toggle
-function toggleMenu() {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.classList.toggle('active');
-}
-
-// Mobile mega menu toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const megaMenuItem = document.querySelector('.mega-menu-item');
-    
-    if (window.innerWidth <= 1024) {
-        megaMenuItem.addEventListener('click', function(e) {
-            if (e.target.closest('.mega-menu-trigger')) {
-                e.preventDefault();
-                this.classList.toggle('active');
-            }
-        });
-    }
-    
-    // Re-check on window resize
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 1024) {
-            megaMenuItem.classList.remove('active');
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('.header');
+        const backToTop = document.querySelector('.back-to-top');
+        
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+            backToTop.classList.add('visible');
+        } else {
+            header.classList.remove('scrolled');
+            backToTop.classList.remove('visible');
         }
     });
-});
 
-        // Scroll to top
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+    // Mobile menu toggle
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
+
+    // Mobile mega menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const megaMenuItem = document.querySelector('.mega-menu-item');
+        
+        if (window.innerWidth <= 1024) {
+            megaMenuItem.addEventListener('click', function(e) {
+                if (e.target.closest('.mega-menu-trigger')) {
+                    e.preventDefault();
+                    this.classList.toggle('active');
+                }
             });
         }
-
-        // Load category page
-        function load(page_name) {
-            window.location.replace("products.html#" + page_name);
-        }
-
-        // Buy now function (WhatsApp)
-        function buy_now(productId) {
-            const phoneNumber = "+919829408299";
-            let message = "Hello! I'm interested in your elevator products.";
-            
-            if (productId >= 0 && typeof data !== 'undefined' && data[productId]) {
-                message = `Hello! I'm interested in ${data[productId].name}`;
+        
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                megaMenuItem.classList.remove('active');
             }
-            
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
+        });
+    });
+
+    // Scroll to top
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Load category page
+    function load(page_name) {
+        window.location.replace("products.html#" + page_name);
+    }
+
+    // Buy now function (WhatsApp) - Keep existing one
+    function buy_now(productId) {
+        const phoneNumber = "+919829408299";
+        let message = "Hello! I'm interested in your elevator products.";
+        
+        if (productId >= 0 && typeof data !== 'undefined' && data[productId]) {
+            message = `Hello! I'm interested in ${data[productId].name}`;
+        }
+        
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    }
+
+    // Generate Our Products section
+    function generateOfferings() {
+        // Wait for data to be available
+        if (typeof data === 'undefined') {
+            console.log('Waiting for data to load...');
+            setTimeout(generateOfferings, 100);
+            return;
         }
 
-        // Update products dynamically
-        function update_data() {
-            if (typeof data === 'undefined') {
-                console.error('Product data not loaded');
+        if (typeof flattenProducts === 'undefined') {
+            console.error('flattenProducts function not found');
+            return;
+        }
+
+        console.log('Generating offerings from', data.length, 'categories');
+
+        const categoryIcons = {
+            'Accessories': 'fa-cog',
+            'Doors': 'fa-door-open',
+            'Electricals': 'fa-bolt',
+            'Headers': 'fa-building',
+            'Safeties and Hardware': 'fa-shield-alt',
+            'Motor': 'fa-cogs',
+            'Cabin': 'fa-cube',
+            'Control Pannels': 'fa-microchip',
+            'Control Panel Spare Parts': 'fa-tools',
+            'DIVERTER PULLEYES': 'fa-circle-notch',
+            'Filler Counter Weights': 'fa-weight-hanging',
+            'Guide Rail': 'fa-road',
+            'Hardware Parts': 'fa-wrench',
+            'Over Speed Governor (OSG)': 'fa-tachometer-alt'
+        };
+
+        let offeringsHTML = '';
+        const productsPerCategory = 2;
+
+        data.forEach((category) => {
+            const categoryName = category.name;
+            const categoryIcon = categoryIcons[categoryName] || 'fa-cube';
+            
+            const allProducts = flattenProducts(category);
+            
+            if (!allProducts || allProducts.length === 0) {
                 return;
             }
-
-            let temp_explore = "";
-            const product_ids = [0, 1, 3];
             
-            for (let j = 0; j < product_ids.length; j++) {
-                const i = product_ids[j];
-                if (!data[i]) continue;
+            const selectedProducts = allProducts.slice(0, productsPerCategory);
+            
+            selectedProducts.forEach((productPath) => {
+                const pathParts = productPath.split('/');
+                const fileName = pathParts[pathParts.length - 1];
+                const productName = fileName
+                    .replace(/\.(jpg|jpeg|png|gif|webp)$/i, '')
+                    .replace(/[-_]/g, ' ')
+                    .trim();
                 
-                const discount = Math.round(((data[i].mrp - data[i].discounted) / data[i].mrp) * 100);
+                const phoneNumber = "+919829408299";
+                const whatsappMessage = encodeURIComponent(`Hello! I'm interested in ${productName} from ${categoryName}`);
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
                 
-                temp_explore += `
-                    <div class="product-card">
-                        <div class="product-image">
-                            <a href="product-detail.html?id=${i+1}">
-                                <img src="${data[i].img[0]}" alt="${data[i].name}" />
-                            </a>
-                            ${discount > 0 ? `<div class="product-badge">${discount}% OFF</div>` : ''}
-                        </div>
-                        <div class="product-info">
-                            <h3>${data[i].name}</h3>
-                            <div class="product-price">
-                                <span class="current-price">₹${data[i].discounted}</span>
-                                ${data[i].mrp !== data[i].discounted ? `<span class="old-price">₹${data[i].mrp}</span>` : ''}
+                offeringsHTML += `
+                    <div class="offering-card">
+                        <div class="offering-image">
+                            <img src="${productPath}" alt="${productName}" onerror="this.src='./assets/images/placeholder.jpg'">
+                            <div class="offering-category-badge">
+                                <i class="fa ${categoryIcon}"></i> ${categoryName}
                             </div>
-                            <button class="buy-btn" onclick="buy_now(${i})">
-                                <i class="fa fa-whatsapp"></i> Buy Now
-                            </button>
+                        </div>
+                        <div class="offering-content">
+                            <h4>${productName}</h4>
+                            <div class="offering-buttons">
+                                <a href="products.html#${categoryName}" class="offering-btn offering-btn-secondary">
+                                    <i class="fa fa-search"></i> Explore More
+                                </a>
+                                <a href="${whatsappUrl}" target="_blank" class="offering-btn offering-btn-primary">
+                                    <i class="fa-brands fa-whatsapp"></i> Enquire Now
+                                </a>
+                            </div>
                         </div>
                     </div>
                 `;
-            }
-            
-            document.getElementById("products").innerHTML = temp_explore;
+            });
+        });
+
+        if (offeringsHTML === '') {
+            offeringsHTML = '<p style="text-align:center; color:#666; grid-column: 1/-1;">No products available at the moment.</p>';
         }
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            update_data();
-        });
-    </script>
+        const offeringsGrid = document.getElementById('offerings-grid');
+        if (offeringsGrid) {
+            offeringsGrid.innerHTML = offeringsHTML;
+            console.log('✅ Offerings section populated successfully!');
+        } else {
+            console.error('offerings-grid element not found');
+        }
+    }
+
+    // Initialize when page loads
+    window.addEventListener('load', function() {
+        console.log('Page loaded, initializing offerings...');
+        generateOfferings();
+    });
+</script>
 </body>
 </html>
