@@ -1553,10 +1553,10 @@
                 font-weight: 600;
             }
 
-/* MOBILE: Stats - Infinite Swipeable with 3-dot indicator */
+/* MOBILE: Stats - Swipeable */
 .stats {
     margin: -2rem 1rem 0;
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 1rem 1rem;
 }
 
 .stats-grid {
@@ -1579,30 +1579,13 @@
     padding: 1rem;
 }
 
-/* 3-Dot Indicator for Stats */
+/* Stats carousel dots */
 #stats-dots {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
-    padding: 1.5rem 0 0.5rem 0;
+    padding: 1rem 0 0.5rem 0;
     margin-top: 0.5rem;
-}
-
-#stats-dots .carousel-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(103, 65, 148, 0.3);
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-#stats-dots .carousel-dot.active {
-    width: 24px;
-    border-radius: 4px;
-    background: var(--primary);
 }
 
             /* MOBILE: Section Titles */
@@ -1879,31 +1862,31 @@
         </div>
     </section>
 
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <i class="fa fa-trophy"></i>
-                <div class="stat-number">15+</div>
-                <div class="stat-label">Years Experience</div>
-            </div>
-            <div class="stat-item">
-                <i class="fa fa-box"></i>
-                <div class="stat-number">50,000+</div>
-                <div class="stat-label">Products Delivered</div>
-            </div>
-            <div class="stat-item">
-                <i class="fa fa-users"></i>
-                <div class="stat-number">10,000+</div>
-                <div class="stat-label">Happy Clients</div>
-            </div>
-            <div class="stat-item">
-                <i class="fa fa-map-marker-alt"></i>
-                <div class="stat-number">1000+</div>
-                <div class="stat-label">Cities Covered</div>
-            </div>
+<section class="stats">
+    <div class="stats-grid" data-carousel="stats">
+        <div class="stat-item">
+            <i class="fa fa-trophy"></i>
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Years Experience</div>
         </div>
-        <div id="stats-dots" class="carousel-dots"></div>
-    </section>
+        <div class="stat-item">
+            <i class="fa fa-box"></i>
+            <div class="stat-number">50,000+</div>
+            <div class="stat-label">Products Delivered</div>
+        </div>
+        <div class="stat-item">
+            <i class="fa fa-users"></i>
+            <div class="stat-number">10,000+</div>
+            <div class="stat-label">Happy Clients</div>
+        </div>
+        <div class="stat-item">
+            <i class="fa fa-map-marker-alt"></i>
+            <div class="stat-number">1000+</div>
+            <div class="stat-label">Cities Covered</div>
+        </div>
+    </div>
+    <div id="stats-dots" class="carousel-dots"></div>
+</section>
 
     <section class="categories">
         <div class="categories-container">
@@ -2045,17 +2028,16 @@
         </div>
     </section>
 
-    <section class="offerings">
-        <div class="offerings-container">
-            <div class="section-title">
-                <h2>Our Products</h2>
-                <p>Discover our handpicked selection of premium elevator components across all categories.</p>
-            </div>
-            <div id="offerings-grid" class="offerings-grid" data-carousel="offerings">
-            </div>
-            <div id="offerings-dots" class="carousel-dots"></div>
+<section class="offerings">
+    <div class="offerings-container">
+        <div class="section-title">
+            <h2>Our Products</h2>
+            <p>Discover our handpicked selection of premium elevator components across all categories.</p>
         </div>
-    </section>
+        <div id="offerings-grid" class="offerings-grid">
+        </div>
+    </div>
+</section>
 
     <section class="cta-section">
         <div class="cta-content">
@@ -2410,30 +2392,29 @@ class InfiniteCarousel {
         this.realStartIndex = clonesToAdd;
     }
     
-createDots() {
-    if (!this.dotsContainer) return;
-    
-    this.dotsContainer.innerHTML = '';
-    // Always show exactly 3 dots: Previous • Current • Next
-    for (let i = 0; i < 3; i++) {
-        const dot = document.createElement('button');
-        dot.className = 'carousel-dot';
-        dot.setAttribute('aria-label', `Slide indicator ${i + 1}`);
-        this.dotsContainer.appendChild(dot);
+    createDots() {
+        if (!this.dotsContainer) return;
+        
+        this.dotsContainer.innerHTML = '';
+        this.cards.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot';
+            dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+            dot.addEventListener('click', () => this.goToSlide(index));
+            this.dotsContainer.appendChild(dot);
+        });
+        
+        this.updateDots();
     }
     
-    this.updateDots();
-}
-    
-updateDots() {
-    if (!this.dotsContainer) return;
-    
-    const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
-    // Middle dot is always active (current slide)
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === 1);
-    });
-}
+    updateDots() {
+        if (!this.dotsContainer) return;
+        
+        const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentIndex);
+        });
+    }
     
     attachScrollListener() {
         let scrollTimeout;
@@ -2498,6 +2479,11 @@ updateDots() {
         });
     }
     
+    goToSlide(index) {
+        this.currentIndex = index;
+        this.scrollToIndex(index + this.realStartIndex, true);
+        this.updateDots();
+    }
 }
 
 // ========================================
@@ -2547,25 +2533,23 @@ class MobileMenuCarousel {
         this.realStartIndex = clonesToAdd;
     }
     
-createDots() {
-    this.dotsContainer.innerHTML = '';
-    // Always show exactly 3 dots: Previous • Current • Next
-    for (let i = 0; i < 3; i++) {
-        const dot = document.createElement('button');
-        dot.className = 'carousel-dot';
-        dot.setAttribute('aria-label', `Slide indicator ${i + 1}`);
-        this.dotsContainer.appendChild(dot);
+    createDots() {
+        this.dotsContainer.innerHTML = '';
+        this.cards.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot';
+            dot.addEventListener('click', () => this.goToSlide(index));
+            this.dotsContainer.appendChild(dot);
+        });
+        this.updateDots();
     }
-    this.updateDots();
-}
     
-updateDots() {
-    const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
-    // Middle dot is always active (current slide)
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === 1);
-    });
-}
+    updateDots() {
+        const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentIndex);
+        });
+    }
     
     attachScrollListener() {
         let scrollTimeout;
@@ -2615,6 +2599,11 @@ updateDots() {
         this.grid.scrollTo({ left: scrollPosition, behavior: smooth ? 'smooth' : 'auto' });
     }
     
+    goToSlide(index) {
+        this.currentIndex = index;
+        this.scrollToIndex(index + this.realStartIndex, true);
+        this.updateDots();
+    }
 }
 
 // Initialize mobile menu carousel
@@ -2624,21 +2613,21 @@ if (window.innerWidth <= 768) {
 
 // Initialize carousels on mobile only
 if (window.innerWidth <= 768) {
-    let offeringsCarousel, categoriesCarousel;
+    let statsCarousel, categoriesCarousel;
     
     function initCarousels() {
         // Wait a bit for DOM to be ready
         setTimeout(() => {
+            // Initialize stats carousel
+            if (document.querySelector('.stats-grid')) {
+                statsCarousel = new InfiniteCarousel('.stats-grid', '#stats-dots');
+            }
+            
             // Initialize categories carousel (Our Offerings flip cards)
             if (document.querySelector('.categories-grid')) {
                 categoriesCarousel = new InfiniteCarousel('.categories-grid', '#categories-dots');
             }
-            
-            // Initialize offerings carousel (Our Products)
-            if (document.getElementById('offerings-grid')) {
-                offeringsCarousel = new InfiniteCarousel('#offerings-grid', '#offerings-dots');
-            }
-        }, 1500); // Increased delay to ensure products are loaded
+        }, 1500);
     }
     
     // Initialize when page loads
@@ -2661,132 +2650,6 @@ if (window.innerWidth <= 768) {
         console.log('Page loaded, initializing offerings...');
         generateOfferings();
     });
-    // ========================================
-// MOBILE ONLY: Stats 3-Dot Infinite Carousel
-// ========================================
-class StatsCarousel {
-    constructor() {
-        this.grid = document.querySelector('.stats-grid');
-        this.dotsContainer = document.getElementById('stats-dots');
-        
-        if (!this.grid || !this.dotsContainer || window.innerWidth > 768) return;
-        
-        this.cards = [];
-        this.currentIndex = 0;
-        this.isScrolling = false;
-        
-        this.init();
-    }
-    
-    init() {
-        this.cards = Array.from(this.grid.children).filter(card => !card.classList.contains('cloned'));
-        
-        if (this.cards.length === 0) return;
-        
-        this.cloneCards();
-        this.create3Dots();
-        this.attachScrollListener();
-        this.scrollToIndex(0, false);
-    }
-    
-    cloneCards() {
-        const clonesToAdd = Math.min(2, this.cards.length);
-        
-        // Clone first cards to end
-        for (let i = 0; i < clonesToAdd; i++) {
-            const clone = this.cards[i].cloneNode(true);
-            clone.classList.add('cloned');
-            this.grid.appendChild(clone);
-        }
-        
-        // Clone last cards to beginning
-        for (let i = this.cards.length - clonesToAdd; i < this.cards.length; i++) {
-            const clone = this.cards[i].cloneNode(true);
-            clone.classList.add('cloned');
-            this.grid.insertBefore(clone, this.grid.firstChild);
-        }
-        
-        this.allCards = Array.from(this.grid.children);
-        this.realStartIndex = clonesToAdd;
-    }
-    
-    create3Dots() {
-        this.dotsContainer.innerHTML = '';
-        // Always show exactly 3 dots: Previous • Current • Next
-        for (let i = 0; i < 3; i++) {
-            const dot = document.createElement('button');
-            dot.className = 'carousel-dot';
-            dot.setAttribute('aria-label', `Slide indicator ${i + 1}`);
-            this.dotsContainer.appendChild(dot);
-        }
-        this.update3Dots();
-    }
-    
-    update3Dots() {
-        const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
-        
-        // Middle dot is always active (current slide)
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === 1);
-        });
-    }
-    
-    attachScrollListener() {
-        let scrollTimeout;
-        this.grid.addEventListener('scroll', () => {
-            this.isScrolling = true;
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                this.handleScrollEnd();
-                this.isScrolling = false;
-            }, 150);
-        });
-    }
-    
-    handleScrollEnd() {
-        const scrollLeft = this.grid.scrollLeft;
-        const cardWidth = this.allCards[0].offsetWidth;
-        const gap = 24; // 1.5rem
-        const totalWidth = cardWidth + gap;
-        
-        let newIndex = Math.round(scrollLeft / totalWidth);
-        
-        // Infinite loop logic
-        if (newIndex < this.realStartIndex) {
-            this.currentIndex = this.cards.length - 1;
-            this.scrollToIndex(this.cards.length - 1 + this.realStartIndex, false);
-        } else if (newIndex >= this.realStartIndex + this.cards.length) {
-            this.currentIndex = 0;
-            this.scrollToIndex(this.realStartIndex, false);
-        } else {
-            this.currentIndex = newIndex - this.realStartIndex;
-            this.snapToCard(newIndex);
-        }
-        
-        this.update3Dots();
-    }
-    
-    snapToCard(index) {
-        const cardWidth = this.allCards[0].offsetWidth;
-        const gap = 24;
-        const scrollPosition = index * (cardWidth + gap);
-        this.grid.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-    }
-    
-    scrollToIndex(index, smooth = true) {
-        const cardWidth = this.allCards[0].offsetWidth;
-        const gap = 24;
-        const scrollPosition = index * (cardWidth + gap);
-        this.grid.scrollTo({ left: scrollPosition, behavior: smooth ? 'smooth' : 'auto' });
-    }
-}
-
-// Initialize Stats Carousel
-if (window.innerWidth <= 768) {
-    window.addEventListener('load', () => {
-        setTimeout(() => new StatsCarousel(), 500);
-    });
-}
 </script>
 </body>
 </html>

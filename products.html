@@ -223,16 +223,24 @@
             border-radius: 3px;
         }
 
-        .page-header-compact {
-            margin-top: 90px;
-            padding: 1.5rem 2rem;
-            background: var(--gradient);
-            text-align: center;
-            position: sticky;
-            top: 90px;
-            z-index: 998;
-            box-shadow: 0 2px 10px rgba(103, 65, 148, 0.15);
-        }
+       .page-header-compact {
+    margin-top: 90px;
+    padding: 1.5rem 2rem;
+    background: var(--gradient);
+    text-align: center;
+    position: sticky;
+    top: 90px;
+    z-index: 998;
+    box-shadow: 0 2px 10px rgba(103, 65, 148, 0.15);
+}
+
+/* Add spacing between navbar and header on mobile */
+@media (max-width: 768px) {
+    .page-header-compact {
+        margin-top: 80px;
+        top: 80px;
+    }
+}
 
         .page-header-compact::before {
             content: '';
@@ -259,12 +267,50 @@
             font-weight: 600;
         }
 
-        .products-section {
-            padding: 2rem 2rem 6rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            min-height: 60vh;
-        }
+        /* New filter button in header */
+.page-header-compact-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-toggle-btn-header {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.filter-toggle-btn-header:hover {
+    background: white;
+    color: var(--primary);
+    transform: scale(1.05);
+}
+
+.filter-toggle-btn-header i {
+    transition: transform 0.3s ease;
+}
+
+.filter-toggle-btn-header.active i {
+    transform: rotate(180deg);
+}
+
+.products-section {
+    padding: 3rem 2rem 6rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 60vh;
+    margin-top: 1.5rem;
+}
 
         .category-section {
             margin-bottom: 5rem;
@@ -594,15 +640,24 @@
             }
         }
 
+        
+
         @media (max-width: 768px) {
 
-            .page-header-compact {
-        top: 80px;
-        padding: 1rem 1.5rem;
+    .page-header-compact {
+        margin-top: 85px;
+        top: 85px;
+        padding: 1.2rem 1.5rem;
     }
 
     .page-header-compact h1 {
         font-size: 1.5rem;
+        margin-bottom: 0;
+    }
+    .filter-toggle-btn-header {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
     }
 
     .category-filter {
@@ -882,8 +937,8 @@
     </style>
 </head>
 <body>
-    <!-- Filter Toggle Button -->
-<button class="filter-toggle-btn" id="filterToggle">
+<!-- Filter Toggle Button -->
+<button class="filter-toggle-btn" id="filterToggle" style="display: none;">
     <i class="fas fa-sliders-h"></i>
 </button>
 
@@ -929,11 +984,14 @@
         </nav>
     </header>
 
-    <section class="page-header-compact">
+<section class="page-header-compact">
     <div class="page-header-compact-content">
         <h1 id="categoryTitle">Our Products</h1>
+        <button class="filter-toggle-btn-header" id="filterToggleHeader">
+            <i class="fas fa-sliders-h"></i>
+        </button>
     </div>
-    </section>
+</section>
 
     <section class="products-section" id="productsContainer">
         <div class="loading">
@@ -1337,7 +1395,7 @@
 // SIDE FILTER PANEL FUNCTIONALITY
 // ============================================
 
-const filterToggle = document.getElementById('filterToggle');
+const filterToggle = document.getElementById('filterToggleHeader') || document.getElementById('filterToggle');
 const filterPanel = document.getElementById('filterPanel');
 const filterOverlay = document.getElementById('filterOverlay');
 const isMobile = () => window.innerWidth <= 768;
