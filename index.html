@@ -290,116 +290,141 @@
     }
 
     /* ========================================
-       MOBILE FIX: Products Dropdown
-       ======================================== */
-    .mega-menu-trigger {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        padding: 1rem;
-        background: transparent;
-        border: none;
-        text-align: left;
-        font-size: 1.1rem;
-        font-weight: 500;
-        color: var(--dark);
-    }
+   MOBILE FIX: Products Dropdown
+   ======================================== */
+.mega-menu-trigger {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--dark);
+}
 
-    .mega-dropdown-icon {
-        transition: transform 0.3s ease;
-    }
+/* ✅ FIXED: Always open on mobile, no toggle icon */
+.mega-dropdown-icon {
+    display: none !important; /* Hide dropdown arrow on mobile */
+}
 
-    .mega-menu-item.mobile-active .mega-dropdown-icon {
-        transform: rotate(180deg);
-    }
+/* ✅ COMPLETE FIX: Mobile dropdown container - ALWAYS VISIBLE */
+.mega-menu-content {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    box-shadow: none;
+    display: block !important; /* Always visible */
+    margin: 0;
+    padding: 1rem 0;
+    border-radius: 0;
+    background: #f8f9fa;
+    width: 100%;
+    max-width: 100%;
+    max-height: none !important;
+    overflow: visible;
+    transition: none;
+}
 
-    /* ✅ COMPLETE FIX: Mobile dropdown container */
-    .mega-menu-content {
-        position: static !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: none !important;
-        box-shadow: none;
-        display: none;
-        margin: 0;
-        padding: 1rem 0;
-        border-radius: 0;
-        background: #f8f9fa;
-        width: 100%;
-        max-width: 100%;
-        max-height: none !important;
-        overflow: visible;
-        transition: none;
-    }
+/* Remove the mobile-active class requirement */
+.mega-menu-item.mobile-active .mega-menu-content {
+    display: block !important;
+}
 
-    .mega-menu-item.mobile-active .mega-menu-content {
-        display: block !important;
-    }
+/* ✅ NEW: Reorder children - Show All Products comes FIRST visually */
+.mega-menu-content {
+    display: flex !important;
+    flex-direction: column-reverse; /* Reverses order: grid bottom, button top */
+}
 
-    /* ✅ FIXED: Horizontal swipeable grid */
-    .mega-grid {
-        display: flex !important;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        gap: 0.8rem;
-        padding: 1rem;
-        margin: 0;
-        margin-bottom: 1rem;
-        scrollbar-width: none;
-        grid-template-columns: none !important; /* Override desktop grid */
-    }
+/* ✅ FIXED: Horizontal swipeable grid */
+.mega-grid {
+    display: flex !important;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.8rem;
+    padding: 1rem;
+    margin: 0;
+    margin-bottom: 0rem; /* Remove bottom margin */
+    scrollbar-width: none;
+    grid-template-columns: none !important;
+    position: relative;
+}
 
-    /* Hide scrollbar */
-    .mega-grid::-webkit-scrollbar {
-        display: none;
-    }
+/* Hide scrollbar */
+.mega-grid::-webkit-scrollbar {
+    display: none;
+}
 
-    /* ✅ FIXED: Card sizing */
-    .mega-category {
-        flex: 0 0 75%;
-        scroll-snap-align: center;
-        padding: 1.2rem 1rem;
-        min-width: 0;
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+/* ✅ FIXED: Card sizing */
+.mega-category {
+    flex: 0 0 75%;
+    scroll-snap-align: center;
+    padding: 1.2rem 1rem;
+    min-width: 0;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-    .mega-category i {
-        font-size: 2.2rem;
-    }
+.mega-category i {
+    font-size: 2.2rem;
+}
 
-    .mega-category h4 {
-        font-size: 0.95rem;
-    }
+.mega-category h4 {
+    font-size: 0.95rem;
+}
 
-    .mega-category p {
-        font-size: 0.75rem;
-    }
+.mega-category p {
+    font-size: 0.75rem;
+}
 
-    /* Show All Products button in mobile */
-    .mega-menu-content > div[style*="text-align:center"] {
-        padding: 0 1rem 1rem 1rem;
-        display: block !important;
-    }
+/* ✅ NEW: Show All Products button styling */
+.mega-menu-content > div[style*="text-align:center"] {
+    padding: 1rem 1rem 0.5rem 1rem;
+    display: block !important;
+    order: -1; /* Ensure it comes first */
+}
 
-    /* Swipe indicator */
-    .mega-menu-content::after {
-        content: '← Swipe to explore →';
-        display: block;
-        text-align: center;
-        color: var(--primary);
-        font-size: 0.85rem;
-        padding: 0.5rem 1rem;
-        font-weight: 600;
-        background: #f8f9fa;
-    }
+/* ✅ NEW: Carousel dots for mobile menu products */
+.mobile-menu-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 0 0.5rem 0;
+    background: #f8f9fa;
+}
 
-    .hamburger {
+.mobile-menu-dots .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(103, 65, 148, 0.3);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-dots .carousel-dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background: var(--primary);
+}
+
+/* Remove old swipe indicator */
+.mega-menu-content::after {
+    display: none !important;
+}
+
+.hamburger {
         display: flex;
         z-index: 1001;
     }
@@ -415,7 +440,9 @@
     .hamburger.active div:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -7px);
     }
+
 }
+
 @media (max-width: 768px) {
     /* Even smaller screens: 85% card width */
     .mega-category {
@@ -1338,6 +1365,8 @@
                 padding: 1rem 0.5rem;
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: none;
+                position: relative;
+                width: 100%;
             }
 
             .categories-grid::-webkit-scrollbar {
@@ -1348,6 +1377,10 @@
                 flex: 0 0 85%;
                 scroll-snap-align: center;
                 height: 280px;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                transition: none !important;
             }
 
             .flip-card-container:hover .flip-card {
@@ -1387,50 +1420,81 @@
             }
 
             /* MOBILE: About Cards - Accordion Style */
-            .about {
-                padding: 4rem 1rem;
-            }
+.about {
+    padding: 4rem 1rem;
+}
 
-            .about-grid {
-                gap: 1rem;
-                margin-top: 2rem;
-            }
+.about-grid {
+    gap: 1rem;
+    margin-top: 2rem;
+}
 
-            .about-card {
-                padding: 1.5rem;
-                cursor: pointer;
-                max-height: 100px;
-                overflow: hidden;
-                transition: max-height 0.4s ease, padding 0.4s ease;
-            }
+.about-card {
+    padding: 1.5rem;
+    cursor: pointer;
+    max-height: 90px;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    position: relative;
+}
 
-            .about-card.expanded {
-                max-height: 500px;
-                padding: 2rem 1.5rem;
-            }
+.about-card.expanded {
+    max-height: 500px;
+    padding: 2rem 1.5rem;
+}
 
-            .about-card::after {
-                content: '▼';
-                position: absolute;
-                top: 1.5rem;
-                right: 1.5rem;
-                color: var(--primary);
-                font-size: 1.2rem;
-                transition: transform 0.3s ease;
-            }
+/* Hide icon when collapsed, show heading */
+.about-card i {
+    display: none;
+}
 
-            .about-card.expanded::after {
-                transform: rotate(180deg);
-            }
+.about-card.expanded i {
+    display: block;
+}
 
-            .about-card p {
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            }
+/* Show heading prominently when collapsed */
+.about-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    opacity: 1;
+    transition: all 0.3s ease;
+    padding-right: 2rem; /* Space for arrow */
+}
 
-            .about-card.expanded p {
-                opacity: 1;
-            }
+.about-card.expanded h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+/* Expand/collapse indicator */
+.about-card::after {
+    content: '▼';
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: var(--primary);
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.about-card.expanded::after {
+    transform: rotate(180deg);
+}
+
+/* Hide description when collapsed */
+.about-card p {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.about-card.expanded p {
+    opacity: 1;
+    max-height: 200px;
+    margin-top: 1rem;
+}
 
             /* MOBILE: Offerings Grid - Swipeable */
             .offerings {
@@ -1451,6 +1515,8 @@
                 padding: 0.5rem;
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: none;
+                position: relative;
+                width: 100%;
             }
 
             .offerings-grid::-webkit-scrollbar {
@@ -1460,6 +1526,9 @@
             .offering-card {
                 flex: 0 0 85%;
                 scroll-snap-align: center;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
             }
 
             .offering-image {
@@ -1484,31 +1553,57 @@
                 font-weight: 600;
             }
 
-            /* MOBILE: Stats - Swipeable */
-            .stats {
-                margin: -2rem 1rem 0;
-                padding: 2rem 1rem;
-            }
+/* MOBILE: Stats - Infinite Swipeable with 3-dot indicator */
+.stats {
+    margin: -2rem 1rem 0;
+    padding: 2rem 1rem;
+}
 
-            .stats-grid {
-                display: flex;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                gap: 1.5rem;
-                padding: 1rem 0;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-            }
+.stats-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
 
-            .stats-grid::-webkit-scrollbar {
-                display: none;
-            }
+.stats-grid::-webkit-scrollbar {
+    display: none;
+}
 
-            .stat-item {
-                flex: 0 0 70%;
-                scroll-snap-align: center;
-                padding: 1rem;
-            }
+.stat-item {
+    flex: 0 0 70%;
+    scroll-snap-align: center;
+    padding: 1rem;
+}
+
+/* 3-Dot Indicator for Stats */
+#stats-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.5rem 0 0.5rem 0;
+    margin-top: 0.5rem;
+}
+
+#stats-dots .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(103, 65, 148, 0.3);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#stats-dots .carousel-dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background: var(--primary);
+}
 
             /* MOBILE: Section Titles */
             .section-title h2 {
@@ -1611,6 +1706,45 @@
                 flex: 0 0 90%;
             }
         }
+        /* ========================================
+   MOBILE ONLY: Carousel Dots Indicator
+   ======================================== */
+@media (max-width: 768px) {
+    .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1.5rem 0 1rem 0;
+        margin-top: 0.5rem;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(103, 65, 148, 0.3);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .carousel-dot.active {
+        width: 24px;
+        border-radius: 4px;
+        background: var(--primary);
+    }
+
+    .carousel-dot:hover {
+        background: var(--primary);
+    }
+
+    /* Remove the static swipe text */
+    .categories::after,
+    .offerings::after {
+        display: none !important;
+    }
+}
     </style>
 </head>
 <body>
@@ -1700,6 +1834,7 @@
                                 <p>Speed governors</p>
                             </div>
                         </div>
+                        <div id="mobile-menu-dots" class="mobile-menu-dots"></div>
                         <div style="text-align:center; margin-top:2rem;">
                             <a href="products.html" class="btn btn-primary">
                                 Show All Products <i class="fa fa-arrow-right"></i>
@@ -1767,6 +1902,7 @@
                 <div class="stat-label">Cities Covered</div>
             </div>
         </div>
+        <div id="stats-dots" class="carousel-dots"></div>
     </section>
 
     <section class="categories">
@@ -1775,7 +1911,7 @@
                 <h2>Our Offerings</h2>
                 <p>Comprehensive range of elevator components for all your vertical transportation needs.</p>
             </div>
-            <div class="categories-grid">
+            <div class="categories-grid" data-carousel="categories">
                 <div class="flip-card-container" onclick="toggleFlipCard(this, 'Accessories')">
                     <div class="flip-card">
                         <div class="flip-card-front">
@@ -1881,6 +2017,7 @@
                     </div>
                 </div>
             </div>
+            <div id="categories-dots" class="carousel-dots"></div>
         </div>
     </section>
 
@@ -1914,8 +2051,9 @@
                 <h2>Our Products</h2>
                 <p>Discover our handpicked selection of premium elevator components across all categories.</p>
             </div>
-            <div id="offerings-grid" class="offerings-grid">
+            <div id="offerings-grid" class="offerings-grid" data-carousel="offerings">
             </div>
+            <div id="offerings-dots" class="carousel-dots"></div>
         </div>
     </section>
 
@@ -2065,22 +2203,22 @@
     }
 
     // ========================================
-    // MOBILE-SPECIFIC: About Card Accordion
-    // ========================================
-    function toggleAboutCard(card) {
-        if (window.innerWidth <= 768) {
-            // Close all other cards
-            const allCards = document.querySelectorAll('.about-card');
-            allCards.forEach(c => {
-                if (c !== card) {
-                    c.classList.remove('expanded');
-                }
-            });
-            
-            // Toggle current card
-            card.classList.toggle('expanded');
-        }
+// MOBILE-SPECIFIC: About Card Accordion
+// ========================================
+function toggleAboutCard(card) {
+    if (window.innerWidth <= 768) {
+        // Close all other cards
+        const allCards = document.querySelectorAll('.about-card');
+        allCards.forEach(c => {
+            if (c !== card) {
+                c.classList.remove('expanded');
+            }
+        });
+        
+        // Toggle current card
+        card.classList.toggle('expanded');
     }
+}
 
     // Header scroll effect
     window.addEventListener('scroll', function() {
@@ -2217,12 +2355,438 @@
             console.error('offerings-grid element not found');
         }
     }
+// ========================================
+// MOBILE ONLY: Infinite Carousel System (FIXED)
+// ========================================
+class InfiniteCarousel {
+    constructor(gridSelector, dotsSelector) {
+        this.grid = document.querySelector(gridSelector);
+        this.dotsContainer = document.querySelector(dotsSelector);
+        
+        if (!this.grid || window.innerWidth > 768) return;
+        
+        this.cards = [];
+        this.currentIndex = 0;
+        this.isScrolling = false;
+        
+        this.init();
+    }
+    
+    init() {
+        // Wait for cards to be populated
+        setTimeout(() => {
+            this.cards = Array.from(this.grid.children).filter(card => !card.classList.contains('cloned'));
+            
+            if (this.cards.length === 0) {
+                setTimeout(() => this.init(), 500);
+                return;
+            }
+            
+            this.cloneCards();
+            this.createDots();
+            this.attachScrollListener();
+            this.scrollToIndex(0, false); // Start at first real card
+        }, 100);
+    }
+    
+    cloneCards() {
+        const clonesToAdd = Math.min(2, this.cards.length);
+        
+        // Clone first cards to end
+        for (let i = 0; i < clonesToAdd; i++) {
+            const clone = this.cards[i].cloneNode(true);
+            clone.classList.add('cloned');
+            this.grid.appendChild(clone);
+        }
+        
+        // Clone last cards to beginning
+        for (let i = this.cards.length - clonesToAdd; i < this.cards.length; i++) {
+            const clone = this.cards[i].cloneNode(true);
+            clone.classList.add('cloned');
+            this.grid.insertBefore(clone, this.grid.firstChild);
+        }
+        
+        this.allCards = Array.from(this.grid.children);
+        this.realStartIndex = clonesToAdd;
+    }
+    
+createDots() {
+    if (!this.dotsContainer) return;
+    
+    this.dotsContainer.innerHTML = '';
+    // Always show exactly 3 dots: Previous • Current • Next
+    for (let i = 0; i < 3; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot';
+        dot.setAttribute('aria-label', `Slide indicator ${i + 1}`);
+        this.dotsContainer.appendChild(dot);
+    }
+    
+    this.updateDots();
+}
+    
+updateDots() {
+    if (!this.dotsContainer) return;
+    
+    const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+    // Middle dot is always active (current slide)
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === 1);
+    });
+}
+    
+    attachScrollListener() {
+        let scrollTimeout;
+        
+        this.grid.addEventListener('scroll', () => {
+            this.isScrolling = true;
+            
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                this.handleScrollEnd();
+                this.isScrolling = false;
+            }, 150);
+        });
+    }
+    
+    handleScrollEnd() {
+        const scrollLeft = this.grid.scrollLeft;
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 16;
+        const totalWidth = cardWidth + gap;
+        
+        // Calculate which card we're closest to
+        let newIndex = Math.round(scrollLeft / totalWidth);
+        
+        // Update current index based on real cards
+        if (newIndex < this.realStartIndex) {
+            // We're in cloned start cards, jump to real end
+            this.currentIndex = this.cards.length - 1;
+            this.scrollToIndex(this.cards.length - 1 + this.realStartIndex, false);
+        } else if (newIndex >= this.realStartIndex + this.cards.length) {
+            // We're in cloned end cards, jump to real start
+            this.currentIndex = 0;
+            this.scrollToIndex(this.realStartIndex, false);
+        } else {
+            // We're in real cards
+            this.currentIndex = newIndex - this.realStartIndex;
+            this.snapToCard(newIndex);
+        }
+        
+        this.updateDots();
+    }
+    
+    snapToCard(index) {
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 16;
+        const scrollPosition = index * (cardWidth + gap);
+        
+        this.grid.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+        });
+    }
+    
+    scrollToIndex(index, smooth = true) {
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 16;
+        const scrollPosition = index * (cardWidth + gap);
+        
+        this.grid.scrollTo({
+            left: scrollPosition,
+            behavior: smooth ? 'smooth' : 'auto'
+        });
+    }
+    
+}
+
+// ========================================
+// MOBILE MENU: Products Carousel with Infinite Scroll
+// ========================================
+class MobileMenuCarousel {
+    constructor() {
+        this.grid = document.querySelector('.mega-grid');
+        this.dotsContainer = document.getElementById('mobile-menu-dots');
+        
+        if (!this.grid || !this.dotsContainer || window.innerWidth > 768) return;
+        
+        this.cards = [];
+        this.currentIndex = 0;
+        this.isScrolling = false;
+        
+        this.init();
+    }
+    
+    init() {
+        this.cards = Array.from(this.grid.children).filter(card => !card.classList.contains('cloned'));
+        
+        if (this.cards.length === 0) return;
+        
+        this.cloneCards();
+        this.createDots();
+        this.attachScrollListener();
+        this.scrollToIndex(0, false);
+    }
+    
+    cloneCards() {
+        const clonesToAdd = Math.min(2, this.cards.length);
+        
+        for (let i = 0; i < clonesToAdd; i++) {
+            const clone = this.cards[i].cloneNode(true);
+            clone.classList.add('cloned');
+            this.grid.appendChild(clone);
+        }
+        
+        for (let i = this.cards.length - clonesToAdd; i < this.cards.length; i++) {
+            const clone = this.cards[i].cloneNode(true);
+            clone.classList.add('cloned');
+            this.grid.insertBefore(clone, this.grid.firstChild);
+        }
+        
+        this.allCards = Array.from(this.grid.children);
+        this.realStartIndex = clonesToAdd;
+    }
+    
+createDots() {
+    this.dotsContainer.innerHTML = '';
+    // Always show exactly 3 dots: Previous • Current • Next
+    for (let i = 0; i < 3; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot';
+        dot.setAttribute('aria-label', `Slide indicator ${i + 1}`);
+        this.dotsContainer.appendChild(dot);
+    }
+    this.updateDots();
+}
+    
+updateDots() {
+    const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+    // Middle dot is always active (current slide)
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === 1);
+    });
+}
+    
+    attachScrollListener() {
+        let scrollTimeout;
+        this.grid.addEventListener('scroll', () => {
+            this.isScrolling = true;
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                this.handleScrollEnd();
+                this.isScrolling = false;
+            }, 150);
+        });
+    }
+    
+    handleScrollEnd() {
+        const scrollLeft = this.grid.scrollLeft;
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 12.8;
+        const totalWidth = cardWidth + gap;
+        
+        let newIndex = Math.round(scrollLeft / totalWidth);
+        
+        if (newIndex < this.realStartIndex) {
+            this.currentIndex = this.cards.length - 1;
+            this.scrollToIndex(this.cards.length - 1 + this.realStartIndex, false);
+        } else if (newIndex >= this.realStartIndex + this.cards.length) {
+            this.currentIndex = 0;
+            this.scrollToIndex(this.realStartIndex, false);
+        } else {
+            this.currentIndex = newIndex - this.realStartIndex;
+            this.snapToCard(newIndex);
+        }
+        
+        this.updateDots();
+    }
+    
+    snapToCard(index) {
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 12.8;
+        const scrollPosition = index * (cardWidth + gap);
+        this.grid.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+    }
+    
+    scrollToIndex(index, smooth = true) {
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 12.8;
+        const scrollPosition = index * (cardWidth + gap);
+        this.grid.scrollTo({ left: scrollPosition, behavior: smooth ? 'smooth' : 'auto' });
+    }
+    
+}
+
+// Initialize mobile menu carousel
+if (window.innerWidth <= 768) {
+    setTimeout(() => new MobileMenuCarousel(), 500);
+}
+
+// Initialize carousels on mobile only
+if (window.innerWidth <= 768) {
+    let offeringsCarousel, categoriesCarousel;
+    
+    function initCarousels() {
+        // Wait a bit for DOM to be ready
+        setTimeout(() => {
+            // Initialize categories carousel (Our Offerings flip cards)
+            if (document.querySelector('.categories-grid')) {
+                categoriesCarousel = new InfiniteCarousel('.categories-grid', '#categories-dots');
+            }
+            
+            // Initialize offerings carousel (Our Products)
+            if (document.getElementById('offerings-grid')) {
+                offeringsCarousel = new InfiniteCarousel('#offerings-grid', '#offerings-dots');
+            }
+        }, 1500); // Increased delay to ensure products are loaded
+    }
+    
+    // Initialize when page loads
+    initCarousels();
+    
+    // Reinitialize on resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (window.innerWidth <= 768) {
+                initCarousels();
+            }
+        }, 250);
+    });
+}
 
     // Initialize when page loads
     window.addEventListener('load', function() {
         console.log('Page loaded, initializing offerings...');
         generateOfferings();
     });
+    // ========================================
+// MOBILE ONLY: Stats 3-Dot Infinite Carousel
+// ========================================
+class StatsCarousel {
+    constructor() {
+        this.grid = document.querySelector('.stats-grid');
+        this.dotsContainer = document.getElementById('stats-dots');
+        
+        if (!this.grid || !this.dotsContainer || window.innerWidth > 768) return;
+        
+        this.cards = [];
+        this.currentIndex = 0;
+        this.isScrolling = false;
+        
+        this.init();
+    }
+    
+    init() {
+        this.cards = Array.from(this.grid.children).filter(card => !card.classList.contains('cloned'));
+        
+        if (this.cards.length === 0) return;
+        
+        this.cloneCards();
+        this.create3Dots();
+        this.attachScrollListener();
+        this.scrollToIndex(0, false);
+    }
+    
+    cloneCards() {
+        const clonesToAdd = Math.min(2, this.cards.length);
+        
+        // Clone first cards to end
+        for (let i = 0; i < clonesToAdd; i++) {
+            const clone = this.cards[i].cloneNode(true);
+            clone.classList.add('cloned');
+            this.grid.appendChild(clone);
+        }
+        
+        // Clone last cards to beginning
+        for (let i = this.cards.length - clonesToAdd; i < this.cards.length; i++) {
+            const clone = this.cards[i].cloneNode(true);
+            clone.classList.add('cloned');
+            this.grid.insertBefore(clone, this.grid.firstChild);
+        }
+        
+        this.allCards = Array.from(this.grid.children);
+        this.realStartIndex = clonesToAdd;
+    }
+    
+    create3Dots() {
+        this.dotsContainer.innerHTML = '';
+        // Always show exactly 3 dots: Previous • Current • Next
+        for (let i = 0; i < 3; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot';
+            dot.setAttribute('aria-label', `Slide indicator ${i + 1}`);
+            this.dotsContainer.appendChild(dot);
+        }
+        this.update3Dots();
+    }
+    
+    update3Dots() {
+        const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+        
+        // Middle dot is always active (current slide)
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === 1);
+        });
+    }
+    
+    attachScrollListener() {
+        let scrollTimeout;
+        this.grid.addEventListener('scroll', () => {
+            this.isScrolling = true;
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                this.handleScrollEnd();
+                this.isScrolling = false;
+            }, 150);
+        });
+    }
+    
+    handleScrollEnd() {
+        const scrollLeft = this.grid.scrollLeft;
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 24; // 1.5rem
+        const totalWidth = cardWidth + gap;
+        
+        let newIndex = Math.round(scrollLeft / totalWidth);
+        
+        // Infinite loop logic
+        if (newIndex < this.realStartIndex) {
+            this.currentIndex = this.cards.length - 1;
+            this.scrollToIndex(this.cards.length - 1 + this.realStartIndex, false);
+        } else if (newIndex >= this.realStartIndex + this.cards.length) {
+            this.currentIndex = 0;
+            this.scrollToIndex(this.realStartIndex, false);
+        } else {
+            this.currentIndex = newIndex - this.realStartIndex;
+            this.snapToCard(newIndex);
+        }
+        
+        this.update3Dots();
+    }
+    
+    snapToCard(index) {
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 24;
+        const scrollPosition = index * (cardWidth + gap);
+        this.grid.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+    }
+    
+    scrollToIndex(index, smooth = true) {
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 24;
+        const scrollPosition = index * (cardWidth + gap);
+        this.grid.scrollTo({ left: scrollPosition, behavior: smooth ? 'smooth' : 'auto' });
+    }
+}
+
+// Initialize Stats Carousel
+if (window.innerWidth <= 768) {
+    window.addEventListener('load', () => {
+        setTimeout(() => new StatsCarousel(), 500);
+    });
+}
 </script>
 </body>
 </html>

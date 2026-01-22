@@ -223,16 +223,18 @@
             border-radius: 3px;
         }
 
-        .page-header {
+        .page-header-compact {
             margin-top: 90px;
-            padding: 4rem 2rem;
+            padding: 1.5rem 2rem;
             background: var(--gradient);
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            position: sticky;
+            top: 90px;
+            z-index: 998;
+            box-shadow: 0 2px 10px rgba(103, 65, 148, 0.15);
         }
 
-        .page-header::before {
+        .page-header-compact::before {
             content: '';
             position: absolute;
             top: 0;
@@ -243,63 +245,25 @@
             opacity: 0.3;
         }
 
-        .page-header-content {
+        .page-header-compact-content {
             position: relative;
             z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .page-header h1 {
-            font-size: 3.5rem;
-            color: white;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .category-filter {
-            padding: 3rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .filter-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 3rem;
-        }
-
-        .filter-btn {
-            padding: 0.8rem 2rem;
-            background: white;
-            color: var(--dark);
-            border: 2px solid var(--primary);
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--gradient);
+       .page-header-compact h1 {
+            font-size: 1.8rem;
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(103, 65, 148, 0.3);
+            margin: 0;
+            font-weight: 600;
         }
 
         .products-section {
             padding: 2rem 2rem 6rem;
             max-width: 1400px;
             margin: 0 auto;
+            min-height: 60vh;
         }
 
         .category-section {
@@ -631,6 +595,40 @@
         }
 
         @media (max-width: 768px) {
+
+            .page-header-compact {
+        top: 80px;
+        padding: 1rem 1.5rem;
+    }
+
+    .page-header-compact h1 {
+        font-size: 1.5rem;
+    }
+
+    .category-filter {
+        top: 125px;
+        padding: 1rem 1rem;
+    }
+
+    .filter-buttons {
+        gap: 0.5rem;
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .filter-buttons::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+
             .mega-grid {
                 grid-template-columns: 1fr;
             }
@@ -662,9 +660,247 @@
                 text-align: center;
             }
         }
+/* ============================================
+   COLLAPSIBLE SIDE FILTER PANEL STYLES
+   ============================================ */
+
+/* Filter Toggle Button */
+.filter-toggle-btn {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    background: var(--gradient);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(103, 65, 148, 0.4);
+    z-index: 1001;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-toggle-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 30px rgba(103, 65, 148, 0.5);
+}
+
+.filter-toggle-btn.active {
+    left: auto;
+    right: 20px;
+}
+
+.filter-toggle-btn i {
+    transition: transform 0.3s ease;
+}
+
+.filter-toggle-btn.active i {
+    transform: rotate(180deg);
+}
+
+/* Side Filter Panel */
+.side-filter-panel {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: 2px 0 30px rgba(103, 65, 148, 0.2);
+    z-index: 1000;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.side-filter-panel.open {
+    left: 0;
+}
+
+.side-filter-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.side-filter-panel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.side-filter-panel::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+/* Filter Panel Header */
+.filter-panel-header {
+    padding: 2rem 1.5rem 1.5rem;
+    background: var(--gradient);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    margin-bottom: 0;
+}
+
+.filter-panel-header h3 {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+}
+
+.filter-panel-header p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+}
+
+/* Filter List */
+.filter-list {
+    padding: 1.5rem 1rem;
+}
+
+/* Filter Items */
+.filter-item {
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.6rem;
+    background: #f8f9fa;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filter-item:hover {
+    border-color: var(--primary);
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(103, 65, 148, 0.15);
+}
+
+.filter-item.active {
+    background: var(--gradient);
+    border-color: transparent;
+    box-shadow: 0 5px 20px rgba(103, 65, 148, 0.3);
+}
+
+.filter-item i {
+    font-size: 1.3rem;
+    color: var(--primary);
+    transition: all 0.3s ease;
+    min-width: 25px;
+    text-align: center;
+}
+
+.filter-item.active i {
+    color: white;
+    transform: scale(1.1);
+}
+
+.filter-item-content {
+    flex: 1;
+    white-space: nowrap;
+}
+
+.filter-item-title {
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+}
+
+.filter-item.active .filter-item-title {
+    color: white;
+}
+
+.filter-item-desc {
+    font-size: 0.75rem;
+    color: #999;
+}
+
+.filter-item.active .filter-item-desc {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Filter Overlay (for mobile) */
+.filter-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.filter-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .filter-toggle-btn {
+        left: 15px;
+        width: 55px;
+        height: 55px;
+        font-size: 1.3rem;
+    }
+
+    .filter-toggle-btn.active {
+        left: auto;
+        right: 15px;
+    }
+
+    .side-filter-panel {
+        left: -100%;
+        width: calc(100% - 70px);
+        max-height: 90vh;
+        border-radius: 0 15px 15px 0;
+    }
+
+    .side-filter-panel.open {
+        left: 0;
+    }
+}
+
+/* Hide the old category-filter section */
+.category-filter {
+    display: none;
+}
+
     </style>
 </head>
 <body>
+    <!-- Filter Toggle Button -->
+<button class="filter-toggle-btn" id="filterToggle">
+    <i class="fas fa-sliders-h"></i>
+</button>
+
+<!-- Filter Overlay (for mobile) -->
+<div class="filter-overlay" id="filterOverlay"></div>
+
+<!-- Side Filter Panel -->
+<div class="side-filter-panel" id="filterPanel">
+    <div class="filter-panel-header">
+        <h3>Filter Products</h3>
+        <p>Select a category</p>
+    </div>
+
+    <div class="filter-list" id="sideFilterList">
+        <!-- Filters will be dynamically inserted here by JavaScript -->
+    </div>
+</div>
     <header class="header">
         <nav class="nav-container">
             <div class="logo">
@@ -693,16 +929,10 @@
         </nav>
     </header>
 
-    <section class="page-header">
-        <div class="page-header-content">
-            <h1 id="categoryTitle">Our Products</h1>
-            <p>Explore our comprehensive range of premium elevator components</p>
-        </div>
-    </section>
-
-    <section class="category-filter">
-        <div class="filter-buttons" id="filterButtons">
-        </div>
+    <section class="page-header-compact">
+    <div class="page-header-compact-content">
+        <h1 id="categoryTitle">Our Products</h1>
+    </div>
     </section>
 
     <section class="products-section" id="productsContainer">
@@ -871,17 +1101,39 @@
             megaMenuContainer.innerHTML = megaMenuHTML;
         }
 
-        function createFilterButtons() {
-            const filterContainer = document.getElementById('filterButtons');
-            let buttonsHTML = '<button class="filter-btn active" onclick="filterCategory(\'all\')">All Products</button>';
+       function createFilterButtons() {
+    // Create side filter panel items ONLY
+    const sideFilterList = document.getElementById('sideFilterList');
+    if (sideFilterList) {
+        let filterHTML = `
+            <div class="filter-item active" data-category="all" onclick="selectSideFilter(this, 'all')">
+                <i class="fa fa-th"></i>
+                <div class="filter-item-content">
+                    <div class="filter-item-title">All Products</div>
+                    <div class="filter-item-desc">Browse everything</div>
+                </div>
+            </div>
+        `;
+        
+        allCategories.forEach(categoryName => {
+            const icon = categoryIcons[categoryName] || 'fa-box';
+            const desc = categoryDescriptions[categoryName] || 'Quality products';
+            const displayName = categoryName === 'Safeties and Hardware' ? 'Safeties & Hardware' : categoryName;
             
-            allCategories.slice(0, 7).forEach(categoryName => {
-                const displayName = categoryName === 'Safeties and Hardware' ? 'Safeties & Hardware' : categoryName;
-                buttonsHTML += `<button class="filter-btn" onclick="filterCategory('${categoryName}')">${displayName}</button>`;
-            });
-            
-            filterContainer.innerHTML = buttonsHTML;
-        }
+            filterHTML += `
+                <div class="filter-item" data-category="${categoryName}" onclick="selectSideFilter(this, '${categoryName}')">
+                    <i class="fa ${icon}"></i>
+                    <div class="filter-item-content">
+                        <div class="filter-item-title">${displayName}</div>
+                        <div class="filter-item-desc">${desc}</div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        sideFilterList.innerHTML = filterHTML;
+    }
+}
 
         function createFooterLinks() {
             const footerLinksContainer = document.getElementById('footerProductLinks');
@@ -899,7 +1151,7 @@
             if (category) {
                 category = decodeURIComponent(category.replace(/%20/g, ' '));
                 currentFilter = category;
-                document.getElementById('categoryTitle').textContent = category;
+                // Category title removed - hero section deleted
                 
                 const buttons = document.querySelectorAll('.filter-btn');
                 buttons.forEach(btn => btn.classList.remove('active'));
@@ -911,27 +1163,49 @@
         }
 
         function filterCategory(category) {
-            currentFilter = category;
-            
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('active');
-                if ((category === 'all' && btn.textContent === 'All Products') ||
-                    btn.textContent === category ||
-                    (category === 'Safeties and Hardware' && btn.textContent === 'Safeties & Hardware')) {
-                    btn.classList.add('active');
-                }
-            });
-
-            if (category === 'all') {
-                document.getElementById('categoryTitle').textContent = 'Our Products';
-            } else {
-                document.getElementById('categoryTitle').textContent = category;
-            }
-
-            renderProducts(category);
+    currentFilter = category;
+    
+    // Update old filter buttons if they exist
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if ((category === 'all' && btn.textContent === 'All Products') ||
+            btn.textContent === category ||
+            (category === 'Safeties and Hardware' && btn.textContent === 'Safeties & Hardware')) {
+            btn.classList.add('active');
         }
+    });
 
+    // Update side panel filters
+    const sideFilters = document.querySelectorAll('.filter-item');
+    sideFilters.forEach(item => {
+        const itemCategory = item.dataset.category;
+        item.classList.remove('active');
+        if ((category === 'all' && itemCategory === 'all') || itemCategory === category) {
+            item.classList.add('active');
+        }
+    });
+
+    // Scroll active filter button into view on mobile (for old filters)
+    if (window.innerWidth <= 768) {
+        const activeBtn = document.querySelector('.filter-btn.active');
+        if (activeBtn) {
+            activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+    }
+
+// Category title removed - hero section deleted
+
+    renderProducts(category);
+}
+
+    // Scroll active filter button into view on mobile
+    if (window.innerWidth <= 768) {
+        const activeBtn = document.querySelector('.filter-btn.active');
+        if (activeBtn) {
+            activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+    }
         function loadCategory(categoryName) {
             window.location.href = 'products.html#' + encodeURIComponent(categoryName);
             window.location.reload();
@@ -1058,6 +1332,89 @@
                 }
             });
         });
+
+        // ============================================
+// SIDE FILTER PANEL FUNCTIONALITY
+// ============================================
+
+const filterToggle = document.getElementById('filterToggle');
+const filterPanel = document.getElementById('filterPanel');
+const filterOverlay = document.getElementById('filterOverlay');
+const isMobile = () => window.innerWidth <= 768;
+
+// Toggle filter panel
+if (filterToggle) {
+    filterToggle.addEventListener('click', () => {
+        const isOpen = filterPanel.classList.contains('open');
+        
+        if (isOpen) {
+            closeSidePanel();
+        } else {
+            openSidePanel();
+        }
+    });
+}
+
+function openSidePanel() {
+    filterPanel.classList.add('open');
+    filterToggle.classList.add('active');
+    if (isMobile()) {
+        filterOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeSidePanel() {
+    filterPanel.classList.remove('open');
+    filterToggle.classList.remove('active');
+    filterOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Close panel when clicking overlay
+if (filterOverlay) {
+    filterOverlay.addEventListener('click', closeSidePanel);
+}
+
+// Filter item selection
+function selectSideFilter(element, category) {
+    // Remove active class from all items
+    document.querySelectorAll('.filter-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Add active class to clicked item
+    element.classList.add('active');
+    
+    // Filter the category
+    filterCategory(category);
+    
+    // ALWAYS close panel after selection (both mobile and desktop)
+    setTimeout(() => {
+        closeSidePanel();
+    }, 200);
+}
+
+// Close panel on window resize if going from mobile to desktop
+let wasOnMobile = isMobile();
+window.addEventListener('resize', () => {
+    const isNowOnMobile = isMobile();
+    
+    if (wasOnMobile && !isNowOnMobile) {
+        filterOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    wasOnMobile = isNowOnMobile;
+});
+
+// Keyboard accessibility - close panel on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && filterPanel && filterPanel.classList.contains('open')) {
+        closeSidePanel();
+    }
+});
+
     </script>
 </body>
 </html>
