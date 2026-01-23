@@ -223,6 +223,208 @@
             border-radius: 3px;
         }
 
+@media (max-width: 1024px) {
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 90px;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        max-height: calc(100vh - 90px);
+        overflow-y: auto;
+        padding: 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: left 0.3s ease;
+        align-items: flex-start;
+        transform: none;
+        gap: 0;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links > li {
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .nav-links > li > a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+
+    /* ========================================
+   MOBILE FIX: Products Dropdown
+   ======================================== */
+.mega-menu-trigger {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+/* ✅ FIXED: Always open on mobile, no toggle icon */
+.mega-dropdown-icon {
+    display: none !important; /* Hide dropdown arrow on mobile */
+}
+
+/* ✅ COMPLETE FIX: Mobile dropdown container - ALWAYS VISIBLE */
+.mega-menu-content {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    box-shadow: none;
+    display: block !important; /* Always visible */
+    margin: 0;
+    padding: 1rem 0;
+    border-radius: 0;
+    background: #f8f9fa;
+    width: 100%;
+    max-width: 100%;
+    max-height: none !important;
+    overflow: visible;
+    transition: none;
+}
+
+/* Remove the mobile-active class requirement */
+.mega-menu-item.mobile-active .mega-menu-content {
+    display: block !important;
+}
+
+/* ✅ NEW: Reorder children - Show All Products comes FIRST visually */
+.mega-menu-content {
+    display: flex !important;
+    flex-direction: column-reverse; /* Reverses order: grid bottom, button top */
+}
+
+/* ✅ FIXED: Horizontal swipeable grid */
+.mega-grid {
+    display: flex !important;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.8rem;
+    padding: 1rem;
+    margin: 0;
+    margin-bottom: 0rem; /* Remove bottom margin */
+    scrollbar-width: none;
+    grid-template-columns: none !important;
+    position: relative;
+}
+
+/* Hide scrollbar */
+.mega-grid::-webkit-scrollbar {
+    display: none;
+}
+
+/* ✅ FIXED: Card sizing */
+.mega-category {
+    flex: 0 0 75%;
+    scroll-snap-align: center;
+    padding: 1.2rem 1rem;
+    min-width: 0;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mega-category i {
+    font-size: 2.2rem;
+}
+
+.mega-category h4 {
+    font-size: 0.95rem;
+}
+
+.mega-category p {
+    font-size: 0.75rem;
+}
+
+/* ✅ NEW: Show All Products button styling */
+.mega-menu-content > div[style*="text-align:center"] {
+    padding: 1rem 1rem 0.5rem 1rem;
+    display: block !important;
+    order: -1; /* Ensure it comes first */
+}
+
+/* ✅ NEW: Carousel dots for mobile menu products */
+.mobile-menu-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 0 0.5rem 0;
+    background: #f8f9fa;
+}
+
+.mobile-menu-dots .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(103, 65, 148, 0.3);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-dots .carousel-dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background: var(--primary);
+}
+
+/* Remove old swipe indicator */
+.mega-menu-content::after {
+    display: none !important;
+}
+
+.hamburger {
+        display: flex;
+        z-index: 1001;
+    }
+
+    .hamburger.active div:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .hamburger.active div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active div:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+}
+
+@media (max-width: 768px) {
+    /* Even smaller screens: 85% card width */
+    .mega-category {
+        flex: 0 0 85%;
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    .nav-container {
+        padding: 1rem;
+    }
+}
+
        .page-header-compact {
     margin-top: 90px;
     padding: 1.5rem 2rem;
@@ -1149,49 +1351,49 @@
             });
             
             megaMenuHTML += '</div>';
+            megaMenuHTML += '<div id="mobile-menu-dots" class="mobile-menu-dots"></div>';
             megaMenuHTML += `
-        <div style="text-align:center; margin-top:2rem;">
-            <a href="products.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: var(--gradient); color: white; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
-                Show All Products <i class="fa fa-arrow-right"></i>
-            </a>
-        </div>
-    `;
+                <div style="text-align:center; margin-top:2rem;">
+                    <a href="products.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: var(--gradient); color: white; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
+                        Show All Products <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            `;
             megaMenuContainer.innerHTML = megaMenuHTML;
         }
 
-       function createFilterButtons() {
-    // Create side filter panel items ONLY
-    const sideFilterList = document.getElementById('sideFilterList');
-    if (sideFilterList) {
-        let filterHTML = `
-            <div class="filter-item active" data-category="all" onclick="selectSideFilter(this, 'all')">
-                <i class="fa fa-th"></i>
-                <div class="filter-item-content">
-                    <div class="filter-item-title">All Products</div>
-                    <div class="filter-item-desc">Browse everything</div>
-                </div>
-            </div>
-        `;
-        
-        allCategories.forEach(categoryName => {
-            const icon = categoryIcons[categoryName] || 'fa-box';
-            const desc = categoryDescriptions[categoryName] || 'Quality products';
-            const displayName = categoryName === 'Safeties and Hardware' ? 'Safeties & Hardware' : categoryName;
-            
-            filterHTML += `
-                <div class="filter-item" data-category="${categoryName}" onclick="selectSideFilter(this, '${categoryName}')">
-                    <i class="fa ${icon}"></i>
-                    <div class="filter-item-content">
-                        <div class="filter-item-title">${displayName}</div>
-                        <div class="filter-item-desc">${desc}</div>
+        function createFilterButtons() {
+            const sideFilterList = document.getElementById('sideFilterList');
+            if (sideFilterList) {
+                let filterHTML = `
+                    <div class="filter-item active" data-category="all" onclick="selectSideFilter(this, 'all')">
+                        <i class="fa fa-th"></i>
+                        <div class="filter-item-content">
+                            <div class="filter-item-title">All Products</div>
+                            <div class="filter-item-desc">Browse everything</div>
+                        </div>
                     </div>
-                </div>
-            `;
-        });
-        
-        sideFilterList.innerHTML = filterHTML;
-    }
-}
+                `;
+                
+                allCategories.forEach(categoryName => {
+                    const icon = categoryIcons[categoryName] || 'fa-box';
+                    const desc = categoryDescriptions[categoryName] || 'Quality products';
+                    const displayName = categoryName === 'Safeties and Hardware' ? 'Safeties & Hardware' : categoryName;
+                    
+                    filterHTML += `
+                        <div class="filter-item" data-category="${categoryName}" onclick="selectSideFilter(this, '${categoryName}')">
+                            <i class="fa ${icon}"></i>
+                            <div class="filter-item-content">
+                                <div class="filter-item-title">${displayName}</div>
+                                <div class="filter-item-desc">${desc}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                sideFilterList.innerHTML = filterHTML;
+            }
+        }
 
         function createFooterLinks() {
             const footerLinksContainer = document.getElementById('footerProductLinks');
@@ -1209,7 +1411,6 @@
             if (category) {
                 category = decodeURIComponent(category.replace(/%20/g, ' '));
                 currentFilter = category;
-                // Category title removed - hero section deleted
                 
                 const buttons = document.querySelectorAll('.filter-btn');
                 buttons.forEach(btn => btn.classList.remove('active'));
@@ -1221,49 +1422,37 @@
         }
 
         function filterCategory(category) {
-    currentFilter = category;
-    
-    // Update old filter buttons if they exist
-    const buttons = document.querySelectorAll('.filter-btn');
-    buttons.forEach(btn => {
-        btn.classList.remove('active');
-        if ((category === 'all' && btn.textContent === 'All Products') ||
-            btn.textContent === category ||
-            (category === 'Safeties and Hardware' && btn.textContent === 'Safeties & Hardware')) {
-            btn.classList.add('active');
+            currentFilter = category;
+            
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if ((category === 'all' && btn.textContent === 'All Products') ||
+                    btn.textContent === category ||
+                    (category === 'Safeties and Hardware' && btn.textContent === 'Safeties & Hardware')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            const sideFilters = document.querySelectorAll('.filter-item');
+            sideFilters.forEach(item => {
+                const itemCategory = item.dataset.category;
+                item.classList.remove('active');
+                if ((category === 'all' && itemCategory === 'all') || itemCategory === category) {
+                    item.classList.add('active');
+                }
+            });
+
+            if (window.innerWidth <= 768) {
+                const activeBtn = document.querySelector('.filter-btn.active');
+                if (activeBtn) {
+                    activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+            }
+
+            renderProducts(category);
         }
-    });
 
-    // Update side panel filters
-    const sideFilters = document.querySelectorAll('.filter-item');
-    sideFilters.forEach(item => {
-        const itemCategory = item.dataset.category;
-        item.classList.remove('active');
-        if ((category === 'all' && itemCategory === 'all') || itemCategory === category) {
-            item.classList.add('active');
-        }
-    });
-
-    // Scroll active filter button into view on mobile (for old filters)
-    if (window.innerWidth <= 768) {
-        const activeBtn = document.querySelector('.filter-btn.active');
-        if (activeBtn) {
-            activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        }
-    }
-
-// Category title removed - hero section deleted
-
-    renderProducts(category);
-}
-
-    // Scroll active filter button into view on mobile
-    if (window.innerWidth <= 768) {
-        const activeBtn = document.querySelector('.filter-btn.active');
-        if (activeBtn) {
-            activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        }
-    }
         function loadCategory(categoryName) {
             window.location.href = 'products.html#' + encodeURIComponent(categoryName);
             window.location.reload();
@@ -1354,7 +1543,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const megaMenuItem = document.querySelector('.mega-menu-item');
             
-            if (window.innerWidth <= 1024) {
+            if (megaMenuItem && window.innerWidth <= 1024) {
                 megaMenuItem.addEventListener('click', function(e) {
                     if (e.target.closest('.mega-menu-trigger')) {
                         e.preventDefault();
@@ -1364,12 +1553,19 @@
             }
             
             window.addEventListener('resize', function() {
-                if (window.innerWidth > 1024) {
+                if (megaMenuItem && window.innerWidth > 1024) {
                     megaMenuItem.classList.remove('active');
                 }
             });
 
             initializePage();
+            
+            // Initialize mobile carousel after a delay
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    new MobileMenuCarousel();
+                }, 1000);
+            }
         });
 
         window.addEventListener('hashchange', function() {
@@ -1392,87 +1588,195 @@
         });
 
         // ============================================
-// SIDE FILTER PANEL FUNCTIONALITY
-// ============================================
+        // SIDE FILTER PANEL FUNCTIONALITY
+        // ============================================
+        const filterToggle = document.getElementById('filterToggleHeader') || document.getElementById('filterToggle');
+        const filterPanel = document.getElementById('filterPanel');
+        const filterOverlay = document.getElementById('filterOverlay');
+        const isMobile = () => window.innerWidth <= 768;
 
-const filterToggle = document.getElementById('filterToggleHeader') || document.getElementById('filterToggle');
-const filterPanel = document.getElementById('filterPanel');
-const filterOverlay = document.getElementById('filterOverlay');
-const isMobile = () => window.innerWidth <= 768;
-
-// Toggle filter panel
-if (filterToggle) {
-    filterToggle.addEventListener('click', () => {
-        const isOpen = filterPanel.classList.contains('open');
-        
-        if (isOpen) {
-            closeSidePanel();
-        } else {
-            openSidePanel();
+        if (filterToggle) {
+            filterToggle.addEventListener('click', () => {
+                const isOpen = filterPanel.classList.contains('open');
+                
+                if (isOpen) {
+                    closeSidePanel();
+                } else {
+                    openSidePanel();
+                }
+            });
         }
-    });
-}
 
-function openSidePanel() {
-    filterPanel.classList.add('open');
-    filterToggle.classList.add('active');
-    if (isMobile()) {
-        filterOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-}
+        function openSidePanel() {
+            filterPanel.classList.add('open');
+            filterToggle.classList.add('active');
+            if (isMobile()) {
+                filterOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
 
-function closeSidePanel() {
-    filterPanel.classList.remove('open');
-    filterToggle.classList.remove('active');
-    filterOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-}
+        function closeSidePanel() {
+            filterPanel.classList.remove('open');
+            filterToggle.classList.remove('active');
+            filterOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
 
-// Close panel when clicking overlay
-if (filterOverlay) {
-    filterOverlay.addEventListener('click', closeSidePanel);
-}
+        if (filterOverlay) {
+            filterOverlay.addEventListener('click', closeSidePanel);
+        }
 
-// Filter item selection
-function selectSideFilter(element, category) {
-    // Remove active class from all items
-    document.querySelectorAll('.filter-item').forEach(item => {
-        item.classList.remove('active');
-    });
-    
-    // Add active class to clicked item
-    element.classList.add('active');
-    
-    // Filter the category
-    filterCategory(category);
-    
-    // ALWAYS close panel after selection (both mobile and desktop)
-    setTimeout(() => {
-        closeSidePanel();
-    }, 200);
-}
+        function selectSideFilter(element, category) {
+            document.querySelectorAll('.filter-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            element.classList.add('active');
+            filterCategory(category);
+            
+            setTimeout(() => {
+                closeSidePanel();
+            }, 200);
+        }
 
-// Close panel on window resize if going from mobile to desktop
-let wasOnMobile = isMobile();
-window.addEventListener('resize', () => {
-    const isNowOnMobile = isMobile();
-    
-    if (wasOnMobile && !isNowOnMobile) {
-        filterOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    
-    wasOnMobile = isNowOnMobile;
-});
+        let wasOnMobile = isMobile();
+        window.addEventListener('resize', () => {
+            const isNowOnMobile = isMobile();
+            
+            if (wasOnMobile && !isNowOnMobile) {
+                filterOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            wasOnMobile = isNowOnMobile;
+        });
 
-// Keyboard accessibility - close panel on Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && filterPanel && filterPanel.classList.contains('open')) {
-        closeSidePanel();
-    }
-});
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && filterPanel && filterPanel.classList.contains('open')) {
+                closeSidePanel();
+            }
+        });
 
+        // ========================================
+        // MOBILE MENU: Products Carousel with Infinite Scroll
+        // ========================================
+        class MobileMenuCarousel {
+            constructor() {
+                this.grid = document.querySelector('.mega-grid');
+                this.dotsContainer = document.getElementById('mobile-menu-dots');
+                
+                if (!this.grid || !this.dotsContainer || window.innerWidth > 768) return;
+                
+                this.cards = [];
+                this.currentIndex = 0;
+                this.isScrolling = false;
+                
+                this.init();
+            }
+            
+            init() {
+                this.cards = Array.from(this.grid.children).filter(card => !card.classList.contains('cloned'));
+                
+                if (this.cards.length === 0) return;
+                
+                this.cloneCards();
+                this.createDots();
+                this.attachScrollListener();
+                this.scrollToIndex(0, false);
+            }
+            
+            cloneCards() {
+                const clonesToAdd = Math.min(2, this.cards.length);
+                
+                for (let i = 0; i < clonesToAdd; i++) {
+                    const clone = this.cards[i].cloneNode(true);
+                    clone.classList.add('cloned');
+                    this.grid.appendChild(clone);
+                }
+                
+                for (let i = this.cards.length - clonesToAdd; i < this.cards.length; i++) {
+                    const clone = this.cards[i].cloneNode(true);
+                    clone.classList.add('cloned');
+                    this.grid.insertBefore(clone, this.grid.firstChild);
+                }
+                
+                this.allCards = Array.from(this.grid.children);
+                this.realStartIndex = clonesToAdd;
+            }
+            
+            createDots() {
+                this.dotsContainer.innerHTML = '';
+                this.cards.forEach((_, index) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'carousel-dot';
+                    dot.addEventListener('click', () => this.goToSlide(index));
+                    this.dotsContainer.appendChild(dot);
+                });
+                this.updateDots();
+            }
+            
+            updateDots() {
+                const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+            
+            attachScrollListener() {
+                let scrollTimeout;
+                this.grid.addEventListener('scroll', () => {
+                    this.isScrolling = true;
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        this.handleScrollEnd();
+                        this.isScrolling = false;
+                    }, 150);
+                });
+            }
+            
+            handleScrollEnd() {
+                const scrollLeft = this.grid.scrollLeft;
+                const cardWidth = this.allCards[0].offsetWidth;
+                const gap = 12.8;
+                const totalWidth = cardWidth + gap;
+                
+                let newIndex = Math.round(scrollLeft / totalWidth);
+                
+                if (newIndex < this.realStartIndex) {
+                    this.currentIndex = this.cards.length - 1;
+                    this.scrollToIndex(this.cards.length - 1 + this.realStartIndex, false);
+                } else if (newIndex >= this.realStartIndex + this.cards.length) {
+                    this.currentIndex = 0;
+                    this.scrollToIndex(this.realStartIndex, false);
+                } else {
+                    this.currentIndex = newIndex - this.realStartIndex;
+                    this.snapToCard(newIndex);
+                }
+                
+                this.updateDots();
+            }
+            
+            snapToCard(index) {
+                const cardWidth = this.allCards[0].offsetWidth;
+                const gap = 12.8;
+                const scrollPosition = index * (cardWidth + gap);
+                this.grid.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+            }
+            
+            scrollToIndex(index, smooth = true) {
+                const cardWidth = this.allCards[0].offsetWidth;
+                const gap = 12.8;
+                const scrollPosition = index * (cardWidth + gap);
+                this.grid.scrollTo({ left: scrollPosition, behavior: smooth ? 'smooth' : 'auto' });
+            }
+            
+            goToSlide(index) {
+                this.currentIndex = index;
+                this.scrollToIndex(index + this.realStartIndex, true);
+                this.updateDots();
+            }
+        }
     </script>
 </body>
 </html>

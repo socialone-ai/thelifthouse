@@ -141,42 +141,60 @@
             transform: rotate(180deg);
         }
 
-        .mega-menu-content {
-            position: fixed;
-            top: 80px;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
+.mega-menu-content {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
 
-            width: 90vw;
-            max-width: 1400px;
+    width: 90vw;
+    max-width: 1400px;
 
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
 
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-            padding: 2.5rem;
-            max-height: calc(100vh - 120px);
-            overflow-y: auto;
-            overflow-x: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    padding: 2.5rem;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
-        
 
-        .mega-menu-item:hover .mega-menu-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
+.mega-menu-content::-webkit-scrollbar {
+    width: 8px;
+}
 
-        .mega-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0;
-            padding: 1rem;
-        }
+.mega-menu-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.mega-menu-content::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+.mega-menu-content::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+}
+
+.mega-menu-item:hover .mega-menu-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.mega-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
 
         .mega-category {
             padding: 1.8rem 1.5rem;
@@ -667,94 +685,201 @@
             50% { transform: scale(1.1); }
         }
 
-        /* Responsive */
+              /* Responsive */
         @media (max-width: 1024px) {
-            .nav-links {
-                position: fixed;
-                left: -100%;
-                top: 90px;
-                flex-direction: column;
-                background: white;
-                width: 100%;
-                padding: 2rem;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                transition: left 0.3s ease;
-                align-items: flex-start;
-                transform: none;
-                height: calc(100vh - 90px);
-                overflow-y: auto;
-            }
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 90px;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        max-height: calc(100vh - 90px);
+        overflow-y: auto;
+        padding: 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: left 0.3s ease;
+        align-items: flex-start;
+        transform: none;
+        gap: 0;
+    }
 
-            .nav-links.active {
-                left: 0;
-            }
+    .nav-links.active {
+        left: 0;
+    }
 
-            .nav-links li {
-                width: 100%;
-            }
+    .nav-links > li {
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+    }
 
-            .nav-links a {
-                display: block;
-                padding: 0.8rem 0;
-                width: 100%;
-            }
+    .nav-links > li > a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
 
-            .mega-menu-content {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                width: 100%;
-                max-width: 100%;
-                display: none;
-                margin-top: 1rem;
-                border-radius: 10px;
-                background: #f8f9fa;
-                padding: 1rem;
-            }
+    /* Products Dropdown - Always Open on Mobile */
+    .mega-menu-trigger {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 1rem;
+        background: transparent;
+        border: none;
+        text-align: left;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--dark);
+    }
 
-            .mega-menu-item.active .mega-menu-content {
-                display: block;
-            }
+    /* Hide dropdown arrow on mobile */
+    .mega-dropdown-icon {
+        display: none !important;
+    }
 
-            .mega-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.5rem;
-                padding: 0.5rem;
-            }
+    /* Mobile dropdown - ALWAYS VISIBLE */
+    .mega-menu-content {
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        box-shadow: none;
+        display: block !important;
+        margin: 0;
+        padding: 1rem 0;
+        border-radius: 0;
+        background: #f8f9fa;
+        width: 100%;
+        max-width: 100%;
+        max-height: none !important;
+        overflow: visible;
+        transition: none;
+    }
 
-            .mega-category {
-                padding: 1.2rem 1rem;
-            }
+    /* Reorder children - Show All Products button comes first */
+    .mega-menu-content {
+        display: flex !important;
+        flex-direction: column-reverse;
+    }
 
-            .mega-category i {
-                font-size: 2rem;
-            }
+    /* Horizontal swipeable grid */
+    .mega-grid {
+        display: flex !important;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 0.8rem;
+        padding: 1rem;
+        margin: 0;
+        margin-bottom: 0rem;
+        scrollbar-width: none;
+        grid-template-columns: none !important;
+        position: relative;
+    }
 
-            .hamburger {
-                display: flex;
-            }
+    .mega-grid::-webkit-scrollbar {
+        display: none;
+    }
 
-            .two-column {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+    /* Card sizing */
+    .mega-category {
+        flex: 0 0 75%;
+        scroll-snap-align: center;
+        padding: 1.2rem 1rem;
+        min-width: 0;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
-            .director-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+    .mega-category i {
+        font-size: 2.2rem;
+    }
 
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
+    .mega-category h4 {
+        font-size: 0.95rem;
+    }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
+    .mega-category p {
+        font-size: 0.75rem;
+    }
+
+    /* Show All Products button styling */
+    .mega-menu-content > div[style*="text-align:center"] {
+        padding: 1rem 1rem 0.5rem 1rem;
+        display: block !important;
+        order: -1;
+    }
+
+    /* Carousel dots for mobile menu products */
+    .mobile-menu-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1rem 0 0.5rem 0;
+        background: #f8f9fa;
+    }
+
+    .mobile-menu-dots .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(103, 65, 148, 0.3);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-menu-dots .carousel-dot.active {
+        width: 24px;
+        border-radius: 4px;
+        background: var(--primary);
+    }
+
+    .hamburger {
+        display: flex;
+        z-index: 1001;
+    }
+
+    .hamburger.active div:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .hamburger.active div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active div:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Even smaller screens: 85% card width */
+    .mega-category {
+        flex: 0 0 85%;
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    .nav-container {
+        padding: 1rem;
+    }
 
             .two-column {
                 grid-template-columns: 1fr;
@@ -915,7 +1040,9 @@
                     <a href="javascript:void(0);" class="mega-menu-trigger">
                         Products <i class="fa fa-chevron-down mega-dropdown-icon"></i>
                     </a>
+                    <div id="mobile-menu-dots" class="mobile-menu-dots"></div>
                     <div class="mega-menu-content">
+
                         <div class="mega-grid">
                             <div class="mega-category" onclick="load('Accessories')">
                                 <i class="fa fa-cog"></i>
@@ -1087,15 +1214,15 @@
             <div class="pagination-dot"></div>
             <div class="pagination-dot"></div>
         </div>
-        <p class="swipe-hint">👈 Swipe to explore all values 👉</p>
+        <p class="swipe-hint">Swipe to explore</p>
         </div>
     </section>
 
     <!-- Mission Section -->
     <div class="container">
         <div class="cta-section">
-            <h2>Our Mission</h2>
-            <p>To be the preferred partner for elevator products and solutions by consistently delivering quality, reliability, and unmatched customer experience.</p>
+            <h2>Our Vision</h2>
+            <p>To shape the future of India’s infrastructure by providing reliable, high-quality elevator products and solutions.</p>
         </div>
     </div>
 
@@ -1103,7 +1230,7 @@
     <section class="director-section">
         <div class="director-container">
             <div class="director-image">
-                <img src="./assets/images/director-photo.jpg" alt="Director - The Lift House">
+                <img src="./assets/images/director-photo.jpg" alt="Gourav Jain Director - The Lift House">
             </div>
             <div class="director-content">
                 <h2>From the Director's Desk</h2>
@@ -1201,145 +1328,541 @@
     </div>
 
     <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            const backToTop = document.querySelector('.back-to-top');
-            
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-                backToTop.classList.add('visible');
-            } else {
-                header.classList.remove('scrolled');
-                backToTop.classList.remove('visible');
+            // ========================================
+    // MOBILE-SPECIFIC: Enhanced Menu Toggle
+    // ========================================
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        const hamburger = document.querySelector('.hamburger');
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    }
+
+    // ========================================
+    // MOBILE-SPECIFIC: Mega Menu Dropdown Fix
+    // ========================================
+    document.addEventListener('DOMContentLoaded', function() {
+        const megaMenuItem = document.querySelector('.mega-menu-item');
+        const megaMenuTrigger = megaMenuItem.querySelector('.mega-menu-trigger');
+        
+        // Mobile: Click to toggle dropdown
+        if (window.innerWidth <= 1024) {
+            megaMenuTrigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                megaMenuItem.classList.toggle('mobile-active');
+            });
+        }
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                megaMenuItem.classList.remove('mobile-active');
             }
         });
 
-        // Mobile menu toggle
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
-
-        // Mobile mega menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const megaMenuItem = document.querySelector('.mega-menu-item');
-            
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
             if (window.innerWidth <= 1024) {
-                megaMenuItem.addEventListener('click', function(e) {
-                    if (e.target.closest('.mega-menu-trigger')) {
-                        e.preventDefault();
-                        this.classList.toggle('active');
-                    }
-                });
-            }
-            
-            // Re-check on window resize
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 1024) {
-                    megaMenuItem.classList.remove('active');
+                const navLinks = document.querySelector('.nav-links');
+                const hamburger = document.querySelector('.hamburger');
+                
+                if (!e.target.closest('.nav-container')) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    megaMenuItem.classList.remove('mobile-active');
                 }
-            });
-        });
-
-        // Scroll to top
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Load category page
-        function load(page_name) {
-            window.location.replace("products.html#" + page_name);
-        }
-
-        // Buy now function (WhatsApp)
-        function buy_now(productId) {
-            const phoneNumber = "+919829408299";
-            let message = "Hello! I'm interested in your elevator products.";
-            
-            if (productId >= 0 && typeof data !== 'undefined' && data[productId]) {
-                message = `Hello! I'm interested in ${data[productId].name}`;
             }
+        });
+    });
+
+    // ========================================
+    // MOBILE-SPECIFIC: Flip Card Toggle
+    // ========================================
+    function toggleFlipCard(container, category) {
+        if (window.innerWidth <= 768) {
+            // Mobile: Toggle flip on tap
+            container.classList.toggle('flipped');
             
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
+            // If flipped to back, navigate after delay
+            if (container.classList.contains('flipped')) {
+                setTimeout(() => {
+                    load(category);
+                }, 1500);
+            }
+        } else {
+            // Desktop: Direct navigation
+            load(category);
+        }
+    }
+
+    // ========================================
+// MOBILE-SPECIFIC: About Card Accordion
+// ========================================
+function toggleAboutCard(card) {
+    if (window.innerWidth <= 768) {
+        // Close all other cards
+        const allCards = document.querySelectorAll('.about-card');
+        allCards.forEach(c => {
+            if (c !== card) {
+                c.classList.remove('expanded');
+            }
+        });
+        
+        // Toggle current card
+        card.classList.toggle('expanded');
+    }
+}
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('.header');
+        const backToTop = document.querySelector('.back-to-top');
+        
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+            backToTop.classList.add('visible');
+        } else {
+            header.classList.remove('scrolled');
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    // Scroll to top
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Load category page
+    function load(page_name) {
+        window.location.replace("products.html#" + page_name);
+    }
+
+    // Buy now function (WhatsApp)
+    function buy_now(productId) {
+        const phoneNumber = "+919829408299";
+        let message = "Hello! I'm interested in your elevator products.";
+        
+        if (productId >= 0 && typeof data !== 'undefined' && data[productId]) {
+            message = `Hello! I'm interested in ${data[productId].name}`;
+        }
+        
+        const whatsappUrl = `https://wa.me/919829408299?text=I%E2%80%99m%20interested%20in%20your%20elevator%20products%2Fservices.`;
+        window.open(whatsappUrl, '_blank');
+    }
+
+    // Generate Our Products section
+    function generateOfferings() {
+        if (typeof data === 'undefined') {
+            console.log('Waiting for data to load...');
+            setTimeout(generateOfferings, 100);
+            return;
         }
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+        if (typeof flattenProducts === 'undefined') {
+            console.error('flattenProducts function not found');
+            return;
+        }
+
+        console.log('Generating offerings from', data.length, 'categories');
+
+        const categoryIcons = {
+            'Accessories': 'fa-cog',
+            'Doors': 'fa-door-open',
+            'Electricals': 'fa-bolt',
+            'Headers': 'fa-building',
+            'Safeties and Hardware': 'fa-shield-alt',
+            'Motor': 'fa-cogs',
+            'Cabin': 'fa-cube',
+            'Control Pannels': 'fa-microchip',
+            'Control Panel Spare Parts': 'fa-tools',
+            'DIVERTER PULLEYES': 'fa-circle-notch',
+            'Filler Counter Weights': 'fa-weight-hanging',
+            'Guide Rail': 'fa-road',
+            'Hardware Parts': 'fa-wrench',
+            'Over Speed Governor (OSG)': 'fa-tachometer-alt'
         };
 
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+        let offeringsHTML = '';
+        const productsPerCategory = 2;
 
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.value-item, .two-column, .director-container').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
-            });
-        });
-        // ============================================
-// MOBILE ONLY: Values Carousel Functionality
-// ============================================
-
-if (window.innerWidth <= 768) {
-    document.addEventListener('DOMContentLoaded', function() {
-        const valuesGrid = document.querySelector('.values-grid');
-        const paginationDots = document.querySelectorAll('.pagination-dot');
-        const valueItems = document.querySelectorAll('.value-item');
-        
-        if (!valuesGrid || paginationDots.length === 0) return;
-        
-        // Update active dot based on scroll position
-        function updateActiveDot() {
-            const scrollLeft = valuesGrid.scrollLeft;
-            const itemWidth = valueItems[0].offsetWidth + (window.innerWidth * 0.05); // card width + margin
-            const activeIndex = Math.round(scrollLeft / itemWidth);
+        data.forEach((category) => {
+            const categoryName = category.name;
+            const categoryIcon = categoryIcons[categoryName] || 'fa-cube';
             
-            paginationDots.forEach((dot, index) => {
-                if (index === activeIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
+            const allProducts = flattenProducts(category);
+            
+            if (!allProducts || allProducts.length === 0) {
+                return;
+            }
+            
+            const selectedProducts = allProducts.slice(0, productsPerCategory);
+            
+            selectedProducts.forEach((productPath) => {
+    const pathParts = productPath.split('/');
+    const fileName = pathParts[pathParts.length - 1];
+    const productName = fileName
+        .replace(/\.(jpg|jpeg|png|gif|webp)$/i, '')
+        .replace(/[-_]/g, ' ')
+        .trim();
+    
+    const phoneNumber = "+919829408299";
+    const whatsappMessage = encodeURIComponent(`Hello! I'm interested in ${productName} from ${categoryName}`);
+    const whatsappUrl = `https://wa.me/919829408299?text=I%E2%80%99m%20interested%20in%20your%20elevator%20products%2Fservices.`;
+    
+    offeringsHTML += `
+        <div class="offering-card">
+            <div class="offering-image">
+                <img src="${productPath}" alt="${productName}" onerror="this.src='./assets/images/placeholder.jpg'">
+                <div class="offering-category-badge">
+                    <i class="fa ${categoryIcon}"></i> ${categoryName}
+                </div>
+            </div>
+            <div class="offering-content">
+                <h4>${productName}</h4>
+                <div class="offering-buttons">
+                    <a href="products.html#${categoryName}" class="offering-btn offering-btn-secondary">
+                        <i class="fa fa-search"></i> Explore ${categoryName}
+                    </a>
+                    <a href="${whatsappUrl}" target="_blank" class="offering-btn offering-btn-primary">
+                        <i class="fa-brands fa-whatsapp"></i> Enquire Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    `;
+});
+        });
+
+        if (offeringsHTML === '') {
+            offeringsHTML = '<p style="text-align:center; color:#666; grid-column: 1/-1;">No products available at the moment.</p>';
+        }
+
+        const offeringsGrid = document.getElementById('offerings-grid');
+        if (offeringsGrid) {
+            offeringsGrid.innerHTML = offeringsHTML;
+            console.log('✅ Offerings section populated successfully!');
+        } else {
+            console.error('offerings-grid element not found');
+        }
+    }
+// ========================================
+// MOBILE ONLY: Infinite Carousel System (FIXED)
+// ========================================
+class InfiniteCarousel {
+    constructor(gridSelector, dotsSelector) {
+        this.grid = document.querySelector(gridSelector);
+        this.dotsContainer = document.querySelector(dotsSelector);
+        
+        if (!this.grid || window.innerWidth > 768) return;
+        
+        this.cards = [];
+        this.currentIndex = 0;
+        this.isScrolling = false;
+        
+        this.init();
+    }
+    
+    init() {
+        // Wait for cards to be populated
+        setTimeout(() => {
+            this.cards = Array.from(this.grid.children).filter(card => !card.classList.contains('cloned'));
+            
+            if (this.cards.length === 0) {
+                setTimeout(() => this.init(), 500);
+                return;
+            }
+            
+            this.cloneCards();
+            this.createDots();
+            this.attachScrollListener();
+            this.scrollToIndex(0, false); // Start at first real card
+        }, 100);
+    }
+    
+    cloneCards() {
+        const clonesToAdd = Math.min(2, this.cards.length);
+        
+        // Clone first cards to end
+        for (let i = 0; i < clonesToAdd; i++) {
+            const clone = this.cards[i].cloneNode(true);
+            clone.classList.add('cloned');
+            this.grid.appendChild(clone);
         }
         
-        // Listen to scroll events
+        // Clone last cards to beginning
+        for (let i = this.cards.length - clonesToAdd; i < this.cards.length; i++) {
+            const clone = this.cards[i].cloneNode(true);
+            clone.classList.add('cloned');
+            this.grid.insertBefore(clone, this.grid.firstChild);
+        }
+        
+        this.allCards = Array.from(this.grid.children);
+        this.realStartIndex = clonesToAdd;
+    }
+    
+    createDots() {
+        if (!this.dotsContainer) return;
+        
+        this.dotsContainer.innerHTML = '';
+        this.cards.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot';
+            dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+            dot.addEventListener('click', () => this.goToSlide(index));
+            this.dotsContainer.appendChild(dot);
+        });
+        
+        this.updateDots();
+    }
+    
+    updateDots() {
+        if (!this.dotsContainer) return;
+        
+        const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentIndex);
+        });
+    }
+    
+    attachScrollListener() {
         let scrollTimeout;
-        valuesGrid.addEventListener('scroll', function() {
+        
+        this.grid.addEventListener('scroll', () => {
+            this.isScrolling = true;
+            
             clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(updateActiveDot, 100);
+            scrollTimeout = setTimeout(() => {
+                this.handleScrollEnd();
+                this.isScrolling = false;
+            }, 150);
         });
+    }
+    
+    handleScrollEnd() {
+        const scrollLeft = this.grid.scrollLeft;
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 16;
+        const totalWidth = cardWidth + gap;
         
-        // Click pagination dots to navigate
-        paginationDots.forEach((dot, index) => {
-            dot.addEventListener('click', function() {
-                const itemWidth = valueItems[0].offsetWidth + (window.innerWidth * 0.05);
-                valuesGrid.scrollTo({
-                    left: itemWidth * index,
-                    behavior: 'smooth'
-                });
-            });
+        // Calculate which card we're closest to
+        let newIndex = Math.round(scrollLeft / totalWidth);
+        
+        // Update current index based on real cards
+        if (newIndex < this.realStartIndex) {
+            // We're in cloned start cards, jump to real end
+            this.currentIndex = this.cards.length - 1;
+            this.scrollToIndex(this.cards.length - 1 + this.realStartIndex, false);
+        } else if (newIndex >= this.realStartIndex + this.cards.length) {
+            // We're in cloned end cards, jump to real start
+            this.currentIndex = 0;
+            this.scrollToIndex(this.realStartIndex, false);
+        } else {
+            // We're in real cards
+            this.currentIndex = newIndex - this.realStartIndex;
+            this.snapToCard(newIndex);
+        }
+        
+        this.updateDots();
+    }
+    
+    snapToCard(index) {
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 16;
+        const scrollPosition = index * (cardWidth + gap);
+        
+        this.grid.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
         });
+    }
+    
+    scrollToIndex(index, smooth = true) {
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 16;
+        const scrollPosition = index * (cardWidth + gap);
         
-        // Initialize
-        updateActiveDot();
+        this.grid.scrollTo({
+            left: scrollPosition,
+            behavior: smooth ? 'smooth' : 'auto'
+        });
+    }
+    
+    goToSlide(index) {
+        this.currentIndex = index;
+        this.scrollToIndex(index + this.realStartIndex, true);
+        this.updateDots();
+    }
+}
+
+// ========================================
+// MOBILE MENU: Products Carousel with Infinite Scroll
+// ========================================
+class MobileMenuCarousel {
+    constructor() {
+        this.grid = document.querySelector('.mega-grid');
+        this.dotsContainer = document.getElementById('mobile-menu-dots');
+        
+        if (!this.grid || !this.dotsContainer || window.innerWidth > 768) return;
+        
+        this.cards = [];
+        this.currentIndex = 0;
+        this.isScrolling = false;
+        
+        this.init();
+    }
+    
+    init() {
+        this.cards = Array.from(this.grid.children).filter(card => !card.classList.contains('cloned'));
+        
+        if (this.cards.length === 0) return;
+        
+        this.cloneCards();
+        this.createDots();
+        this.attachScrollListener();
+        this.scrollToIndex(0, false);
+    }
+    
+    cloneCards() {
+        const clonesToAdd = Math.min(2, this.cards.length);
+        
+        for (let i = 0; i < clonesToAdd; i++) {
+            const clone = this.cards[i].cloneNode(true);
+            clone.classList.add('cloned');
+            this.grid.appendChild(clone);
+        }
+        
+        for (let i = this.cards.length - clonesToAdd; i < this.cards.length; i++) {
+            const clone = this.cards[i].cloneNode(true);
+            clone.classList.add('cloned');
+            this.grid.insertBefore(clone, this.grid.firstChild);
+        }
+        
+        this.allCards = Array.from(this.grid.children);
+        this.realStartIndex = clonesToAdd;
+    }
+    
+    createDots() {
+        this.dotsContainer.innerHTML = '';
+        this.cards.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot';
+            dot.addEventListener('click', () => this.goToSlide(index));
+            this.dotsContainer.appendChild(dot);
+        });
+        this.updateDots();
+    }
+    
+    updateDots() {
+        const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentIndex);
+        });
+    }
+    
+    attachScrollListener() {
+        let scrollTimeout;
+        this.grid.addEventListener('scroll', () => {
+            this.isScrolling = true;
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                this.handleScrollEnd();
+                this.isScrolling = false;
+            }, 150);
+        });
+    }
+    
+    handleScrollEnd() {
+        const scrollLeft = this.grid.scrollLeft;
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 12.8;
+        const totalWidth = cardWidth + gap;
+        
+        let newIndex = Math.round(scrollLeft / totalWidth);
+        
+        if (newIndex < this.realStartIndex) {
+            this.currentIndex = this.cards.length - 1;
+            this.scrollToIndex(this.cards.length - 1 + this.realStartIndex, false);
+        } else if (newIndex >= this.realStartIndex + this.cards.length) {
+            this.currentIndex = 0;
+            this.scrollToIndex(this.realStartIndex, false);
+        } else {
+            this.currentIndex = newIndex - this.realStartIndex;
+            this.snapToCard(newIndex);
+        }
+        
+        this.updateDots();
+    }
+    
+    snapToCard(index) {
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 12.8;
+        const scrollPosition = index * (cardWidth + gap);
+        this.grid.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+    }
+    
+    scrollToIndex(index, smooth = true) {
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 12.8;
+        const scrollPosition = index * (cardWidth + gap);
+        this.grid.scrollTo({ left: scrollPosition, behavior: smooth ? 'smooth' : 'auto' });
+    }
+    
+    goToSlide(index) {
+        this.currentIndex = index;
+        this.scrollToIndex(index + this.realStartIndex, true);
+        this.updateDots();
+    }
+}
+
+// Initialize mobile menu carousel
+if (window.innerWidth <= 768) {
+    setTimeout(() => new MobileMenuCarousel(), 500);
+}
+
+// Initialize carousels on mobile only
+if (window.innerWidth <= 768) {
+    let statsCarousel, categoriesCarousel;
+    
+    function initCarousels() {
+        // Wait a bit for DOM to be ready
+        setTimeout(() => {
+            // Initialize stats carousel
+            if (document.querySelector('.stats-grid')) {
+                statsCarousel = new InfiniteCarousel('.stats-grid', '#stats-dots');
+            }
+            
+            // Initialize categories carousel (Our Offerings flip cards)
+            if (document.querySelector('.categories-grid')) {
+                categoriesCarousel = new InfiniteCarousel('.categories-grid', '#categories-dots');
+            }
+        }, 1500);
+    }
+    
+    // Initialize when page loads
+    initCarousels();
+    
+    // Reinitialize on resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (window.innerWidth <= 768) {
+                initCarousels();
+            }
+        }, 250);
     });
-}   
+}
+
+    // Initialize when page loads
+    window.addEventListener('load', function() {
+        console.log('Page loaded, initializing offerings...');
+        generateOfferings();
+    });
+  
     </script>
 </body>
 </html>
