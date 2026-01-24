@@ -1746,10 +1746,10 @@
                                 <h4>Doors</h4>
                                 <p>Safety & style</p>
                             </div>
-                            <div class="mega-category" onclick="load('Electricals')">
+                            <div class="mega-category" onclick="load('Door Header')">
                                 <i class="fa fa-bolt"></i>
-                                <h4>Electricals</h4>
-                                <p>Advanced systems</p>
+                                <h4>Door Header</h4>
+                                <p>Premium headers</p>
                             </div>
                             <div class="mega-category" onclick="load('Headers')">
                                 <i class="fa fa-building"></i>
@@ -1915,50 +1915,21 @@
                     </div>
                 </div>
                 
-                <div class="flip-card-container" onclick="toggleFlipCard(this, 'Electricals')">
+                <div class="flip-card-container" onclick="toggleFlipCard(this, 'Door Header')">
                     <div class="flip-card">
                         <div class="flip-card-front">
                             <i class="fa fa-bolt"></i>
-                            <h3>Electricals</h3>
-                            <p>Advanced electrical components and systems</p>
+                            <h3>Door Header</h3>
+                            <p>Advanced door header systems for smooth and reliable operation</p>
                         </div>
                         <div class="flip-card-back">
-                            <h3>Electricals</h3>
-                            <p>State-of-the-art electrical components for reliable elevator systems</p>
+                            <h3>Door Header</h3>
+                            <p>State-of-the-art door header systems for smooth and reliable elevator operation</p>
                             <button class="explore-btn">View Products</button>
                         </div>
                     </div>
                 </div>
                 
-                <div class="flip-card-container" onclick="toggleFlipCard(this, 'Headers')">
-                    <div class="flip-card">
-                        <div class="flip-card-front">
-                            <i class="fa fa-building"></i>
-                            <h3>Headers</h3>
-                            <p>Premium header solutions for modern elevators</p>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Headers</h3>
-                            <p>Contemporary header designs for modern elevator installations</p>
-                            <button class="explore-btn">View Products</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flip-card-container" onclick="toggleFlipCard(this, 'Safeties_Hardware')">
-                    <div class="flip-card">
-                        <div class="flip-card-front">
-                            <i class="fa fa-shield-alt"></i>
-                            <h3>Safeties & Hardware</h3>
-                            <p>Safety mechanisms and hardware components</p>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Safeties & Hardware</h3>
-                            <p>Advanced safety systems and precision hardware for secure operations</p>
-                            <button class="explore-btn">View Products</button>
-                        </div>
-                    </div>
-                </div>
                 
                 <div class="flip-card-container" onclick="toggleFlipCard(this, 'Motor')">
                     <div class="flip-card">
@@ -1975,20 +1946,6 @@
                     </div>
                 </div>
                 
-                <div class="flip-card-container" onclick="toggleFlipCard(this, 'Cabin')">
-                    <div class="flip-card">
-                        <div class="flip-card-front">
-                            <i class="fa fa-cube"></i>
-                            <h3>Cabins</h3>
-                            <p>Elegant cabin designs and interiors</p>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Cabins</h3>
-                            <p>Luxurious and elegant cabin designs with premium interior finishes</p>
-                            <button class="explore-btn">View Products</button>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div id="categories-dots" class="carousel-dots"></div>
         </div>
@@ -2074,7 +2031,7 @@
                     <ul class="footer-links">
                         <li><a href="javascript:void(0);" onclick="load('Brakects')">Brakects</a></li>
                         <li><a href="javascript:void(0);" onclick="load('Doors')">Doors</a></li>
-                        <li><a href="javascript:void(0);" onclick="load('Electricals')">Electricals</a></li>
+                        <li><a href="javascript:void(0);" onclick="load('Door Header')">Door Header</a></li>
                         <li><a href="javascript:void(0);" onclick="load('Motors')">Motors</a></li>
                         <li><a href="javascript:void(0);" onclick="load('Cabin')">Cabins</a></li>
                     </ul>
@@ -2219,14 +2176,14 @@ function toggleAboutCard(card) {
 
     // Buy now function (WhatsApp)
     function buy_now(productId) {
-        const phoneNumber = "+916360198784";
+        const phoneNumber = "+9185489 03206";
         let message = "Hello! I'm interested in your elevator products.";
         
         if (productId >= 0 && typeof data !== 'undefined' && data[productId]) {
             message = `Hello! I'm interested in ${data[productId].name}`;
         }
         
-        const whatsappUrl = `https://wa.me/916360198784?text=I%E2%80%99m%20interested%20in%20your%20elevator%20products%2Fservices.`;
+        const whatsappUrl = `https://wa.me/918548903206?text=I%E2%80%99m%20interested%20in%20your%20elevator%20products%2Fservices.`;
         window.open(whatsappUrl, '_blank');
     }
 
