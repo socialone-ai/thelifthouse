@@ -781,7 +781,7 @@
 
 .offerings-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     margin-top: 4rem;
 }
@@ -1817,7 +1817,7 @@
                 </li>
                 <li><a href="about-us.html">About Us</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="./assets/catalogue.pdf" target="_blank" download><i class="fa fa-download"></i> Catalogue</a></li>
+                <!-- <li><a href="./assets/catalogue.pdf" target="_blank" download><i class="fa fa-download"></i> Catalogue</a></li> -->
             </ul>
             <div class="hamburger" onclick="toggleMenu()">
                 <div></div>
@@ -2023,7 +2023,7 @@
                         <li><a href="products.html">Products</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="about-us.html" class="active">About Us</a></li>
-                        <li><a href="./assets/catalogue.pdf" target="_blank" download><i class="fa fa-download"></i> Catalogue</a></li>
+                        <!-- <li><a href="./assets/catalogue.pdf" target="_blank" download><i class="fa fa-download"></i> Catalogue</a></li> -->
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -2220,9 +2220,10 @@ function toggleAboutCard(card) {
         };
 
         let offeringsHTML = '';
-        const productsPerCategory = 2;
+        const productsPerCategory = 1;
 
-        data.forEach((category) => {
+        const maxCategories = 8; // 2 rows × 4 products = 8 total products
+        data.slice(0, maxCategories).forEach((category) => {
             const categoryName = category.name;
             const categoryIcon = categoryIcons[categoryName] || 'fa-cube';
             
