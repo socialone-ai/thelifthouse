@@ -1306,7 +1306,7 @@
         </div>
     </footer>
 
-    <div class="whatsapp-float" onclick="buy_now(-1)">
+    <div class="whatsapp-float" onclick="buy_now(null, null)">
         <i class="fa-brands fa-whatsapp"></i>
     </div>
 
@@ -1624,7 +1624,7 @@ function createProductCard(productPath, productName, categoryName, index) {
             </div>
             <div class="product-info">
                 <div class="product-name">${productName}</div>
-                <button class="buy-btn" onclick="buy_now('${categoryName}', ${index})">
+                <button class="buy-btn" onclick="buy_now('${productPath}', '${productName}')">
                     <i class="fa-brands fa-whatsapp"></i> Buy Now
                 </button>
             </div>

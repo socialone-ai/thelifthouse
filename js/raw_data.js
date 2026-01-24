@@ -436,33 +436,24 @@ get_data = async (categoryName) => {
 };
 
 
-buy_now = (id,product=-1) => {
-	if(id == -1)
+buy_now = (productPath = null, productName = null) => {
+	if (productPath === null || productPath === -1) {
 		var buy_text = "Hey, I want you to help me out with my query!"
-	else{
-		var name = ""
-		if(product == -1){
-			name = data[id].name
-		} else {
-			var idx = -1
-			for (var i=0;i<data.length;i++) {
-				if(data[i].name == id) {
-					idx = i
-					break
-				}
-			}
-			if (idx >-1) {
-				var temp = data[idx]["products"][product]
-				temp = temp.split("/")
-				temp = temp.pop()
-				temp = temp.split(".")
-				temp.pop()
-				name = temp.join('')
-			}
-		}
+	} else {
+		// Use the productName directly if provided
+		var name = productName || extractProductNameFromPath(productPath);
 		var buy_text = "Hey there, assist me please! \nI want to purchase " + name
 	}
-	window.open('https://wa.me/+919829408299?text='+buy_text)
+	window.open('https://wa.me/+919829408299?text=' + encodeURIComponent(buy_text))
+}
+
+// Helper function to extract product name from file path
+function extractProductNameFromPath(filePath) {
+	let name = filePath.split('/').pop(); // Get filename
+	name = name.split('.')[0]; // Remove extension
+	name = name.replace(/_/g, ' '); // Replace underscores with spaces
+	name = name.replace(/-/g, ' '); // Replace hyphens with spaces
+	return name.charAt(0).toUpperCase() + name.slice(1); // Capitalize first letter
 }
 
 
