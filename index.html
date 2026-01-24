@@ -2244,8 +2244,15 @@ function toggleAboutCard(card) {
         let offeringsHTML = '';
         const productsPerCategory = 1;
 
-        const maxCategories = 8; // 2 rows × 4 products = 8 total products
-        data.slice(0, maxCategories).forEach((category) => {
+            const maxCategories = 8; // 2 rows × 4 products = 8 total products
+
+            // Categories to exclude
+            const excludedCategories = ['Brakects', 'Doors', 'Motor'];
+
+            // Filter out excluded categories and take first 8
+            const filteredData = data.filter(category => !excludedCategories.includes(category.name));
+
+            filteredData.slice(0, maxCategories).forEach((category) => {
             const categoryName = category.name;
             const categoryIcon = categoryIcons[categoryName] || 'fa-cube';
             
