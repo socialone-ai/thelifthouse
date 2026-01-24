@@ -1543,16 +1543,6 @@
                 width: 100%;
             }
 
-            .offerings::after {
-                content: '← Swipe for more →';
-                display: block;
-                text-align: center;
-                color: var(--primary);
-                font-size: 0.9rem;
-                margin-top: 1rem;
-                font-weight: 600;
-            }
-
 /* MOBILE: Stats - Swipeable */
 .stats {
     margin: -2rem 1rem 0;
@@ -2034,8 +2024,7 @@
             <h2>Our Products</h2>
             <p>Discover our handpicked selection of premium elevator components across all categories.</p>
         </div>
-        <div id="offerings-grid" class="offerings-grid">
-        </div>
+        <div id="offerings-grid" class="offerings-grid"></div>
     </div>
 </section>
 
@@ -2328,13 +2317,20 @@ function toggleAboutCard(card) {
             offeringsHTML = '<p style="text-align:center; color:#666; grid-column: 1/-1;">No products available at the moment.</p>';
         }
 
-        const offeringsGrid = document.getElementById('offerings-grid');
-        if (offeringsGrid) {
-            offeringsGrid.innerHTML = offeringsHTML;
-            console.log('✅ Offerings section populated successfully!');
-        } else {
-            console.error('offerings-grid element not found');
-        }
+const offeringsGrid = document.getElementById('offerings-grid');
+if (offeringsGrid) {
+    offeringsGrid.innerHTML = offeringsHTML;
+    console.log('✅ Offerings section populated successfully!');
+    
+    // ✅ TRIGGER CAROUSEL INIT AFTER CARDS ARE ADDED
+    if (window.innerWidth <= 768) {
+        setTimeout(() => {
+            window.dispatchEvent(new Event('offeringsReady'));
+        }, 200);
+    }
+} else {
+    console.error('offerings-grid element not found');
+}
     }
 // ========================================
 // MOBILE ONLY: Infinite Carousel System (FIXED)
@@ -2349,6 +2345,7 @@ class InfiniteCarousel {
         this.cards = [];
         this.currentIndex = 0;
         this.isScrolling = false;
+        this.initialized = false;
         
         this.init();
     }
@@ -2365,8 +2362,15 @@ class InfiniteCarousel {
             
             this.cloneCards();
             this.createDots();
-            this.attachScrollListener();
-            this.scrollToIndex(0, false); // Start at first real card
+            
+            // ✅ FIX: Wait for DOM to update after cloning
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    this.scrollToRealStart();
+                    this.attachScrollListener();
+                    this.initialized = true;
+                });
+            });
         }, 100);
     }
     
@@ -2415,10 +2419,24 @@ class InfiniteCarousel {
         });
     }
     
+    // ✅ NEW METHOD: Properly scroll to real first card
+    scrollToRealStart() {
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 16;
+        const scrollPosition = this.realStartIndex * (cardWidth + gap);
+        
+        // Instant scroll without animation
+        this.grid.scrollLeft = scrollPosition;
+        this.currentIndex = 0;
+        this.updateDots();
+    }
+    
     attachScrollListener() {
         let scrollTimeout;
         
         this.grid.addEventListener('scroll', () => {
+            if (!this.initialized) return; // Don't handle scroll during init
+            
             this.isScrolling = true;
             
             clearTimeout(scrollTimeout);
@@ -2435,20 +2453,19 @@ class InfiniteCarousel {
         const gap = 16;
         const totalWidth = cardWidth + gap;
         
-        // Calculate which card we're closest to
         let newIndex = Math.round(scrollLeft / totalWidth);
         
-        // Update current index based on real cards
         if (newIndex < this.realStartIndex) {
-            // We're in cloned start cards, jump to real end
             this.currentIndex = this.cards.length - 1;
-            this.scrollToIndex(this.cards.length - 1 + this.realStartIndex, false);
+            setTimeout(() => {
+                this.grid.scrollLeft = (this.cards.length - 1 + this.realStartIndex) * totalWidth;
+            }, 50);
         } else if (newIndex >= this.realStartIndex + this.cards.length) {
-            // We're in cloned end cards, jump to real start
             this.currentIndex = 0;
-            this.scrollToIndex(this.realStartIndex, false);
+            setTimeout(() => {
+                this.grid.scrollLeft = this.realStartIndex * totalWidth;
+            }, 50);
         } else {
-            // We're in real cards
             this.currentIndex = newIndex - this.realStartIndex;
             this.snapToCard(newIndex);
         }
@@ -2484,7 +2501,6 @@ class InfiniteCarousel {
         this.updateDots();
     }
 }
-
 // ========================================
 // MOBILE MENU: Products Carousel with Infinite Scroll
 // ========================================
@@ -2498,6 +2514,7 @@ class MobileMenuCarousel {
         this.cards = [];
         this.currentIndex = 0;
         this.isScrolling = false;
+        this.initialized = false;
         
         this.init();
     }
@@ -2509,8 +2526,15 @@ class MobileMenuCarousel {
         
         this.cloneCards();
         this.createDots();
-        this.attachScrollListener();
-        this.scrollToIndex(0, false);
+        
+        // ✅ FIX: Same fix for mobile menu
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                this.scrollToRealStart();
+                this.attachScrollListener();
+                this.initialized = true;
+            });
+        });
     }
     
     cloneCards() {
@@ -2550,9 +2574,22 @@ class MobileMenuCarousel {
         });
     }
     
+    // ✅ NEW METHOD
+    scrollToRealStart() {
+        const cardWidth = this.allCards[0].offsetWidth;
+        const gap = 12.8;
+        const scrollPosition = this.realStartIndex * (cardWidth + gap);
+        
+        this.grid.scrollLeft = scrollPosition;
+        this.currentIndex = 0;
+        this.updateDots();
+    }
+    
     attachScrollListener() {
         let scrollTimeout;
         this.grid.addEventListener('scroll', () => {
+            if (!this.initialized) return;
+            
             this.isScrolling = true;
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
@@ -2572,10 +2609,14 @@ class MobileMenuCarousel {
         
         if (newIndex < this.realStartIndex) {
             this.currentIndex = this.cards.length - 1;
-            this.scrollToIndex(this.cards.length - 1 + this.realStartIndex, false);
+            setTimeout(() => {
+                this.grid.scrollLeft = (this.cards.length - 1 + this.realStartIndex) * totalWidth;
+            }, 50);
         } else if (newIndex >= this.realStartIndex + this.cards.length) {
             this.currentIndex = 0;
-            this.scrollToIndex(this.realStartIndex, false);
+            setTimeout(() => {
+                this.grid.scrollLeft = this.realStartIndex * totalWidth;
+            }, 50);
         } else {
             this.currentIndex = newIndex - this.realStartIndex;
             this.snapToCard(newIndex);
@@ -2612,17 +2653,16 @@ if (window.innerWidth <= 768) {
 
 // Initialize carousels on mobile only
 if (window.innerWidth <= 768) {
-    let statsCarousel, categoriesCarousel;
+    let statsCarousel, categoriesCarousel, offeringsCarousel;
     
     function initCarousels() {
-        // Wait a bit for DOM to be ready
+        // Stats carousel - ready immediately
         setTimeout(() => {
-            // Initialize stats carousel
             if (document.querySelector('.stats-grid')) {
                 statsCarousel = new InfiniteCarousel('.stats-grid', '#stats-dots');
             }
             
-            // Initialize categories carousel (Our Offerings flip cards)
+            // Categories carousel - ready immediately
             if (document.querySelector('.categories-grid')) {
                 categoriesCarousel = new InfiniteCarousel('.categories-grid', '#categories-dots');
             }
