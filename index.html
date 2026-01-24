@@ -832,6 +832,14 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
     box-shadow: 0 4px 15px rgba(103, 65, 148, 0.3);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.offering-card:hover .offering-category-badge {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .offering-content {
@@ -885,6 +893,20 @@
     background: #25D366;
     color: white;
     box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.offering-btn-primary {
+    background: #25D366;
+    color: white;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.offering-card:hover .offering-btn-primary {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .offering-btn-primary:hover {
@@ -1915,16 +1937,16 @@
                     </div>
                 </div>
                 
-                <div class="flip-card-container" onclick="toggleFlipCard(this, 'Door Header')">
+                <div class="flip-card-container" onclick="toggleFlipCard(this, 'Control Pannel')">
                     <div class="flip-card">
                         <div class="flip-card-front">
-                            <i class="fa fa-bolt"></i>
-                            <h3>Door Header</h3>
-                            <p>Advanced door header systems for smooth and reliable operation</p>
+                            <i class="fa-microchip"></i>
+                            <h3>Control Pannel</h3>
+                            <p>Intelligent Elevator Control Panels</p>
                         </div>
                         <div class="flip-card-back">
-                            <h3>Door Header</h3>
-                            <p>State-of-the-art door header systems for smooth and reliable elevator operation</p>
+                            <h3>Control Pannel</h3>
+                            <p>Advanced control panels designed for safe, efficient, and reliable elevator operations</p>
                             <button class="explore-btn">View Products</button>
                         </div>
                     </div>
@@ -2222,8 +2244,15 @@ function toggleAboutCard(card) {
         let offeringsHTML = '';
         const productsPerCategory = 1;
 
-        const maxCategories = 8; // 2 rows × 4 products = 8 total products
-        data.slice(0, maxCategories).forEach((category) => {
+            const maxCategories = 8; // 2 rows × 4 products = 8 total products
+
+            // Categories to exclude
+            const excludedCategories = ['Brakects', 'Doors', 'Motor'];
+
+            // Filter out excluded categories and take first 8
+            const filteredData = data.filter(category => !excludedCategories.includes(category.name));
+
+            filteredData.slice(0, maxCategories).forEach((category) => {
             const categoryName = category.name;
             const categoryIcon = categoryIcons[categoryName] || 'fa-cube';
             
