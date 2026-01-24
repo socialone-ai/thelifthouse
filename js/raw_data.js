@@ -1,119 +1,291 @@
 const data = [
 		{
-			name:"Accessories",
-			products: [
-				"./assets/images/categories/Accessories/Elevator FAN.jpg",
-				"./assets/images/categories/Accessories/ESSBEE Limit Switch NC-NO.jpg",
-				"./assets/images/categories/Accessories/High Speed Blower Fan.jpg",
-				"./assets/images/categories/Accessories/Inspection Box.png",
-				"./assets/images/categories/Accessories/J Hook pata.jpg",
-				"./assets/images/categories/Accessories/Junction Box.jpg",
-				"./assets/images/categories/Accessories/Limit Switch.jpg",
-				"./assets/images/categories/Accessories/MS Fireman Swtich.jpg",
-				"./assets/images/categories/Accessories/Pit Switch.jpg",
-				"./assets/images/categories/Accessories/Plastic Cable Hanger.jpg",
-				"./assets/images/categories/Accessories/Ribbon Cable telephone type.jpg",
-				"./assets/images/categories/Accessories/Rope Clamp.jpg",
-				"./assets/images/categories/Accessories/Rubber pad.jpg",
-				"./assets/images/categories/Accessories/SS Emergency Alarm.jpg",
-			],
-		},
-		{
-			name:"Doors",
-			products: [
-				"./assets/images/categories/Doors/MS Collapsible Door.jpg",
-				"./assets/images/categories/Doors/MS IFG Door.jpg",
-				"./assets/images/categories/Doors/MS Swing Door.jpg",
-				"./assets/images/categories/Doors/MS Telescopic-Manual Door.jpg",
-				"./assets/images/categories/Doors/SS Auto Door.jpg",
-				"./assets/images/categories/Doors/SS Glass Door.jpg",
-				"./assets/images/categories/Doors/SS Golden Etching-door.jpg",
-				"./assets/images/categories/Doors/SS Rose Gold Etching-door.jpg",
+			name: "Brakects",
+			categories: [
+				{
+				name: "CAR BRACKECTS",
+				products: [
+					"./assets/images/categories/Brakects/CAR BRAKECTS/Base-Car-Bracket.jpg",
+					"./assets/images/categories/Brakects/CAR BRAKECTS/Top-Bracket-50-100.jpg",
+					"./assets/images/categories/Brakects/CAR BRAKECTS/Top-Bracket-100-150.jpg",
+					"./assets/images/categories/Brakects/CAR BRAKECTS/Top-Bracket-150-200.jpg",
+					"./assets/images/categories/Brakects/CAR BRAKECTS/Top-Bracket-200-250.jpg",
+					"./assets/images/categories/Brakects/CAR BRAKECTS/Top-Bracket-250-300.jpg",
+				]
+				},
+				{
+				name: "Combination Brakects",
+				products: [
+					"./assets/images/categories/Brakects/Combination Brakects/COMBINATION-BRACKETS.jpg",
+				]
+				},
+				{
+				name: "Counter Brakects",
+				products: [
+					"./assets/images/categories/Brakects/Counter Brakects/Base-Counter-Bracket.jpg",
+					"./assets/images/categories/Brakects/Counter Brakects/Top-Bracket-100-150.jpg",
+					"./assets/images/categories/Brakects/Counter Brakects/Top-Bracket-150-200.jpg",
+					"./assets/images/categories/Brakects/Counter Brakects/Top-Bracket-200-250.jpg",
+					"./assets/images/categories/Brakects/Counter Brakects/Top-Bracket-250-300.jpg",
+					"./assets/images/categories/Brakects/Counter Brakects/Top-Bracket-300-350.jpg",
+				]
+				},
+				{
+				name: "HYDRAULIC BRAKECTS",
+				products: [
+					"./assets/images/categories/Brakects/HYDRAULIC BRAKECTS/HYDRAULIC-BRACKETS.jpg",
+				]
+				},
 			]
 		},
 		{
-			name:"Electricals",
-			products: [
-				"./assets/images/categories/Electricals/AVOX Sleel Type.jpg",
-				"./assets/images/categories/Electricals/Box Type.jpg",
-				"./assets/images/categories/Electricals/Fuji Drive.jpg",
-				"./assets/images/categories/Electricals/Geared - Integrated Control Panel.jpg",
-				"./assets/images/categories/Electricals/Gearless - Integrated Control Panel.jpg",
-				"./assets/images/categories/Electricals/HP Mont Drive.jpg",
-				"./assets/images/categories/Electricals/INVT Drive.jpg",
-				"./assets/images/categories/Electricals/LIFT ON - ARD.jpg",
-				"./assets/images/categories/Electricals/Simple Auto Door Panel.jpg",
-				"./assets/images/categories/Electricals/SS-Acrylic Design.jpg",
-				"./assets/images/categories/Electricals/Standard Wallmount Type.jpg",
-				"./assets/images/categories/Electricals/TG Drive.jpg",
-				"./assets/images/categories/Electricals/Yaskawa Drive.jpg",
+			name: "Doors",
+			categories: [
+				{
+				name: "Auto Doors",
+				products: [
+					"./assets/images/categories/Doors/Auto Doors/Designer-Door.jpg",
+					"./assets/images/categories/Doors/Auto Doors/Full-Vision-Door.jpg",
+					"./assets/images/categories/Doors/Auto Doors/Rose-Gold-Designer-Door.jpg",
+					"./assets/images/categories/Doors/Auto Doors/Small-Vision-Door.jpg",
+					"./assets/images/categories/Doors/Auto Doors/SS - Door.jpg",
+				]
+				},
+				{
+				name: "Manual Door",
+				products: [
+					"./assets/images/categories/Doors/Manual Door/Collapsible-Door.jpg",
+					"./assets/images/categories/Doors/Manual Door/Imperforated-Door.jpg",
+					"./assets/images/categories/Doors/Manual Door/Swing-Door.jpg",
+					"./assets/images/categories/Doors/Manual Door/Telescopic-Door.jpg",
+				]
+				},
 			]
+		},
+		{
+				name: "Wiring Parts",
+
+				// Direct products
+				products: [
+					"./assets/images/categories/Wiring Parts/Bajrang-Lock.jpg",
+					"./assets/images/categories/Wiring Parts/Brake-Coil-110V,-220V.jpg",
+					"./assets/images/categories/Wiring Parts/Cable.jpg",
+					"./assets/images/categories/Wiring Parts/Car-Gate-Switch.jpg",
+					"./assets/images/categories/Wiring Parts/Door-Sensor.jpg",
+					"./assets/images/categories/Wiring Parts/Fire-Switch.jpg",
+					"./assets/images/categories/Wiring Parts/Flat-Colour-Ribbon.jpg",
+					"./assets/images/categories/Wiring Parts/Hotter-With-Battey.jpg",
+					"./assets/images/categories/Wiring Parts/Hydrulic-RCR-Camp.jpg",
+					"./assets/images/categories/Wiring Parts/Inspection-Box.jpg",
+					"./assets/images/categories/Wiring Parts/J-Pata.jpg",
+					"./assets/images/categories/Wiring Parts/Junction-Box.jpg",
+					"./assets/images/categories/Wiring Parts/Limit-Switch.jpg",
+					"./assets/images/categories/Wiring Parts/Limit-Switch-CNTD.jpg",
+					"./assets/images/categories/Wiring Parts/Limit-Switch-LH.jpg",
+					"./assets/images/categories/Wiring Parts/Limit-Switch-NO.jpg",
+					"./assets/images/categories/Wiring Parts/Motor-Brake.jpg",
+					"./assets/images/categories/Wiring Parts/Motor-Brake-Liner.jpg",
+					"./assets/images/categories/Wiring Parts/Oil-Cup.jpg",
+					"./assets/images/categories/Wiring Parts/OSG-Switch.jpg",
+					"./assets/images/categories/Wiring Parts/Otis-Type-Set.jpg",
+					"./assets/images/categories/Wiring Parts/Overload-Sensor.jpg",
+					"./assets/images/categories/Wiring Parts/Pit-Switch.jpg",
+					"./assets/images/categories/Wiring Parts/PVC-Truff.jpg",
+					"./assets/images/categories/Wiring Parts/RCR-Coil-110V.jpg",
+					"./assets/images/categories/Wiring Parts/RCR-Otis-Type.jpg",
+					"./assets/images/categories/Wiring Parts/Rectangular-Magnet.jpg",
+					"./assets/images/categories/Wiring Parts/Reed-Switch.jpg",
+					"./assets/images/categories/Wiring Parts/Round-Magnet.jpg",
+					"./assets/images/categories/Wiring Parts/Safety-Switch.jpg",
+					"./assets/images/categories/Wiring Parts/Speaker.jpg",
+					"./assets/images/categories/Wiring Parts/SS-Alarm.jpg",
+					"./assets/images/categories/Wiring Parts/Traviling-Cabel-Hanger-(B).jpg",
+					"./assets/images/categories/Wiring Parts/Traviling-Cabel-Hanger.jpg",
+					"./assets/images/categories/Wiring Parts/Wire-Bundle-0.5-Sqm.jpg",
+				],
+
+				// Subcategories
+				categories: [
+					{
+					name: "Fan",
+					products: [
+						"./assets/images/categories/Wiring Parts/Fan/Blower.jpg",
+						"./assets/images/categories/Wiring Parts/Fan/Fan.jpg",
+						"./assets/images/categories/Wiring Parts/Fan/Fan-Grill-Round.jpg",
+						"./assets/images/categories/Wiring Parts/Fan/Fan-Grill-Square.jpg",
+					]
+					},
+					{
+					name: "Rope",
+					products: [
+						"./assets/images/categories/Wiring Parts/Rope/Usha martin Rope.jpg",
+					]
+					},
+					{
+					name: "Travelling Cable",
+					products: [
+						"./assets/images/categories/Wiring Parts/Travelling Cable/4-Core.jpg",
+						"./assets/images/categories/Wiring Parts/Travelling Cable/12-Core.jpg",
+						"./assets/images/categories/Wiring Parts/Travelling Cable/24-Core.jpg",
+					]
+					},
+				]
 		},
 		{
 			name:"Filler Counter Weights",
 			products: [
-				"./assets/images/categories/Filler Counter Weights/Counter-Weights (All Size 500 DBG - 1350 DBG).jpg",
+				"./assets/images/categories/Filler Counter Weights/Counter Weights ( All Size 500 DBG - 1350 DBG.jpg",
 			]
 		},
 		{
-			name:"Guide Rail",
+			name:"Guide Rails",
 			products: [
-				"./assets/images/categories/Guide Rail/Marazzi-Guide-Rail.jpg",
+				"./assets/images/categories/Guide Rails/Marazzi-Guide-Rail.jpg",
 			]
 		},
 		{
-			name:"Headers",
-			products: [
-				"./assets/images/categories/Headers/Fermator Header.jpg",
-				"./assets/images/categories/Headers/Synergy Header.jpg",
-				"./assets/images/categories/Headers/Wittur Header.png",
+			name: "Door Header",
+			categories: [
+				{
+				name: "Fermator",
+				products: [
+					"./assets/images/categories/Door Header/Fermator/Car-Header.jpg",
+					"./assets/images/categories/Door Header/Fermator/Lading-Header.jpg",
+				]
+				},
+				{
+				name: "NBSL",
+				products: [
+					"./assets/images/categories/Door Header/NBSL/Car-Header.jpg",
+					"./assets/images/categories/Door Header/NBSL/Landing-Header.jpg",
+				]
+				},
+				{
+				name: "Synergy",
+				products: [
+					"./assets/images/categories/Door Header/Synergy/Car-Header.jpg",
+					"./assets/images/categories/Door Header/Synergy/Lading-Header.jpg",
+				]
+				},
 			]
 		},
 		{
-			name:"Safeties and Hardware",
-			products: [
-				"./assets/images/categories/Safeties and Hardware/Cantilever Type.jpg",
-				"./assets/images/categories/Safeties and Hardware/Car Shoe.jpg",
-				"./assets/images/categories/Safeties and Hardware/Counter Shoe.jpg",
-				"./assets/images/categories/Safeties and Hardware/Counter Weight.jpg",
-				"./assets/images/categories/Safeties and Hardware/Divertor Wheel.jpg",
-				"./assets/images/categories/Safeties and Hardware/FASTNERS.jpg",
-				"./assets/images/categories/Safeties and Hardware/GP Bracket.jpg",
-				"./assets/images/categories/Safeties and Hardware/Guide Clips.jpg",
-				"./assets/images/categories/Safeties and Hardware/MRL Type.jpg",
-				"./assets/images/categories/Safeties and Hardware/Otis Type Manual Lock.jpg",
-				"./assets/images/categories/Safeties and Hardware/R Cam.jpg",
-				"./assets/images/categories/Safeties and Hardware/Standard Otis Type.jpeg",
+			name: "Door Header Parts",
+			categories: [
+				{
+				name: "Fermator",
+				products: [
+					"./assets/images/categories/Door Header Parts/Fermator/Belt Lock.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Belt Pulley.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Contact set 02.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Contact set.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Coupler CO.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Coupler LH.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Coupler RH.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Door Drive.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Door Key.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Door Lock set.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Door Shoe.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Header Belt.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Header Hanger Bolt.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Lock set.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Track Roller.jpg",
+				]
+				},
+				{
+				name: "Synergy",
+				products: [
+					"./assets/images/categories/Door Header Parts/Synergy/Belt Lock.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Collapsible Door Gibs (Iron).jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Collapsible Door Gibs (Plastic).jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Collapsible Door Handle.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Collapsible Door Roller.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Contact set.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Coupler Set.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Door Drive, Door Motor, Door SMPS, (Lift Master).jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Door Drive, Door Motor, Door SMPS.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Door Hanger Bolt.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Door Key.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Door Lock set.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Door Shoe Set.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Door Shoe.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Header Belt.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Header Rope pulley.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Header Rope.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Header Sill.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Header Spring.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Lock set & Roller.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Rope Roller.jpg",
+					"./assets/images/categories/Door Header Parts/Synergy/Track Roller.jpg",
+				]
+				},
 			]
 		},
 		{
-			name:"Motor",
-			products: [
-				"./assets/images/categories/Motor/Montanari-Geared.jpg",
-				"./assets/images/categories/Motor/Sharp-Geared-MP-61.jpg",
-				"./assets/images/categories/Motor/Sicor-geared.jpg",
-				"./assets/images/categories/Motor/Technik Essti - Geared.jpg",
-				"./assets/images/categories/Motor/Varsha VI - Geared.jpeg",
-				"./assets/images/categories/Motor/Bharat-bijlee-gearless.jpg",
-				"./assets/images/categories/Motor/Gearless Motor.jpg",
-				"./assets/images/categories/Motor/Hepu-Gearless.jpg",
-				"./assets/images/categories/Motor/Monodrive-Gearless.jpg",
-				"./assets/images/categories/Motor/Montanari-Gearless.jpg",
-				"./assets/images/categories/Motor/Sharp-Gearless.jpg",
-				"./assets/images/categories/Motor/Torindrive-Gearless.jpg",
+			name: "Motor",
+			categories: [
+				{
+				name: "Montanari",
+				products: [
+					"./assets/images/categories/Motor/Montanari/Montanari-Geared.jpg",
+					"./assets/images/categories/Motor/Montanari/Montanari-Gearless.jpg",
+				]
+				},
+				{
+				name: "NBSL",
+				products: [
+					"./assets/images/categories/Motor/NBSL/Cylindrical.jpg",
+					"./assets/images/categories/Motor/NBSL/Pancake.jpg",
+				]
+				},
+				{
+				name: "Sharp",
+				products: [
+					"./assets/images/categories/Motor/Sharp/Geared.jpg",
+					"./assets/images/categories/Motor/Sharp/Gearless.jpg",
+				]
+				},
+				{
+				name: "Vermec",
+				products: [
+					"./assets/images/categories/Motor/Vermec/Geared.jpg",
+					"./assets/images/categories/Motor/Vermec/Gearless.jpg",
+				]
+				},
 			]
 		},
 		{
-			name:"Cabin",
-			products: [
-				"./assets/images/categories/Cabin/M.S. CABIN.jpg",
-				"./assets/images/categories/Cabin/MS  CABIN.jpg",
-				"./assets/images/categories/Cabin/MS. CABIN.jpg",
-				"./assets/images/categories/Cabin/S.S.  CABIN.jpg",
-				"./assets/images/categories/Cabin/S.S. CABIN-2.jpg",
-				"./assets/images/categories/Cabin/SS  CABIN.jpg",
-				"./assets/images/categories/Cabin/SS CABIN-2.jpg",
-				
+			name: "Cabin",
+			categories: [
+				{
+				name: "Designer Gold Cabin",
+				products: [
+					"./assets/images/categories/Cabin/Designer Gold Cabin/01.jpg",
+					"./assets/images/categories/Cabin/Designer Gold Cabin/02.jpg",
+				]
+				},
+				{
+				name: "Designer Rose Gold Cabin",
+				products: [
+					"./assets/images/categories/Cabin/Designer Rose Gold Cabin/01.jpg",
+					"./assets/images/categories/Cabin/Designer Rose Gold Cabin/02.jpg",
+				]
+				},
+				{
+				name: "MS Cabin",
+				products: [
+					"./assets/images/categories/Cabin/MS Cabin/02.jpg",
+					"./assets/images/categories/Cabin/MS Cabin/MS-Cabin.jpg",
+				]
+				},
+				{
+				name: "SS Cabin",
+				products: [
+					"./assets/images/categories/Cabin/SS Cabin/SS-Cabin.jpg",
+					"./assets/images/categories/Cabin/SS Cabin/SS-Designer-Cabin.jpg",
+					"./assets/images/categories/Cabin/SS Cabin/SS-Designer-Cabin-02.jpg",
+				]
+				},
 			]
 		},
 		{
@@ -131,22 +303,22 @@ const data = [
 			]
 		},
 		{
-			name: "Control Pannels",
+			name: "Control Pannel",
 			categories: [
 				{
 				name: "HP Mont",
 				products: [
-					"./assets/images/categories/Control Pannels/HP Mont/GEARLESS-PANNEL-MT-71.jpg",
-					"./assets/images/categories/Control Pannels/HP Mont/SIDDHAM-ULTIMATE-GEARLESS-PANNEL.jpg",
+					"./assets/images/categories/Control Pannel/Hpmont/GEARLESS-PANNEL-MT-71.jpg",
+					"./assets/images/categories/Control Pannel/Hpmont/SIDDHAM-ULTIMATE-GEARLESS-PANNEL.jpg",
 				]
 				},
 				{
 				name: "Thita",
 				products: [
-					"./assets/images/categories/Control Pannels/Thita/HYDRAULIC-PANEL.jpg",
-					"./assets/images/categories/Control Pannels/Thita/TG-900-INTEGRATED-GEARD-CONTROL-PANEL.jpg",
-					"./assets/images/categories/Control Pannels/Thita/TGM-1000-CLOSELOOP-GEARLESS-INTERGRATED.jpg",
-					"./assets/images/categories/Control Pannels/Thita/THX-07-CONTROLLER.jpg",
+					"./assets/images/categories/Control Pannel/Thita/HYDRAULIC-PANEL.jpg",
+					"./assets/images/categories/Control Pannel/Thita/TG-900-INTEGRATED-GEARD-CONTROL-PANEL.jpg",
+					"./assets/images/categories/Control Pannel/Thita/TGM-1000-CLOSELOOP-GEARLESS-INTERGRATED.jpg",
+					"./assets/images/categories/Control Pannel/Thita/THX-07-CONTROLLER.jpg",
 				]
 				},
 			]
@@ -174,17 +346,17 @@ const data = [
 					{
 					name: "Hpmont",
 					products: [
-						"./assets/images/categories/Control Pannel Spare Parts/Drives/Hpmont/Door-Drive.jpg",
-						"./assets/images/categories/Control Pannel Spare Parts/Drives/Hpmont/HD3L.jpg",
-						"./assets/images/categories/Control Pannel Spare Parts/Drives/Hpmont/HD5L.jpg",
-						"./assets/images/categories/Control Pannel Spare Parts/Drives/Hpmont/MT71.jpg",
-						"./assets/images/categories/Control Pannel Spare Parts/Drives/Hpmont/MT73.jpg",
+						"./assets/images/categories/Control Pannel Spare Parts/Drive/HP Mount/Door-Drive.jpg",
+						"./assets/images/categories/Control Pannel Spare Parts/Drive/HP Mount/HD3L.jpg",
+						"./assets/images/categories/Control Pannel Spare Parts/Drive/HP Mount/HD5L.jpg",
+						"./assets/images/categories/Control Pannel Spare Parts/Drive/HP Mount/MT71.jpg",
+						"./assets/images/categories/Control Pannel Spare Parts/Drive/HP Mount/MT73.jpg",
 					]
 					},
 					{
 					name: "Thita",
 					products: [
-						"./assets/images/categories/Control Pannel Spare Parts/Drives/Thita/Thita-Drive.jpg",
+						"./assets/images/categories/Control Pannel Spare Parts/Drive/Thita/Thita-Drive.jpg",
 					]
 					}
 				]
@@ -229,8 +401,8 @@ const data = [
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Cantilever-Guide-(16mm).jpg",
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Car-Shoe-(9mm).jpg",
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Car-Shoe(16mm).jpg",
-						"./assets/images/categories/Hardware Parts/DBG Accessories/Car-Shoe--Imported-(9MM).jpg",
-						"./assets/images/categories/Hardware Parts/DBG Accessories/Car-Shoe--Imported-(16MM).jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Car-Shoe - Imported-(9MM).jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Car-Shoe - Imported-(16MM).jpg",
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Counter-Shoe (5 mm).jpg",
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Counter-Shoe-(9mm).jpg",
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Guide-Shoe-Liner.jpg",
@@ -238,7 +410,7 @@ const data = [
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Imported-Safety-Block-Shoe.jpg",
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Platform-Ribber.jpg",
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Progressive-Clutch.jpg",
-						"./assets/images/categories/Hardware Parts/DBG Accessories/Rope-I--Thimble.jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Rope-I - Thimble.jpg",
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Rubber-Plate.jpg",
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Safety-Block-Shoe.jpg",
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Safety-Clutch.jpg",
@@ -256,10 +428,8 @@ const data = [
 get_data = async (categoryName) => {
     for (let i = 0; i < data.length; i++) {
         if (data[i].name === categoryName) {
-            return {
-                name: data[i].name,
-                products: flattenProducts(data[i])
-            };
+            // Return full structure instead of flattening
+            return data[i];
         }
     }
     return null;

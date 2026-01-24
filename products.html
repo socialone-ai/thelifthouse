@@ -1136,6 +1136,60 @@
     display: none;
 }
 
+/* Subcategory Styles */
+.subcategory-section {
+    margin-top: 3rem;
+}
+
+.subcategory-title {
+    font-size: 1.8rem;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid #e0e0e0;
+    position: relative;
+}
+
+.subcategory-title::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100px;
+    height: 2px;
+    background: var(--gradient);
+}
+
+/* Sub-subcategory Styles (3-level nesting) */
+.sub-subcategory-section {
+    margin-top: 2rem;
+    margin-left: 1rem;
+}
+
+.sub-subcategory-title {
+    font-size: 1.4rem;
+    color: #555;
+    margin-bottom: 1.2rem;
+    padding-left: 1rem;
+    border-left: 4px solid var(--secondary);
+    font-weight: 600;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .subcategory-title {
+        font-size: 1.5rem;
+    }
+    
+    .sub-subcategory-title {
+        font-size: 1.2rem;
+    }
+    
+    .sub-subcategory-section {
+        margin-left: 0.5rem;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -1264,14 +1318,14 @@
     <script src="./js/raw_data.js"></script>
     <script>
         const categoryIcons = {
-            'Accessories': 'fa-cog',
+            'Brackects': 'fa-cog',
             'Doors': 'fa-door-open',
-            'Electricals': 'fa-bolt',
-            'Headers': 'fa-building',
-            'Safeties and Hardware': 'fa-shield-alt',
+            'Wiring Parts': 'fa-bolt',
+            'Door Header': 'fa-building',
+            'Door Header Parts': 'fa-shield-alt',
             'Motor': 'fa-cogs',
             'Cabin': 'fa-cube',
-            'Control Pannels': 'fa-microchip',
+            'Control Pannel': 'fa-microchip',
             'Control Panel Spare Parts': 'fa-tools',
             'DIVERTER PULLEYES': 'fa-circle-notch',
             'Filler Counter Weights': 'fa-weight-hanging',
@@ -1281,14 +1335,14 @@
         };
 
         const categoryDescriptions = {
-            'Accessories': 'Premium fittings',
+            'Brackects': 'Premium fittings',
             'Doors': 'Safety & style',
-            'Electricals': 'Advanced systems',
-            'Headers': 'Modern designs',
-            'Safeties and Hardware': 'Premium safety',
+            'Wiring Parts': 'Advanced systems',
+            'Door Header': 'Modern designs',
+            'Door Header Parts': 'Premium safety',
             'Motor': 'Smooth operation',
             'Cabin': 'Elegant interiors',
-            'Control Pannels': 'Smart controls',
+            'Control Pannel': 'Smart controls',
             'Control Panel Spare Parts': 'Spare components',
             'DIVERTER PULLEYES': 'Precision parts',
             'Filler Counter Weights': 'Balance weights',
@@ -1378,7 +1432,7 @@
                 allCategories.forEach(categoryName => {
                     const icon = categoryIcons[categoryName] || 'fa-box';
                     const desc = categoryDescriptions[categoryName] || 'Quality products';
-                    const displayName = categoryName === 'Safeties and Hardware' ? 'Safeties & Hardware' : categoryName;
+                    const displayName = categoryName === 'Door Header Parts' ? 'Door Header Parts' : categoryName;
                     
                     filterHTML += `
                         <div class="filter-item" data-category="${categoryName}" onclick="selectSideFilter(this, '${categoryName}')">
@@ -1429,7 +1483,7 @@
                 btn.classList.remove('active');
                 if ((category === 'all' && btn.textContent === 'All Products') ||
                     btn.textContent === category ||
-                    (category === 'Safeties and Hardware' && btn.textContent === 'Safeties & Hardware')) {
+                    (category === 'Door Header Parts' && btn.textContent === 'Safeties & Hardware')) {
                     btn.classList.add('active');
                 }
             });
@@ -1468,14 +1522,14 @@
                 if (category === 'all') {
                     for (let cat of allCategories) {
                         const categoryData = await get_data(cat);
-                        if (categoryData && categoryData.products && categoryData.products.length > 0) {
-                            productsHTML += createCategorySection(cat, categoryData.products);
+                        if (categoryData) {
+                            productsHTML += createCategorySection(categoryData);
                         }
                     }
                 } else {
                     const categoryData = await get_data(category);
-                    if (categoryData && categoryData.products && categoryData.products.length > 0) {
-                        productsHTML += createCategorySection(category, categoryData.products);
+                    if (categoryData) {
+                        productsHTML += createCategorySection(categoryData);
                     }
                 }
 
@@ -1502,35 +1556,82 @@
             }
         }
 
-        function createCategorySection(categoryName, products) {
-            let productsGrid = '';
-            
-            products.forEach((productPath, index) => {
-                const productName = extractProductName(productPath);
-                productsGrid += `
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="${productPath}" alt="${productName}" onerror="this.src='./assets/images/placeholder.jpg'">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">${productName}</div>
-                            <button class="buy-btn" onclick="buy_now('${categoryName}', ${index})">
-                                <i class="fa-brands fa-whatsapp"></i> Buy Now
-                            </button>
-                        </div>
-                    </div>
-                `;
-            });
+function createCategorySection(categoryData) {
+    let html = `
+        <div class="category-section">
+            <h2 class="category-title">${categoryData.name}</h2>
+    `;
 
-            return `
-                <div class="category-section">
-                    <h2 class="category-title">${categoryName}</h2>
-                    <div class="products-grid">
-                        ${productsGrid}
-                    </div>
-                </div>
+    // Check if category has direct products (show them first)
+    if (categoryData.products && categoryData.products.length > 0) {
+        html += '<div class="products-grid">';
+        categoryData.products.forEach((productPath, index) => {
+            const productName = extractProductName(productPath);
+            html += createProductCard(productPath, productName, categoryData.name, index);
+        });
+        html += '</div>';
+    }
+
+    // Check if category has subcategories
+    if (categoryData.categories && categoryData.categories.length > 0) {
+        categoryData.categories.forEach(subcategory => {
+            // Subcategory heading (simple text divider)
+            html += `
+                <div class="subcategory-section">
+                    <h3 class="subcategory-title">${subcategory.name}</h3>
             `;
-        }
+
+            // Check for sub-subcategories (3-level nesting)
+            if (subcategory.subcategories && subcategory.subcategories.length > 0) {
+                subcategory.subcategories.forEach(subSubcategory => {
+                    html += `
+                        <div class="sub-subcategory-section">
+                            <h4 class="sub-subcategory-title">${subSubcategory.name}</h4>
+                            <div class="products-grid">
+                    `;
+                    
+                    subSubcategory.products.forEach((productPath, index) => {
+                        const productName = extractProductName(productPath);
+                        html += createProductCard(productPath, productName, categoryData.name, index);
+                    });
+                    
+                    html += '</div></div>';
+                });
+            } 
+            // Regular subcategory products
+            else if (subcategory.products && subcategory.products.length > 0) {
+                html += '<div class="products-grid">';
+                subcategory.products.forEach((productPath, index) => {
+                    const productName = extractProductName(productPath);
+                    html += createProductCard(productPath, productName, categoryData.name, index);
+                });
+                html += '</div>';
+            }
+
+            html += '</div>'; // Close subcategory-section
+        });
+    }
+
+    html += '</div>'; // Close category-section
+    return html;
+}
+
+// Helper function to create individual product cards
+function createProductCard(productPath, productName, categoryName, index) {
+    return `
+        <div class="product-card">
+            <div class="product-image">
+                <img src="${productPath}" alt="${productName}" onerror="this.src='./assets/images/placeholder.jpg'">
+            </div>
+            <div class="product-info">
+                <div class="product-name">${productName}</div>
+                <button class="buy-btn" onclick="buy_now('${categoryName}', ${index})">
+                    <i class="fa-brands fa-whatsapp"></i> Buy Now
+                </button>
+            </div>
+        </div>
+    `;
+}
 
         function extractProductName(filePath) {
             let name = filePath.split('/').pop();
