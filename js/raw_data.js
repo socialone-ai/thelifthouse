@@ -177,7 +177,7 @@ const data = [
 				products: [
 					"./assets/images/categories/Door Header Parts/Fermator/Belt Lock.jpg",
 					"./assets/images/categories/Door Header Parts/Fermator/Belt Pulley.jpg",
-					"./assets/images/categories/Door Header Parts/Fermator/Contact set 02.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Contact - Set.jpg",
 					"./assets/images/categories/Door Header Parts/Fermator/Contact set.jpg",
 					"./assets/images/categories/Door Header Parts/Fermator/Coupler CO.jpg",
 					"./assets/images/categories/Door Header Parts/Fermator/Coupler LH.jpg",
@@ -260,21 +260,21 @@ const data = [
 				{
 				name: "Designer Gold Cabin",
 				products: [
-					"./assets/images/categories/Cabin/Designer Gold Cabin/01.jpg",
-					"./assets/images/categories/Cabin/Designer Gold Cabin/02.jpg",
+					"./assets/images/categories/Cabin/Designer Gold Cabin/Designer Gold - Cabin.jpg",
+					"./assets/images/categories/Cabin/Designer Gold Cabin/Designer Gold Cabin.jpg",
 				]
 				},
 				{
 				name: "Designer Rose Gold Cabin",
 				products: [
-					"./assets/images/categories/Cabin/Designer Rose Gold Cabin/01.jpg",
-					"./assets/images/categories/Cabin/Designer Rose Gold Cabin/02.jpg",
+					"./assets/images/categories/Cabin/Designer Rose Gold Cabin/Designer Rose Gold Cabin.jpg",
+					"./assets/images/categories/Cabin/Designer Rose Gold Cabin/Designer Rose Gold - Cabin.jpg",
 				]
 				},
 				{
 				name: "MS Cabin",
 				products: [
-					"./assets/images/categories/Cabin/MS Cabin/02.jpg",
+					"./assets/images/categories/Cabin/MS Cabin/MS Cabin.jpg",
 					"./assets/images/categories/Cabin/MS Cabin/MS-Cabin.jpg",
 				]
 				},
@@ -283,7 +283,7 @@ const data = [
 				products: [
 					"./assets/images/categories/Cabin/SS Cabin/SS-Cabin.jpg",
 					"./assets/images/categories/Cabin/SS Cabin/SS-Designer-Cabin.jpg",
-					"./assets/images/categories/Cabin/SS Cabin/SS-Designer-Cabin-02.jpg",
+					"./assets/images/categories/Cabin/SS Cabin/SS-Designer Cabin.jpg",
 				]
 				},
 			]
