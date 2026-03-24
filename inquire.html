@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Inquiry | The Lift House</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" type="image/png" href="./assets/favicon.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #674194;
+            --secondary: #8191C9;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gradient: linear-gradient(135deg, #674194 0%, #8191C9 100%);
+        }
+
+        body {
+            font-family: 'DM Sans', 'Segoe UI', sans-serif;
+            background: var(--light);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ── HEADER (same as about-us.html) ── */
+        .header {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(103,65,148,0.1);
+            z-index: 1000; transition: all .3s ease;
+        }
+        .header.scrolled { background: rgba(255,255,255,0.98); box-shadow: 0 4px 30px rgba(103,65,148,0.15); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 120px; transition: transform .3s ease; }
+        .logo:hover img { transform: scale(1.05); }
+
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; position: absolute; left: 50%; transform: translateX(-50%); }
+        .nav-links a { color: var(--dark); font-weight: 500; font-size: 1.1rem; position: relative; transition: color .3s ease; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--gradient); transition: width .3s ease; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a.active { color: var(--primary); }
+
+        .nav-links li { position: relative; }
+        .mega-menu-item { position: relative; }
+        .mega-menu-trigger { display: flex; align-items: center; gap: .3rem; cursor: pointer; }
+        .mega-dropdown-icon { font-size: .7rem; transition: transform .3s ease; margin-left: .2rem; }
+        .mega-menu-item:hover .mega-dropdown-icon { transform: rotate(180deg); }
+
+        .mega-menu-content {
+            position: fixed; top: 80px; left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            width: 90vw; max-width: 1400px;
+            background: #fff; border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0,0,0,.2);
+            opacity: 0; visibility: hidden;
+            transition: all .3s ease; z-index: 999;
+            padding: 2.5rem; max-height: calc(100vh - 120px);
+            overflow-y: auto; overflow-x: hidden;
+        }
+        .mega-menu-item:hover .mega-menu-content { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .mega-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; padding: 1rem; margin-bottom: 2rem; }
+        .mega-category { padding: 1.8rem 1.5rem; text-align: center; transition: all .3s ease; cursor: pointer; border-radius: 15px; margin: .3rem; }
+        .mega-category:hover { background: linear-gradient(135deg,rgba(103,65,148,.08),rgba(129,145,201,.08)); transform: translateY(-8px); }
+        .mega-category i { font-size: 2.8rem; background: linear-gradient(135deg,#674194,#8191C9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1rem; display: block; transition: transform .3s ease; }
+        .mega-category:hover i { transform: scale(1.15); }
+        .mega-category h4 { color: #333; font-size: 1.05rem; margin-bottom: .5rem; font-weight: 600; }
+        .mega-category p { color: #999; font-size: .85rem; line-height: 1.4; }
+
+        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .hamburger div { width: 28px; height: 3px; background: var(--primary); transition: all .3s ease; border-radius: 3px; }
+
+        /* ── HERO ── */
+        .hero {
+            margin-top: 90px;
+            background: var(--gradient);
+            padding: 100px 2rem 70px;
+            color: #fff; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 20% 50%, rgba(255,255,255,.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 20%, rgba(255,255,255,.06) 0%, transparent 50%);
+        }
+        .hero-content { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero h1 { font-family: 'DM Serif Display', serif; font-size: 3rem; margin-bottom: 1rem; animation: fadeInUp .8s ease; }
+        .hero p { font-size: 1.15rem; opacity: .9; animation: fadeInUp .8s ease .15s backwards; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: .5rem;
+            background: rgba(255,255,255,.15); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,.25);
+            padding: .45rem 1.2rem; border-radius: 50px;
+            font-size: .9rem; margin-bottom: 1.5rem;
+            animation: fadeInUp .8s ease backwards;
+        }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ── FORM SECTION ── */
+        .inquiry-section { padding: 80px 2rem; }
+        .inquiry-wrapper {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1.6fr; gap: 3rem; align-items: start;
+        }
+
+        /* Left info panel */
+        .info-panel { position: sticky; top: 110px; }
+        .info-panel h2 {
+            font-family: 'DM Serif Display', serif;
+            color: var(--primary); font-size: 2.2rem; margin-bottom: 1rem; line-height: 1.2;
+        }
+        .info-panel p { color: #666; line-height: 1.8; margin-bottom: 2rem; font-size: 1rem; }
+
+        .contact-chips { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
+        .chip {
+            display: flex; align-items: center; gap: 1rem;
+            background: #fff; border-radius: 14px;
+            padding: 1rem 1.4rem;
+            box-shadow: 0 4px 20px rgba(103,65,148,.08);
+            border: 1px solid rgba(103,65,148,.08);
+            transition: all .3s ease;
+        }
+        .chip:hover { transform: translateX(6px); box-shadow: 0 8px 30px rgba(103,65,148,.14); }
+        .chip-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            background: var(--gradient); color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; flex-shrink: 0;
+        }
+        .chip-text { display: flex; flex-direction: column; }
+        .chip-label { font-size: .78rem; color: #999; text-transform: uppercase; letter-spacing: .05em; }
+        .chip-value { font-weight: 600; color: #333; font-size: .95rem; }
+
+        .whatsapp-btn {
+            display: inline-flex; align-items: center; gap: .7rem;
+            background: #25D366; color: #fff;
+            padding: .9rem 1.8rem; border-radius: 50px;
+            font-weight: 600; font-size: 1rem;
+            transition: all .3s ease;
+            box-shadow: 0 6px 20px rgba(37,211,102,.3);
+        }
+        .whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(37,211,102,.4); }
+
+        /* Form card */
+        .form-card {
+            background: #fff; border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 60px rgba(103,65,148,.1);
+            border: 1px solid rgba(103,65,148,.06);
+        }
+        .form-card h3 {
+            font-family: 'DM Serif Display', serif;
+            color: var(--primary); font-size: 1.8rem; margin-bottom: .4rem;
+        }
+        .form-card .form-subtitle { color: #888; font-size: .95rem; margin-bottom: 2rem; }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+        .form-group { display: flex; flex-direction: column; gap: .4rem; }
+        .form-group.full { grid-column: 1 / -1; }
+
+        label { font-size: .85rem; font-weight: 600; color: #555; letter-spacing: .02em; }
+        label span.req { color: var(--primary); }
+
+        .input-wrap { position: relative; }
+        .input-wrap i {
+            position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+            color: #bbb; font-size: .95rem; pointer-events: none; transition: color .3s;
+        }
+        textarea ~ i, .input-wrap.textarea-wrap i { top: 16px; transform: none; }
+
+        input, select, textarea {
+            width: 100%;
+            padding: .75rem 1rem .75rem 2.6rem;
+            border: 1.5px solid #e8e0f0;
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: .95rem;
+            color: #333;
+            background: #fafafa;
+            transition: all .3s ease;
+            outline: none;
+            appearance: none;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(103,65,148,.08);
+        }
+        .input-wrap:focus-within i { color: var(--primary); }
+        textarea { padding-top: .75rem; resize: vertical; min-height: 110px; }
+        select { cursor: pointer; }
+
+        /* Product checkbox grid */
+        .product-grid {
+            display: grid; grid-template-columns: repeat(2,1fr); gap: .6rem; margin-top: .4rem;
+        }
+        .product-chip-label {
+            display: flex; align-items: center; gap: .6rem;
+            padding: .65rem 1rem; border-radius: 10px;
+            border: 1.5px solid #e8e0f0; cursor: pointer;
+            font-size: .88rem; color: #555; font-weight: 500;
+            transition: all .25s ease; background: #fafafa;
+        }
+        .product-chip-label:hover { border-color: var(--secondary); background: rgba(129,145,201,.06); }
+        .product-chip-label input[type="checkbox"] { display: none; }
+        .product-chip-label .check-box {
+            width: 18px; height: 18px; border-radius: 5px;
+            border: 2px solid #ccc; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            transition: all .25s ease; font-size: .65rem; color: transparent;
+        }
+        .product-chip-label input:checked ~ .check-box {
+            background: var(--gradient); border-color: var(--primary); color: #fff;
+        }
+        .product-chip-label:has(input:checked) {
+            border-color: var(--primary); background: rgba(103,65,148,.06); color: var(--primary);
+        }
+
+        /* Quantity toggle */
+        .qty-toggle { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .4rem; }
+        .qty-chip {
+            padding: .5rem 1.1rem; border-radius: 50px;
+            border: 1.5px solid #e8e0f0; cursor: pointer;
+            font-size: .88rem; color: #666; font-weight: 500;
+            transition: all .25s ease; background: #fafafa;
+        }
+        .qty-chip:hover { border-color: var(--secondary); }
+        .qty-chip.active { background: var(--gradient); border-color: transparent; color: #fff; }
+
+        /* Submit */
+        .submit-btn {
+            width: 100%; padding: 1rem;
+            background: var(--gradient); color: #fff;
+            border: none; border-radius: 14px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.05rem; font-weight: 600;
+            cursor: pointer; margin-top: .5rem;
+            transition: all .3s ease;
+            display: flex; align-items: center; justify-content: center; gap: .6rem;
+        }
+        .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(103,65,148,.35); }
+        .submit-btn:active { transform: translateY(-1px); }
+
+        /* Success state */
+        .success-msg {
+            display: none; text-align: center; padding: 3rem 2rem;
+        }
+        .success-icon {
+            width: 80px; height: 80px; background: linear-gradient(135deg,#22c55e,#16a34a);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.5rem; font-size: 2rem; color: #fff;
+            animation: popIn .5s cubic-bezier(.175,.885,.32,1.275);
+        }
+        @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .success-msg h3 { font-family: 'DM Serif Display', serif; color: #333; font-size: 1.8rem; margin-bottom: .6rem; }
+        .success-msg p { color: #666; margin-bottom: 1.5rem; }
+
+        /* ── FOOTER ── */
+        .footer { background: #2c2c2c; color: #fff; padding: 60px 2rem 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-logo img { height: 150px; margin-bottom: 1.5rem; }
+        .footer-about { color: rgba(255,255,255,.7); line-height: 1.8; margin-bottom: 1.5rem; }
+        .footer-contact { display: flex; flex-direction: column; gap: 1rem; }
+        .footer-contact a { color: rgba(255,255,255,.7); transition: color .3s ease; display: flex; align-items: center; gap: .5rem; }
+        .footer-contact a:hover { color: var(--secondary); }
+        .footer-section h3 { font-size: 1.3rem; margin-bottom: 1.5rem; color: white; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: .8rem; }
+        .footer-links a { color: rgba(255,255,255,.7); transition: all .3s ease; display: inline-block; }
+        .footer-links a:hover { color: white; padding-left: 5px; }
+        .social-links { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .social-links a { width: 45px; height: 45px; background: rgba(255,255,255,.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all .3s ease; }
+        .social-links a:hover { background: var(--gradient); transform: translateY(-5px); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,.5); }
+
+        /* ── FLOAT BUTTONS ── */
+        .back-to-top { background: var(--gradient); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .3s ease; position: fixed; bottom: 30px; left: 30px; z-index: 999; opacity: 0; pointer-events: none; }
+        .back-to-top.visible { opacity: 1; pointer-events: all; }
+        .back-to-top:hover { transform: translateY(-5px); }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; cursor: pointer; box-shadow: 0 5px 20px rgba(37,211,102,.5); z-index: 999; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .nav-links { position: fixed; left: -100%; top: 90px; flex-direction: column; background: white; width: 100%; max-height: calc(100vh - 90px); overflow-y: auto; padding: 0; box-shadow: 0 10px 30px rgba(0,0,0,.1); transition: left .3s ease; align-items: flex-start; transform: none; gap: 0; }
+            .nav-links.active { left: 0; }
+            .nav-links > li { width: 100%; border-bottom: 1px solid #f0f0f0; }
+            .nav-links > li > a { display: block; padding: 1rem; font-size: 1.1rem; }
+            .mega-menu-trigger { display: flex; justify-content: space-between; width: 100%; padding: 1rem; background: transparent; border: none; text-align: left; font-size: 1.1rem; font-weight: 500; color: var(--dark); }
+            .mega-dropdown-icon { display: none !important; }
+            .mega-menu-content { position: static !important; opacity: 1 !important; visibility: visible !important; transform: none !important; box-shadow: none; display: flex !important; flex-direction: column-reverse; margin: 0; padding: 1rem 0; border-radius: 0; background: #f8f9fa; width: 100%; max-width: 100%; max-height: none !important; overflow: visible; transition: none; }
+            .mega-grid { display: flex !important; flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory; gap: .8rem; padding: 1rem; grid-template-columns: none !important; scrollbar-width: none; }
+            .mega-grid::-webkit-scrollbar { display: none; }
+            .mega-category { flex: 0 0 75%; scroll-snap-align: center; }
+            .hamburger { display: flex; z-index: 1001; }
+            .hamburger.active div:nth-child(1) { transform: rotate(45deg) translate(8px,8px); }
+            .hamburger.active div:nth-child(2) { opacity: 0; }
+            .hamburger.active div:nth-child(3) { transform: rotate(-45deg) translate(7px,-7px); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .inquiry-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+            .info-panel { position: static; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: 1; }
+            .product-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+            .mega-category { flex: 0 0 85%; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="header" id="mainHeader">
+    <nav class="nav-container">
+        <div class="logo">
+            <a href="index.html"><img src="./assets/images/index/the-lift-logo-removebg-preview.png" alt="The Lift House"></a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li class="mega-menu-item">
+                <a href="javascript:void(0);" class="mega-menu-trigger">
+                    Products <i class="fa fa-chevron-down mega-dropdown-icon"></i>
+                </a>
+                <div class="mega-menu-content">
+                    <div class="mega-grid">
+                        <div class="mega-category" onclick="load('Brakects')"><i class="fa fa-cog"></i><h4>Brackets</h4><p>Premium fittings</p></div>
+                        <div class="mega-category" onclick="load('Doors')"><i class="fa fa-door-open"></i><h4>Doors</h4><p>Safety & style</p></div>
+                        <div class="mega-category" onclick="load('Door Header')"><i class="fa fa-building"></i><h4>Door Header</h4><p>Modern designs</p></div>
+                        <div class="mega-category" onclick="load('Door Header Parts')"><i class="fa fa-shield-alt"></i><h4>Door Header Parts</h4><p>Header components</p></div>
+                        <div class="mega-category" onclick="load('Wiring Parts')"><i class="fa fa-bolt"></i><h4>Wiring Parts</h4><p>Advance Systems</p></div>
+                        <div class="mega-category" onclick="load('Motor')"><i class="fa fa-cogs"></i><h4>Motors</h4><p>Smooth operation</p></div>
+                        <div class="mega-category" onclick="load('Cabin')"><i class="fa fa-cube"></i><h4>Cabins</h4><p>Elegant interiors</p></div>
+                        <div class="mega-category" onclick="load('Control Pannel')"><i class="fa fa-microchip"></i><h4>Control Panel</h4><p>Smart controls</p></div>
+                        <div class="mega-category" onclick="load('Control Panel Spare Parts')"><i class="fa fa-tools"></i><h4>Control Panel Spare Parts</h4><p>Spare components</p></div>
+                        <div class="mega-category" onclick="load('DIVERTER PULLEYES')"><i class="fa fa-circle-notch"></i><h4>Diverter Pulleys</h4><p>Precision parts</p></div>
+                        <div class="mega-category" onclick="load('Filler Counter Weights')"><i class="fa fa-weight-hanging"></i><h4>Filler Counter Weights</h4><p>Balance weights</p></div>
+                        <div class="mega-category" onclick="load('Guide Rails')"><i class="fa fa-road"></i><h4>Guide Rails</h4><p>Track systems</p></div>
+                        <div class="mega-category" onclick="load('Hardware Parts')"><i class="fa fa-wrench"></i><h4>Hardware Parts</h4><p>Essential parts</p></div>
+                        <div class="mega-category" onclick="load('Over Speed Governor (OSG)')"><i class="fa fa-tachometer-alt"></i><h4>Over Speed Governor</h4><p>Speed governors</p></div>
+                    </div>
+                    <div style="text-align:center;margin-top:2rem;">
+                        <a href="products.html" class="btn btn-primary" style="display:inline-block;padding:.8rem 2rem;background:var(--gradient);color:#fff;border-radius:50px;font-weight:600;">
+                            Show All Products <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li><a href="inquire.html">Inquire Now</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div><div></div><div></div>
+        </div>
+    </nav>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge"><i class="fa fa-envelope-open-text"></i> Quick Inquiry</div>
+        <h1>Get a Fast Quote</h1>
+        <p>Tell us what you need — our team will respond within 24 hours with pricing and availability.</p>
+    </div>
+</section>
+
+<!-- ── INQUIRY SECTION ── -->
+<section class="inquiry-section">
+    <div class="inquiry-wrapper">
+
+        <!-- Left Info Panel -->
+        <div class="info-panel">
+            <h2>We're Here to Help</h2>
+            <p>Whether you're sourcing a single component or stocking up for a large project, our team is ready to assist. Reach us through any channel.</p>
+
+            <div class="contact-chips">
+                <a href="tel:+919351118772" class="chip">
+                    <div class="chip-icon"><i class="fa fa-phone"></i></div>
+                    <div class="chip-text">
+                        <span class="chip-label">Call Us</span>
+                        <span class="chip-value">+91 93511 18772</span>
+                    </div>
+                </a>
+                <a href="mailto:siddhamtechno@zohomail.in" class="chip">
+                    <div class="chip-icon"><i class="fa fa-envelope"></i></div>
+                    <div class="chip-text">
+                        <span class="chip-label">Email Us</span>
+                        <span class="chip-value">siddhamtechno@zohomail.in</span>
+                    </div>
+                </a>
+                <a href="https://maps.google.com/?q=79-80+Pancholi+Vihar+Vistar+Jaipur" target="_blank" class="chip">
+                    <div class="chip-icon"><i class="fa fa-map-marker-alt"></i></div>
+                    <div class="chip-text">
+                        <span class="chip-label">Visit Us</span>
+                        <span class="chip-value">Narayan Vihar, Jaipur 302020</span>
+                    </div>
+                </a>
+            </div>
+
+            <a href="https://wa.me/919351118772?text=Hello!%20I%27d%20like%20to%20inquire%20about%20elevator%20components." target="_blank" class="whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+
+        <!-- Form Card -->
+        <div class="form-card">
+            <div id="formContent">
+                <h3>Send Your Inquiry</h3>
+                <p class="form-subtitle">Fill in the details below and we'll get back to you promptly.</p>
+
+                <div class="form-grid">
+
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label>Full Name <span class="req">*</span></label>
+                        <div class="input-wrap">
+                            <i class="fa fa-user"></i>
+                            <input type="text" id="name" placeholder="Your full name" required>
+                        </div>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="form-group">
+                        <label>Company / Organisation</label>
+                        <div class="input-wrap">
+                            <i class="fa fa-building"></i>
+                            <input type="text" id="company" placeholder="Company name">
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group">
+                        <label>Mobile Number <span class="req">*</span></label>
+                        <div class="input-wrap">
+                            <i class="fa fa-phone"></i>
+                            <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <div class="input-wrap">
+                            <i class="fa fa-envelope"></i>
+                            <input type="email" id="email" placeholder="you@company.com">
+                        </div>
+                    </div>
+
+                    <!-- City -->
+                    <div class="form-group">
+                        <label>City <span class="req">*</span></label>
+                        <div class="input-wrap">
+                            <i class="fa fa-map-marker-alt"></i>
+                            <input type="text" id="city" placeholder="Your city" required>
+                        </div>
+                    </div>
+
+                    <!-- State -->
+                    <div class="form-group">
+                        <label>State</label>
+                        <div class="input-wrap">
+                            <i class="fa fa-map"></i>
+                            <select id="state">
+                                <option value="">— Select State —</option>
+                                <option>Andhra Pradesh</option><option>Assam</option><option>Bihar</option>
+                                <option>Chhattisgarh</option><option>Delhi</option><option>Goa</option>
+                                <option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option>
+                                <option>Jharkhand</option><option>Karnataka</option><option>Kerala</option>
+                                <option>Madhya Pradesh</option><option>Maharashtra</option><option>Odisha</option>
+                                <option>Punjab</option><option selected>Rajasthan</option><option>Tamil Nadu</option>
+                                <option>Telangana</option><option>Uttar Pradesh</option><option>Uttarakhand</option>
+                                <option>West Bengal</option><option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Customer Type -->
+                    <div class="form-group">
+                        <label>You are a <span class="req">*</span></label>
+                        <div class="input-wrap">
+                            <i class="fa fa-user-tag"></i>
+                            <select id="customerType" required>
+                                <option value="">— Select —</option>
+                                <option>Lift Manufacturer</option>
+                                <option>Lift Installer / Assembler</option>
+                                <option>Distributor / Trader</option>
+                                <option>Maintenance Company</option>
+                                <option>End User / Building Owner</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- How did you hear -->
+                    <div class="form-group">
+                        <label>How did you find us?</label>
+                        <div class="input-wrap">
+                            <i class="fa fa-search"></i>
+                            <select id="source">
+                                <option value="">— Select —</option>
+                                <option>Google Search</option>
+                                <option>IndiaMart / Trade Portals</option>
+                                <option>Word of Mouth / Referral</option>
+                                <option>Social Media</option>
+                                <option>Exhibition / Trade Show</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Product Interest -->
+                    <div class="form-group full">
+                        <label>Product Categories of Interest <span class="req">*</span></label>
+                        <div class="product-grid" id="productGrid">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Quantity Required -->
+                    <div class="form-group full">
+                        <label>Approximate Order Quantity</label>
+                        <div class="qty-toggle" id="qtyToggle">
+                            <div class="qty-chip" onclick="selectQty(this)">Sample / Trial</div>
+                            <div class="qty-chip" onclick="selectQty(this)">Small (1–20 pcs)</div>
+                            <div class="qty-chip" onclick="selectQty(this)">Medium (21–100 pcs)</div>
+                            <div class="qty-chip" onclick="selectQty(this)">Large (100+ pcs)</div>
+                            <div class="qty-chip" onclick="selectQty(this)">Bulk / Ongoing</div>
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="form-group full">
+                        <label>Additional Requirements / Message</label>
+                        <div class="input-wrap textarea-wrap">
+                            <i class="fa fa-comment-alt"></i>
+                            <textarea id="message" placeholder="Describe your specific requirements, model numbers, specifications, or any other details…"></textarea>
+                        </div>
+                    </div>
+
+                </div><!-- /form-grid -->
+
+                <button class="submit-btn" onclick="submitInquiry()">
+                    <i class="fa fa-paper-plane"></i> Submit Inquiry
+                </button>
+
+            </div><!-- /formContent -->
+
+            <!-- Success State -->
+            <div class="success-msg" id="successMsg">
+                <div class="success-icon"><i class="fa fa-check"></i></div>
+                <h3>Inquiry Received!</h3>
+                <p>Thank you! Our team will reach out to you within 24 hours on your provided contact details.</p>
+                <a href="https://wa.me/919351118772?text=Hello!%20I%20just%20submitted%20an%20inquiry%20on%20your%20website." target="_blank" class="whatsapp-btn" style="display:inline-flex;margin:0 auto;">
+                    <i class="fa-brands fa-whatsapp"></i> Chat for Faster Response
+                </a>
+            </div>
+
+        </div><!-- /form-card -->
+
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+    <div style="max-width:1400px;margin:0 auto;">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo"><a href="index.html"><img src="./assets/images/index/the-lift-logo-removebg-preview.png" alt="The Lift House"></a></div>
+                <p class="footer-about">Premium elevator spares and parts delivered nationwide. Excellence and innovation in every product.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=100073875736493" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/siddham_techno?igsh=MzRiZmR1NzZ4MjY0" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@thelifthouse7591?si=EkiU2qevZdtfyx-G" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="inquire.html">Inquire Now</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Products</h3>
+                <ul class="footer-links">
+                    <li><a href="javascript:void(0);" onclick="load('Brakects')">Brackets</a></li>
+                    <li><a href="javascript:void(0);" onclick="load('Doors')">Doors</a></li>
+                    <li><a href="javascript:void(0);" onclick="load('Motor')">Motors</a></li>
+                    <li><a href="javascript:void(0);" onclick="load('Cabin')">Cabins</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="footer-contact">
+                    <a href="tel:+919351118772"><i class="fa fa-phone"></i> +91 9351118772</a>
+                    <a href="mailto:siddhamtechno@zohomail.in"><i class="fa fa-envelope"></i> siddhamtechno@zohomail.in</a>
+                    <a href="#"><i class="fa fa-map-marker-alt"></i> 79-80 Pancholi Vihar Vistar, Narayan Vihar Jaipur 302020</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Lift House. All Rights Reserved.</p>
+            <p>Designed by <a href="#" style="color:var(--secondary)">Socialone.ai</a></p>
+        </div>
+    </div>
+</footer>
+
+<div class="whatsapp-float" onclick="window.open('https://wa.me/919351118772?text=Hello!%20I%27m%20interested%20in%20your%20elevator%20products.','_blank')">
+    <i class="fa-brands fa-whatsapp"></i>
+</div>
+<div class="back-to-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fa fa-arrow-up"></i>
+</div>
+
+<script>
+// ── Product categories for checkbox grid ──
+const PRODUCTS = [
+    { name: 'Brackets',             icon: 'fa-cog' },
+    { name: 'Doors',                icon: 'fa-door-open' },
+    { name: 'Door Header',          icon: 'fa-building' },
+    { name: 'Door Header Parts',    icon: 'fa-shield-alt' },
+    { name: 'Wiring Parts',         icon: 'fa-bolt' },
+    { name: 'Motors',               icon: 'fa-cogs' },
+    { name: 'Cabins',               icon: 'fa-cube' },
+    { name: 'Control Panel',        icon: 'fa-microchip' },
+    { name: 'Control Panel Spares', icon: 'fa-tools' },
+    { name: 'Diverter Pulleys',     icon: 'fa-circle-notch' },
+    { name: 'Counter Weights',      icon: 'fa-weight-hanging' },
+    { name: 'Guide Rails',          icon: 'fa-road' },
+    { name: 'Hardware Parts',       icon: 'fa-wrench' },
+    { name: 'Over Speed Governor',  icon: 'fa-tachometer-alt' },
+];
+
+(function buildProductGrid() {
+    const grid = document.getElementById('productGrid');
+    PRODUCTS.forEach((p, i) => {
+        const id = 'prod_' + i;
+        const lbl = document.createElement('label');
+        lbl.className = 'product-chip-label';
+        lbl.innerHTML = `
+            <input type="checkbox" id="${id}" value="${p.name}">
+            <span class="check-box"><i class="fa fa-check"></i></span>
+            <i class="fa ${p.icon}" style="color:var(--secondary);font-size:.9rem;"></i>
+            ${p.name}
+        `;
+        grid.appendChild(lbl);
+    });
+})();
+
+// ── Quantity toggle ──
+function selectQty(el) {
+    document.querySelectorAll('.qty-chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+}
+
+// ── Submit → WhatsApp ──
+function submitInquiry() {
+    const name    = document.getElementById('name').value.trim();
+    const phone   = document.getElementById('phone').value.trim();
+    const city    = document.getElementById('city').value.trim();
+    const type    = document.getElementById('customerType').value;
+
+    if (!name || !phone || !city || !type) {
+        alert('Please fill in all required fields (marked with *).');
+        return;
+    }
+
+    const company  = document.getElementById('company').value.trim();
+    const email    = document.getElementById('email').value.trim();
+    const state    = document.getElementById('state').value;
+    const source   = document.getElementById('source').value;
+    const message  = document.getElementById('message').value.trim();
+
+    const checked  = [...document.querySelectorAll('#productGrid input:checked')].map(c => c.value);
+    const qty      = document.querySelector('.qty-chip.active')?.textContent || 'Not specified';
+
+    let msg = `*New Inquiry from The Lift House Website*\n`;
+    msg += `━━━━━━━━━━━━━━━━━━━━\n`;
+    msg += `👤 *Name:* ${name}\n`;
+    if (company) msg += `🏢 *Company:* ${company}\n`;
+    msg += `📞 *Phone:* ${phone}\n`;
+    if (email) msg += `📧 *Email:* ${email}\n`;
+    msg += `📍 *Location:* ${city}${state ? ', ' + state : ''}\n`;
+    msg += `🏷️ *Customer Type:* ${type}\n`;
+    msg += `━━━━━━━━━━━━━━━━━━━━\n`;
+    msg += `📦 *Products Interested In:*\n${checked.length ? checked.map(c => '  • ' + c).join('\n') : '  Not specified'}\n`;
+    msg += `📊 *Order Quantity:* ${qty}\n`;
+    if (source) msg += `🔍 *Found Us Via:* ${source}\n`;
+    if (message) msg += `💬 *Message:*\n${message}\n`;
+
+    const url = `https://wa.me/919351118772?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+
+    // Show success
+    document.getElementById('formContent').style.display = 'none';
+    const s = document.getElementById('successMsg');
+    s.style.display = 'block';
+    s.style.animation = 'fadeInUp .6s ease';
+}
+
+// ── Header scroll ──
+window.addEventListener('scroll', () => {
+    document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 100);
+    document.getElementById('backTop').classList.toggle('visible', window.scrollY > 200);
+});
+
+// ── Mobile menu ──
+function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('active');
+    document.querySelector('.hamburger').classList.toggle('active');
+}
+document.addEventListener('click', e => {
+    if (window.innerWidth <= 1024 && !e.target.closest('.nav-container')) {
+        document.getElementById('navLinks').classList.remove('active');
+        document.querySelector('.hamburger').classList.remove('active');
+    }
+});
+
+function load(page) { window.location.replace('products.html#' + page); }
+
+// ── Pre-fill product if coming from products page ──
+window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+        document.querySelectorAll('#productGrid input').forEach(inp => {
+            if (inp.value.toLowerCase().includes(hash.toLowerCase())) {
+                inp.checked = true;
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>

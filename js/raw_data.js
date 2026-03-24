@@ -79,7 +79,7 @@ const data = [
 					"./assets/images/categories/Wiring Parts/Inspection-Box.jpg",
 					"./assets/images/categories/Wiring Parts/J-Pata.jpg",
 					"./assets/images/categories/Wiring Parts/Junction-Box.jpg",
-					"./assets/images/categories/Wiring Parts/Limit-Switch.jpg",
+					"./assets/images/categories/Wiring Parts/Limit-Switch-RH.jpg",
 					"./assets/images/categories/Wiring Parts/Limit-Switch-CNTD.jpg",
 					"./assets/images/categories/Wiring Parts/Limit-Switch-LH.jpg",
 					"./assets/images/categories/Wiring Parts/Limit-Switch-NO.jpg",
@@ -177,7 +177,7 @@ const data = [
 				products: [
 					"./assets/images/categories/Door Header Parts/Fermator/Belt Lock.jpg",
 					"./assets/images/categories/Door Header Parts/Fermator/Belt Pulley.jpg",
-					"./assets/images/categories/Door Header Parts/Fermator/Contact - Set.jpg",
+					"./assets/images/categories/Door Header Parts/Fermator/Contact set 02.jpg",
 					"./assets/images/categories/Door Header Parts/Fermator/Contact set.jpg",
 					"./assets/images/categories/Door Header Parts/Fermator/Coupler CO.jpg",
 					"./assets/images/categories/Door Header Parts/Fermator/Coupler LH.jpg",
@@ -260,21 +260,21 @@ const data = [
 				{
 				name: "Designer Gold Cabin",
 				products: [
-					"./assets/images/categories/Cabin/Designer Gold Cabin/Designer Gold - Cabin.jpg",
-					"./assets/images/categories/Cabin/Designer Gold Cabin/Designer Gold Cabin.jpg",
+					"./assets/images/categories/Cabin/Designer Gold Cabin/01.jpg",
+					"./assets/images/categories/Cabin/Designer Gold Cabin/02.jpg",
 				]
 				},
 				{
 				name: "Designer Rose Gold Cabin",
 				products: [
-					"./assets/images/categories/Cabin/Designer Rose Gold Cabin/Designer Rose Gold Cabin.jpg",
-					"./assets/images/categories/Cabin/Designer Rose Gold Cabin/Designer Rose Gold - Cabin.jpg",
+					"./assets/images/categories/Cabin/Designer Rose Gold Cabin/01.jpg",
+					"./assets/images/categories/Cabin/Designer Rose Gold Cabin/02.jpg",
 				]
 				},
 				{
 				name: "MS Cabin",
 				products: [
-					"./assets/images/categories/Cabin/MS Cabin/MS Cabin.jpg",
+					"./assets/images/categories/Cabin/MS Cabin/02.jpg",
 					"./assets/images/categories/Cabin/MS Cabin/MS-Cabin.jpg",
 				]
 				},
@@ -283,7 +283,7 @@ const data = [
 				products: [
 					"./assets/images/categories/Cabin/SS Cabin/SS-Cabin.jpg",
 					"./assets/images/categories/Cabin/SS Cabin/SS-Designer-Cabin.jpg",
-					"./assets/images/categories/Cabin/SS Cabin/SS-Designer Cabin.jpg",
+					"./assets/images/categories/Cabin/SS Cabin/SS-Designer-Cabin-02.jpg",
 				]
 				},
 			]
@@ -299,7 +299,7 @@ const data = [
 			name:"DIVERTER PULLEYES",
 			products: [
 				"./assets/images/categories/DIVERTER PULLEYES/DIVERTER-PULLEY.jpg",
-				"./assets/images/categories/DIVERTER PULLEYES/DIVERTER-PULLEY.jpg",
+				"./assets/images/categories/DIVERTER PULLEYES/NYLON-PULLEY.jpg",
 			]
 		},
 		{
@@ -415,7 +415,7 @@ const data = [
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Safety-Block-Shoe.jpg",
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Safety-Clutch.jpg",
 						"./assets/images/categories/Hardware Parts/DBG Accessories/Spring-Buffer.jpg",
-						"./assets/images/categories/Hardware Parts/DBG Accessories/Thimble-Eye-Bolt.jpg",
+						"./assets/images/categories/Hardware Parts/DBG Accessories/Thimble-I-Bolt.jpg",
 					]
 					}
 				]
@@ -449,11 +449,12 @@ buy_now = (productPath = null, productName = null) => {
 
 // Helper function to extract product name from file path
 function extractProductNameFromPath(filePath) {
-	let name = filePath.split('/').pop(); // Get filename
-	name = name.split('.')[0]; // Remove extension
-	name = name.replace(/_/g, ' '); // Replace underscores with spaces
-	name = name.replace(/-/g, ' '); // Replace hyphens with spaces
-	return name.charAt(0).toUpperCase() + name.slice(1); // Capitalize first letter
+    let name = filePath.split('/').pop();
+    name = name.replace(/\.(jpg|jpeg|png|gif|webp)$/i, '');
+    name = name.replace(/(\d)-(\d)/g, '$1 - $2');
+    name = name.replace(/_/g, ' ');
+    name = name.replace(/(?<! )-(?! )/g, ' '); 
+    return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
 
