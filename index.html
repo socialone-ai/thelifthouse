@@ -62,14 +62,14 @@
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 1.2rem 2rem;
+    padding: 0rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo img {
-    height: 60px;
+    height: 120px;
     transition: transform 0.3s ease;
 }
 
@@ -90,7 +90,7 @@
 .nav-links a {
     color: var(--dark);
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.1rem;
     position: relative;
     transition: color 0.3s ease;
 }
@@ -450,7 +450,7 @@
     }
 
     .logo img {
-        height: 50px;
+        height: 65px;
     }
 
     .nav-container {
@@ -582,20 +582,43 @@
         }
 
         .hero-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
-            animation: slideInRight 1s ease-out;
         }
 
-        .hero-image img {
-            width: 100%;
+        .hero-image-circle {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            flex-shrink: 0;
+        }
+
+        .hero-image-circle::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-image-circle img {
+            position: relative;
+            z-index: 1;
+            width: 120%;
+            max-width: none;
             height: auto;
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+            object-fit: contain;
+            filter: drop-shadow(0px 30px 50px rgba(0,0,0,0.3));
             animation: floatImage 3s ease-in-out infinite;
+            transform: translateY(-30px) translateX(-10%);
         }
 
         @keyframes floatImage {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(-30px) translateX(-10%); }
+            50% { transform: translateY(-50px) translateX(-10%); }
         }
 
         @keyframes slideInLeft {
@@ -1223,7 +1246,7 @@
         }
 
         .footer-logo img {
-            height: 60px;
+            height: 150px;
             margin-bottom: 1.5rem;
         }
 
@@ -1610,19 +1633,47 @@
             }
 
             /* MOBILE: Hero Section */
-            .hero {
-                min-height: auto;
-                padding: 3rem 1rem;
-            }
+            /* MOBILE: Hero Section */
+.hero {
+    min-height: auto;
+    padding: 3rem 1rem;
+    overflow: hidden;
+}
 
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+.hero-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    width: 100%;
+    max-width: 100%;
+}
 
-            .hero-text h1 {
-                font-size: 2.2rem;
-            }
+.hero-text h1 {
+    font-size: 2.2rem;
+}
+
+/* MOBILE: Fix hero image circle fixed size */
+.hero-image {
+    width: 100%;
+    justify-content: center;
+}
+
+.hero-image-circle {
+    width: min(320px, 85vw);
+    height: min(320px, 85vw);
+    flex-shrink: 1;
+}
+
+.hero-image-circle img {
+    width: 115%;
+    max-width: none;
+    transform: translateY(-20px) translateX(-8%);
+    animation: floatImageMobile 3s ease-in-out infinite;
+}
+
+@keyframes floatImageMobile {
+    0%, 100% { transform: translateY(-20px) translateX(-8%); }
+    50% { transform: translateY(-35px) translateX(-8%); }
+}
 
             .hero-text p {
                 font-size: 1rem;
@@ -1747,7 +1798,7 @@
         <nav class="nav-container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="./assets/images/index/logoooooooooo-removebg-preview.png" alt="The Lift House">
+                    <img src="./assets/images/index/the-lift-logo-removebg-preview.png" alt="The Lift House">
                 </a>
             </div>
             <ul class="nav-links">
@@ -1769,23 +1820,23 @@
                                 <p>Safety & style</p>
                             </div>
                             <div class="mega-category" onclick="load('Door Header')">
-                                <i class="fa fa-bolt"></i>
-                                <h4>Door Header</h4>
-                                <p>Premium headers</p>
-                            </div>
-                            <div class="mega-category" onclick="load('Headers')">
                                 <i class="fa fa-building"></i>
-                                <h4>Headers</h4>
-                                <p>Modern designs</p>
+                                <h4>Door Header</h4>
+                                <p>Modern Design</p>
                             </div>
-                            <div class="mega-category" onclick="load('Safeties and Hardware')">
-                                <i class="fa fa-shield-alt"></i>
-                                <h4>Safeties and Hardware</h4>
-                                <p>Premium safety</p>
+                            <div class="mega-category" onclick="load('Door Header Parts')">
+                                <i class="fa-shield-alt"></i>
+                                <h4>Door Header Parts</h4>
+                                <p>Header components</p>
+                            </div>
+                            <div class="mega-category" onclick="load('Wiring Parts')">
+                                <i class="fa fa-bolt"></i>
+                                <h4>Wiring Parts</h4>
+                                <p>Advance Systems</p>
                             </div>
                             <div class="mega-category" onclick="load('Motor')">
                                 <i class="fa fa-cogs"></i>
-                                <h4>Motors</h4>
+                                <h4>Motor</h4>
                                 <p>Smooth operation</p>
                             </div>
                             <div class="mega-category" onclick="load('Cabin')">
@@ -1793,9 +1844,9 @@
                                 <h4>Cabins</h4>
                                 <p>Elegant interiors</p>
                             </div>
-                            <div class="mega-category" onclick="load('Control Pannels')">
+                            <div class="mega-category" onclick="load('Control Pannel')">
                                 <i class="fa fa-microchip"></i>
-                                <h4>Control Pannels</h4>
+                                <h4>Control Pannel</h4>
                                 <p>Smart controls</p>
                             </div>
                             <div class="mega-category" onclick="load('Control Panel Spare Parts')">
@@ -1813,9 +1864,9 @@
                                 <h4>Filler Counter Weights</h4>
                                 <p>Balance weights</p>
                             </div>
-                            <div class="mega-category" onclick="load('Guide Rail')">
+                            <div class="mega-category" onclick="load('Guide Rails')">
                                 <i class="fa fa-road"></i>
-                                <h4>Guide Rail</h4>
+                                <h4>Guide Rails</h4>
                                 <p>Track systems</p>
                             </div>
                             <div class="mega-category" onclick="load('Hardware Parts')">
@@ -1837,6 +1888,7 @@
                         </div>
                     </div>
                 </li>
+                <li><a href="inquire.html">Inquire Now</a></li>
                 <li><a href="about-us.html">About Us</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
                 <!-- <li><a href="./assets/catalogue.pdf" target="_blank" download><i class="fa fa-download"></i> Catalogue</a></li> -->
@@ -1869,8 +1921,10 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="./assets/images/index/step.svg" alt="Elevator">
+                <div class="hero-image-circle">
+                <img src="./assets/images/index/hdnew.png" alt="Elevator">
             </div>
+</div>
         </div>
     </section>
 
@@ -1957,11 +2011,11 @@
                     <div class="flip-card">
                         <div class="flip-card-front">
                             <i class="fa fa-cogs"></i>
-                            <h3>Motors</h3>
+                            <h3>Motor</h3>
                             <p>Reliable motors for smooth operations</p>
                         </div>
                         <div class="flip-card-back">
-                            <h3>Motors</h3>
+                            <h3>Motor</h3>
                             <p>High-performance motors ensuring smooth and efficient elevator operation</p>
                             <button class="explore-btn">View Products</button>
                         </div>
@@ -2027,7 +2081,7 @@
             <div class="footer-grid">
                 <div>
                     <div class="footer-logo">
-                        <a href="index.html"><img src="./assets/images/index/logoooooooooo-removebg-preview.png" alt="The Lift House"></a>
+                        <a href="index.html"><img src="./assets/images/index/the-lift-logo-removebg-preview.png" alt="The Lift House"></a>
                     </div>
                     <p class="footer-about">
                         Premium elevator spares and parts delivered nationwide. Excellence and innovation in every product.
@@ -2043,6 +2097,7 @@
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="products.html">Products</a></li>
+                        <li><a href="inquire.html">Inquire Now</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="about-us.html" class="active">About Us</a></li>
                         <!-- <li><a href="./assets/catalogue.pdf" target="_blank" download><i class="fa fa-download"></i> Catalogue</a></li> -->
@@ -2054,7 +2109,7 @@
                         <li><a href="javascript:void(0);" onclick="load('Brakects')">Brakects</a></li>
                         <li><a href="javascript:void(0);" onclick="load('Doors')">Doors</a></li>
                         <li><a href="javascript:void(0);" onclick="load('Door Header')">Door Header</a></li>
-                        <li><a href="javascript:void(0);" onclick="load('Motors')">Motors</a></li>
+                        <li><a href="javascript:void(0);" onclick="load('Motor')">Motor</a></li>
                         <li><a href="javascript:void(0);" onclick="load('Cabin')">Cabins</a></li>
                     </ul>
                 </div>
@@ -2198,14 +2253,14 @@ function toggleAboutCard(card) {
 
     // Buy now function (WhatsApp)
     function buy_now(productId) {
-    const phoneNumber = "+919829408299";
+    const phoneNumber = "919351118772";
     let message = "Hello! I'm interested in your elevator products.";
     
     if (productId >= 0 && typeof data !== 'undefined' && data[productId]) {
         message = `Hello! I'm interested in ${data[productId].name}`;
     }
     
-    const whatsappUrl = `https://wa.me/918548903206?text=I%E2%80%99m%20interested%20in%20your%20elevator%20products%2Fservices.`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
 
@@ -2227,9 +2282,9 @@ function toggleAboutCard(card) {
         const categoryIcons = {
             'Brakects': 'fa-cog',
             'Doors': 'fa-door-open',
-            'Electricals': 'fa-bolt',
-            'Headers': 'fa-building',
-            'Safeties and Hardware': 'fa-shield-alt',
+            'Wiring Parts': 'fa-bolt',
+            'Door Header': 'fa-building',
+            'Door Header Parts': 'fa-shield-alt',
             'Motor': 'fa-cogs',
             'Cabin': 'fa-cube',
             'Control Pannels': 'fa-microchip',
@@ -2269,12 +2324,13 @@ function toggleAboutCard(card) {
     const fileName = pathParts[pathParts.length - 1];
     const productName = fileName
         .replace(/\.(jpg|jpeg|png|gif|webp)$/i, '')
+        .replace(/(\d)-(\d)/g, '$1 - $2')
         .replace(/[-_]/g, ' ')
         .trim();
     
-    const phoneNumber = "+919829408299";
+    const phoneNumber = "919351118772"; // no + needed for wa.me
     const whatsappMessage = encodeURIComponent(`Hello! I'm interested in ${productName} from ${categoryName}`);
-    const whatsappUrl = `https://wa.me/919829408299?text=I%E2%80%99m%20interested%20in%20your%20elevator%20products%2Fservices.`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
     
     offeringsHTML += `
         <div class="offering-card">
